@@ -91,24 +91,27 @@
 %%%% 利用tikz来定位照片
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
-  \end{tikzpicture}%
-  %%%% 利用tikz来定位学校Logo，这里只在第一页显示
-  \begin{tikzpicture}[remember picture, overlay] 
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
-  \end{tikzpicture}%
+\end{tikzpicture}%
 
-% 姓名与联系方式折叠
-\vspace*{-0.5em} % 整体上移一点
-\begin{minipage}{\textwidth - 3.5cm} % 创建一个隐形盒子，宽度为总宽度减去右边照片预留的3.5cm
-    \centering % 在这个隐形盒子内部居中
-    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm} % [c][3cm][c] 强行让这个盒子高3厘米，内部垂直居中
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.6em] % 名字和下方联系方式的间距
     {\normalsize 
         \faPhone\ 150-4336-5908 \quad 
         \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
         \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}%
     }
 \end{minipage}
-\vspace{0.4em}
+
+% 这里加一点微小的间距，让蓝色横线和照片下边缘留出呼吸感
+\vspace{0.2em} 
     
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
