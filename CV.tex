@@ -50,7 +50,7 @@
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+\renewcommand{\baselinestretch}{1.45} % 行间距设为1.5
 
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -99,13 +99,16 @@
 
 % 姓名与联系方式折叠
 \vspace*{-0.5em} % 整体上移一点
-\centerline{\LARGE\bfseries{程昕蕊}} \vspace{0.3em}
-\centerline{\normalsize{%
-    \faPhone\ 150-4336-5908 \quad 
-    \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
-    \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}%
-}} 
-\vspace{0.3em}
+\begin{minipage}{\textwidth - 3.5cm} % 创建一个隐形盒子，宽度为总宽度减去右边照片预留的3.5cm
+    \centering % 在这个隐形盒子内部居中
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+    {\normalsize 
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}%
+    }
+\end{minipage}
+\vspace{0.4em}
     
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
