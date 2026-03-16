@@ -116,7 +116,6 @@
 \textcolor{CVBlue}{\textbf{排名：前20\%}}
 \begin{itemize}[nosep]
     \item 研究方向：AI4Science、神经算子、物理信息学习、工业数字孪生
-    \item 相关课程：（可补充：机器学习、数值分析、偏微分方程、深度学习等）
 \end{itemize}
 
 \projectsep
@@ -131,54 +130,26 @@
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
 
 % --- 项目一（最重要，放最前，IJCAI在审） ---
-\textbf{UNOP：物理约束无监督神经算子} \hfill 2025.9 -- 至今 \titlebreak
-\textit{角色：\textbf{核心开发者 / 第一作者} \quad
-投稿：\textbf{IJCAI 2026（CCF-A，审稿中）}}\\[\intraProjectTitleSep]
-针对3D复杂几何神经算子训练中的梯度爆炸、几何不兼容与长时发散问题，
-设计无监督PDE实时求解框架，\textbf{首次}将Feynman-Kac积分约束引入神经算子训练。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{LIPE积分物理嵌入（个人独立提出）：}
-          基于Feynman-Kac公式将PDE微分残差转化为蒙特卡洛积分约束，
-          \textbf{消除高阶自动微分显存指数膨胀}，支持高分辨率网格稳定训练；
-    \item \textbf{GALA几何适配器（个人独立设计）：}
-          结合图注意力网络与空间锚点投影，
-          将$\sim$5000点复杂点云映射至统一潜空间网格，
-          实现几何结构与物理演化解耦；
-    \item \textbf{GSEO门控谱演化算子（个人独立开发）：}
-          FFT频域卷积与曲率感知门控机制结合，
-          在长时PDE rollout中保持激波和边界层高频结构稳定；
-    \item \textbf{量化实验结果（个人主导实验）：}
-          1D/2D任务预测误差分别低至\textbf{0.09\%}和\textbf{3.02\%}，
-          显著优于PINO（3.32\%）和SP-FNO（13.6\%）；
-          3D复杂气动外形阻力系数误差仅\textbf{4.06\%}，实现高精度泛化。
+\textbf{UNOP：物理约束无监督神经算子} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
+\begin{itemize}
+    \item \textbf{项目背景：}针对3D复杂几何神经算子训练中的梯度爆炸与长时发散问题，设计无监督PDE实时求解框架。
+    \item \textbf{独立提出 LIPE 积分物理嵌入：}基于Feynman-Kac公式将PDE微分残差转化为蒙特卡洛积分约束，\textbf{消除高阶自动微分显存指数膨胀}，支持高分辨率网格稳定训练。
+    \item \textbf{独立设计 GALA 几何适配器：}结合图注意力网络与空间锚点投影，将$\sim$5000点复杂点云映射至统一潜空间网格，实现几何结构与物理演化解耦。
+    \item \textbf{独立开发 GSEO 门控谱演化算子：}结合FFT频域卷积与曲率感知门控机制，保持长时PDE rollout激波稳定。
+    \item \textbf{核心成果：}1D/2D任务预测误差低至\textbf{0.09\%}和\textbf{3.02\%}，优于PINO和SP-FNO；3D阻力系数误差仅\textbf{4.06\%}。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
 % --- 项目二 ---
-\textbf{水轮机数字孪生与智能运维系统} \hfill 2024.9 -- 2025.6 \titlebreak
-\textit{角色：\textbf{核心开发者}}\\[\intraProjectTitleSep]
-针对水电机组多物理场耦合与复杂几何仿真难题，
-构建\textbf{毫秒级实时数字孪生与预测性维护系统}，
-替代传统FEM计算，解决故障预警滞后痛点。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{几何门控图神经网络（个人设计）：}
-          利用法向、曲率等几何特征生成动态注意力调节因子，
-          精准捕捉应力集中与流场突变，
-          \textbf{使高曲率区域预测误差降低40\%以上}；
-    \item \textbf{Geo-FNO涡轮零件数字孪生框架（个人提出）：}
-          构建可微坐标变换与几何编码，
-          将非规则物理空间映射至规则计算空间，
-          替代重复FEM仿真，\textbf{计算效率提升50\%--80\%}；
-    \item \textbf{PINO驱动的应力-转速耦合模型（个人构建）：}
-          融合物理机理与数据驱动，
-          建立\textbf{四级健康评估体系}，
-          实现异常工况下自动降载与停机闭环控制；
-    \item \textbf{量化成果：}
-          单次3D应力场推演仅需\textbf{20ms}，
-          相比传统仿真效率提升\textbf{3个数量级}，
-          关键区域误差\textbf{$<$3\%}。
+\textbf{水轮机数字孪生与智能运维系统} \textit{(核心开发者)} \hfill 2024.9 -- 2025.6
+\begin{itemize}
+    \item \textbf{项目背景：}针对水电机组多物理场耦合难题，构建\textbf{毫秒级}实时数字孪生系统，替代传统FEM计算。
+    \item \textbf{独立设计几何门控图神经网络：}利用法向、曲率等几何特征生成动态注意力因子，精准捕捉应力集中与流场突变，\textbf{使高曲率区域预测误差降低40\%以上}。
+    \item \textbf{独立提出 Geo-FNO 框架：}构建可微坐标变换与几何编码，映射非规则物理空间，\textbf{计算效率提升50\%--80\%}。
+    \item \textbf{独立构建 PINO 驱动耦合模型：}融合机理与数据驱动建立四级健康评估体系，实现自动降载与停机闭环控制。
+    \item \textbf{核心成果：}单次3D应力场推演仅需\textbf{20ms}，效率提升\textbf{3个数量级}，关键区域误差\textbf{$<$3\%}。
 \end{itemize}
 
 % ========================================================
@@ -187,51 +158,22 @@
     {\color{CVBlue}\faTrophy}\ 成果与获奖%
 }
 
-% 卦象：雷火丰，此处要写得饱满，专利+获奖全部列出
-\textbf{专利（均为核心发明人）：}
-\begin{itemize}[nosep]
-    \item 一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法
-          \hfill \textit{（已公开，实审中）}
-    \item 一种基于应力驱动转速响应的水轮机风扇智能运维方法
-          \hfill \textit{（已公开）}
-    \item 基于几何门控注意力机制的结构感知图神经网络物理场预测方法
-          \hfill \textit{（已公开，实审中）}
+\begin{itemize}
+    \item \textbf{专利：}一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法 \textit{（一发，实审中）}
+    \item \textbf{专利：}基于几何门控注意力机制的结构感知图神经网络物理场预测方法 \textit{（一发，实审中）}
+    \item \textbf{专利：}一种基于应力驱动转速响应的水轮机风扇智能运维方法 \textit{（一发，已公开）}
+    \item \textbf{竞赛：}第十五届\textbf{中兴捧月}全球精英挑战赛 -- \textbf{区域优胜奖} \hfill 2025
+    \item \textbf{奖学金：}研究生阶段获校级学业\textbf{一等、二等奖学金} \hfill 2024 -- 至今
 \end{itemize}
 
-\vspace{0.5em}
-\textbf{竞赛与奖学金：}
-\begin{itemize}[nosep]
-    \item 第十五届\textbf{中兴捧月}全球精英挑战赛 \quad \textbf{区域优胜奖}
-          \hfill 2025
-    \item 研究生阶段校级学业\textbf{一等奖学金、二等奖学金}
-          \hfill 2024--至今
-    \item 本科阶段校级学业二等、三等奖学金
-          \quad \textbf{共8次}
-          \hfill 2019--2023
-\end{itemize}
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
-% ========================================================
-\section{%
-    \makebox[\widthof{\faCogs}][c]%
-    {\color{CVBlue}\faCogs}\ 核心技能%
-}
 
-% 卦象：申金主逻辑与条理，技能栈必须分层清晰
-\begin{itemize}[nosep]
-    \item \textbf{物理信息学习：}
-          PINN / PDE残差约束、Feynman-Kac公式重构、蒙特卡洛积分物理约束
-    \item \textbf{神经算子：}
-          FNO / PINO / DeepONet系列，FFT频域卷积，谱方法演化
-    \item \textbf{几何深度学习：}
-          图注意力网络（GAT）、非结构化点云处理与曲率感知聚合
-    \item \textbf{编程语言：}
-          \textbf{Python}（主力），C++
-    \item \textbf{深度学习框架：}
-          \textbf{PyTorch}、PyG、CUDA
-    \item \textbf{工程与工具：}
-          Docker、Git、Ansys（数据生成）、ParaView（可视化）、\LaTeX
-    \item \textbf{语言能力：}
-          CET-4、CET-6
+\begin{itemize}
+    \item \textbf{AI4Science理论：} PINN/PDE残差约束、Feynman-Kac公式重构、蒙特卡洛积分约束；FNO/PINO神经算子
+    \item \textbf{深度学习框架与算法：} PyTorch, PyG, CUDA；图注意力网络(GAT)、非结构化点云处理与曲率感知聚合
+    \item \textbf{编程语言与工程工具：} Python,；Docker, Git, Ansys (数据生成), ParaView (可视化)
+    \item \textbf{通用能力：}CET-4，CET-6 (具备流畅的英文文献阅读与论文撰写能力)
 \end{itemize}
 
 \end{document}
