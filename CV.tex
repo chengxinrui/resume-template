@@ -107,11 +107,9 @@
 % --- 研究生 ---
 \textbf{哈尔滨工业大学} \hfill 2024.9 -- 至今\\[0.3em]
 软件工程（电子信息）\quad 硕士研究生 \quad
-\textcolor{CVBlue}{\textbf{学分绩：84.8/100}}
+\textcolor{CVBlue}{\textbf{排名：前20%}}
 \begin{itemize}[nosep]
     \item 研究方向：AI4Science、神经算子、物理信息学习、工业数字孪生
-    % 卦象：申金父母爻代表学历硬件，须写实不可空洞
-    % 相关课程可视目标岗位选择性列出，此处暂留空供您补充
     \item 相关课程：（可补充：机器学习、数值分析、偏微分方程、深度学习等）
 \end{itemize}
 
@@ -124,47 +122,110 @@
     \item 在校期间获校级学业二等、三等奖学金共\textbf{8次}，持续保持优异学业成绩
 \end{itemize}
 
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
 
-% --- 第一个项目 ---
-% 将标题行末尾的 \\ 替换为 \titlebreak 命令
-\textbf{98烂坑风控与可视化作战平台} \hfill 2024.08 -- 至今 \titlebreak
-项目描述：为维护cc98社区的讨论纯度、净化“心灵之约”版块风气，本项目旨在对“烂坑”进行科学、严谨的量化分析，并引入\textbf{大语言模型(LLM)}对烂坑帖进行\textbf{自动化情感极性与“离谱指数”标注}。
-% 在 itemize 的选项中，使用 topsep=\intraProjectListTopSep 来控制上边距
+% --- 项目一（最重要，放最前，IJCAI在审） ---
+\textbf{UNOP：物理约束无监督神经算子} \hfill 2025.9 -- 至今 \titlebreak
+\textit{角色：\textbf{核心开发者 / 第一作者} \quad
+投稿：\textbf{IJCAI 2026（CCF-A，审稿中）}}\\[\intraProjectTitleSep]
+针对3D复杂几何神经算子训练中的梯度爆炸、几何不兼容与长时发散问题，
+设计无监督PDE实时求解框架，\textbf{首次}将Feynman-Kac积分约束引入神经算子训练。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{数据与后端}：运用 \textbf{Go} 语言及 \textbf{GORM} 框架，实现对全站“烂坑”帖的7x24小时全天候\textbf{抓取}与\textbf{入库}(MySQL)。
-    \item \textbf{可视化前端}：采用原生 \textbf{HTML/CSS/JS} 构建了“烂坑”实时监控\textbf{作战大屏}。实现了坑主成分分析、挖坑热力图、年度烂坑王榜单等\textbf{可视化图表}，并通过 \textbf{AJAX} 异步刷新，确保数据洞察的实时性。
-    \item \textbf{核心产出}：全面掌握了从\textbf{数据采集、清洗、LLM标注到可视化分析}的“反烂坑”全链路技术。
+    \item \textbf{LIPE积分物理嵌入（个人独立提出）：}
+          基于Feynman-Kac公式将PDE微分残差转化为蒙特卡洛积分约束，
+          \textbf{消除高阶自动微分显存指数膨胀}，支持高分辨率网格稳定训练；
+    \item \textbf{GALA几何适配器（个人独立设计）：}
+          结合图注意力网络与空间锚点投影，
+          将$\sim$5000点复杂点云映射至统一潜空间网格，
+          实现几何结构与物理演化解耦；
+    \item \textbf{GSEO门控谱演化算子（个人独立开发）：}
+          FFT频域卷积与曲率感知门控机制结合，
+          在长时PDE rollout中保持激波和边界层高频结构稳定；
+    \item \textbf{量化实验结果（个人主导实验）：}
+          1D/2D任务预测误差分别低至\textbf{0.09\%}和\textbf{3.02\%}，
+          显著优于PINO（3.32\%）和SP-FNO（13.6\%）；
+          3D复杂气动外形阻力系数误差仅\textbf{4.06\%}，实现高精度泛化。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
-% --- 第二个项目 ---
-\textbf{AIGC驱动的超进化自动挖坑机 (Agent)} \hfill 2025.02 -- 至今 \titlebreak
-项目描述：为探索心灵版规的边界，以及测试版主锁沉反应速度的极限，本项目基于\textbf{多智能体协作(MCP)与LLM}技术，开发了一款能\textbf{自主“挖坑”与“互坑”}的AI Agent。
+% --- 项目二 ---
+\textbf{水轮机数字孪生与智能运维系统} \hfill 2024.9 -- 2025.6 \titlebreak
+\textit{角色：\textbf{核心开发者}}\\[\intraProjectTitleSep]
+针对水电机组多物理场耦合与复杂几何仿真难题，
+构建\textbf{毫秒级实时数字孪生与预测性维护系统}，
+替代传统FEM计算，解决故障预警滞后痛点。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{并发与调度}：后端采用 \textbf{Go} 语言，充分利用 \textbf{Goroutine} 和 \textbf{Channel} 的高并发模型，模拟\textbf{用户并发在线}，执行定时挖坑，确保挖坑行动的\textbf{隐蔽性}与\textbf{高效性}。
-    \item \textbf{实时监控与响应}：运用 \textbf{WebSocket} 协议实现了对目标帖子的\textbf{实时监听与交互}。确保在烂坑被识破的第一时间，Agent能光速完成\textbf{“lktp”}或\textbf{反向钓鱼}操作，展现出极高的AI博弈能力。
-    \item \textbf{可视化GUI}：前端使用 \textbf{React} 框架构建了\textbf{后台管理的可视化面板 (Admin Panel)}。可一键下达挖坑指令、动态调整Agent的\textbf{指令}、并实时监控数据。
+    \item \textbf{几何门控图神经网络（个人设计）：}
+          利用法向、曲率等几何特征生成动态注意力调节因子，
+          精准捕捉应力集中与流场突变，
+          \textbf{使高曲率区域预测误差降低40\%以上}；
+    \item \textbf{Geo-FNO涡轮零件数字孪生框架（个人提出）：}
+          构建可微坐标变换与几何编码，
+          将非规则物理空间映射至规则计算空间，
+          替代重复FEM仿真，\textbf{计算效率提升50\%--80\%}；
+    \item \textbf{PINO驱动的应力-转速耦合模型（个人构建）：}
+          融合物理机理与数据驱动，
+          建立\textbf{四级健康评估体系}，
+          实现异常工况下自动降载与停机闭环控制；
+    \item \textbf{量化成果：}
+          单次3D应力场推演仅需\textbf{20ms}，
+          相比传统仿真效率提升\textbf{3个数量级}，
+          关键区域误差\textbf{$<$3\%}。
 \end{itemize}
 
-\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
+% ========================================================
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 成果与获奖%
+}
+
+% 卦象：雷火丰，此处要写得饱满，专利+获奖全部列出
+\textbf{专利（均为核心发明人）：}
 \begin{itemize}[nosep]
-    \item \textbf{编程语言：} \textbf{Go}, Python, C++
-    \item \textbf{开发工具：} SSH, Git, Vim, MakeFile,LaTex
-    \item \textbf{操作系统：} Linux
+    \item 一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法
+          \hfill \textit{（已公开，实审中）}
+    \item 一种基于应力驱动转速响应的水轮机风扇智能运维方法
+          \hfill \textit{（已公开）}
+    \item 基于几何门控注意力机制的结构感知图神经网络物理场预测方法
+          \hfill \textit{（已公开，实审中）}
 \end{itemize}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
-\begin{itemize}
-    \item CC98年度用户 \hfill 2023.12
+
+\vspace{0.5em}
+\textbf{竞赛与奖学金：}
+\begin{itemize}[nosep]
+    \item 第十五届\textbf{中兴捧月}全球精英挑战赛 \quad \textbf{区域优胜奖}
+          \hfill 2025
+    \item 研究生阶段校级学业\textbf{一等奖学金、二等奖学金}
+          \hfill 2024--至今
+    \item 本科阶段校级学业二等、三等奖学金
+          \quad \textbf{共8次}
+          \hfill 2019--2023
+\end{itemize}
     
+% ========================================================
+\section{%
+    \makebox[\widthof{\faCogs}][c]%
+    {\color{CVBlue}\faCogs}\ 核心技能%
+}
+
+% 卦象：申金主逻辑与条理，技能栈必须分层清晰
+\begin{itemize}[nosep]
+    \item \textbf{物理信息学习：}
+          PINN / PDE残差约束、Feynman-Kac公式重构、蒙特卡洛积分物理约束
+    \item \textbf{神经算子：}
+          FNO / PINO / DeepONet系列，FFT频域卷积，谱方法演化
+    \item \textbf{几何深度学习：}
+          图注意力网络（GAT）、非结构化点云处理与曲率感知聚合
+    \item \textbf{编程语言：}
+          \textbf{Python}（主力），C++
+    \item \textbf{深度学习框架：}
+          \textbf{PyTorch}、PyG、CUDA
+    \item \textbf{工程与工具：}
+          Docker、Git、Ansys（数据生成）、ParaView（可视化）、\LaTeX
+    \item \textbf{语言能力：}
+          CET-4、CET-6
 \end{itemize}
-    
-\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
-\begin{itemize}[parsep=0.5ex]
-    \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{https://maksymilan.github.io/}
-    \item \textbf{GitHub：} \href{https://github.com/maksymilan}{https://github.com/maksymilan} 
-    \item \textbf{英语水平：} CET-4, CET-6
-\end{itemize}
+
 \end{document}
