@@ -50,7 +50,7 @@
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.3} % 行间距设为1.5
+\renewcommand{\baselinestretch}{1.2} % 行间距设为1.5
 
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -118,7 +118,7 @@
 
 % --- 研究生 ---
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
-\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}AI4Science、神经算子、工业数字孪生
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}AI4Science、3D几何深度学习、长时序物理演化（世界模型基座）
 
 \projectsep
 
@@ -128,29 +128,28 @@
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
 
-% --- 项目一（最重要，放最前，IJCAI在审） ---
-\textbf{UNOP：物理约束无监督神经算子} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
+% --- 项目一（最重要，高度契合世界模型与3D时空预测） ---
+\textbf{UNOP：基于物理约束的无监督长时序生成架构} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{项目背景：}针对3D复杂几何神经算子训练中的梯度爆炸与长时发散问题，设计无监督PDE实时求解框架。
-    \item \textbf{独立提出 LIPE 积分物理嵌入：}基于Feynman-Kac公式将PDE微分残差转化为蒙特卡洛积分约束，\textbf{消除高阶自动微分显存指数膨胀}，支持高分辨率网格稳定训练。
-    \item \textbf{独立设计 GALA 几何适配器：}结合图注意力网络与空间锚点投影，将$\sim$5000点复杂点云映射至统一潜空间网格，实现几何结构与物理演化解耦。
-    \item \textbf{独立开发 GSEO 门控谱演化算子：}结合FFT频域卷积与曲率感知门控机制，保持长时PDE rollout激波稳定。
-    \item \textbf{核心成果：}1D/2D任务预测误差低至\textbf{0.09\%}和\textbf{3.02\%}，优于PINO和SP-FNO；3D阻力系数误差仅\textbf{4.06\%}。
+    \item \textbf{项目背景：}针对现有时空生成模型（类似World Model底层）在长序列预测中极易产生自回归误差累积、违背物理规律的痛点，设计了具备高保真物理一致性的 3D 时空演化框架。
+    \item \textbf{长时序稳定演化 (LIPE)：}摒弃极易产生数值爆炸的微分残差，创新性引入基于 Feynman-Kac 的积分物理约束。有效抑制了高频噪声与梯度病态，\textbf{在缺乏真实仿真标签的情况下，大幅提升了极端长视距(Long-horizon rollout)推演的物理一致性与稳定性}。
+    \item \textbf{3D 空间表征适配器 (GALA)：}结合图注意力网络与空间锚点投影机制，成功解耦复杂 3D 空间结构，将非结构化的复杂 3D 点云（$\sim$5000点）高效映射至统一的规则潜在网格（Latent Grid），实现几何结构与动态演化的解耦。
+    \item \textbf{时空动态演化算子 (GSEO)：}结合频域演化与曲率感知门控机制，自适应保留时空预测过程中的高频剧烈变化区域（如激波、边界突变等），防止模型在多帧生成后模糊失真。
+    \item \textbf{核心成果：}在 1D/2D 连续时空推演任务中，长程预测误差低至 \textbf{0.09\%} 和 \textbf{3.02\%}，远超SP-FNO等现有基准；在复杂 3D 汽车表面流场演化中，核心物理指标误差仅 \textbf{4.06\%}。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
 % --- 项目二 ---
-\textbf{水轮机数字孪生与智能运维系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
+\textbf{基于图神经网络的复杂 3D 物理环境仿真与预警系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
 \begin{itemize}
-    \item \textbf{项目背景：}针对水电机组多物理场耦合难题与传统 FEM 计算慢的痛点，构建毫秒级实时数字孪生预警平台。
-    \item \textbf{AI 核心算子设计：}\textbf{引入 Geo-FNO} 构建可微坐标变换以处理非规则几何；\textbf{独立设计几何门控图神经网络}，利用曲率特征生成动态注意力，使\textbf{高曲率区预测误差降低 40\% 以上}。
-    \item \textbf{虚实融合与动态预警：}实现叶片拓扑与水流参数的动态解耦及高频二次推演；\textbf{将 AI 预测的理论振动基线与真实传感器数据进行差分比对}，实现设备微小异常的早期精准预警。
-    \item \textbf{全链路业务闭环：}协助团队集成多传感监测大屏与\textbf{基于大模型(LLM)的专家诊断接口}，打通了“场预测-状态评估-专家问答-自动降载”的完整系统链路。
-    \item \textbf{项目成果：}基于该项目已申请\textbf{3项发明专利}及\textbf{2项软件著作权}，同时获得\textbf{第十五届中兴捧月区域优胜奖}。
+    \item \textbf{项目背景：}针对复杂物理场景下传统物理引擎（FEM）计算耗时长的痛点，开发基于 AI Surrogate 的毫秒级 3D 物理场高保真仿真预测平台。
+    \item \textbf{AI 空间特征建模：}\textbf{引入 Geo-FNO} 构建可微坐标变换以处理非规则 3D 几何拓扑；\textbf{独立设计几何门控图神经网络 (GNN)}，利用表面曲率特征生成动态注意力权重，使高频形变/高曲率区域的\textbf{物理态预测误差降低 40\% 以上}。
+    \item \textbf{虚实数据闭环与推演：}实现复杂 3D 拓扑与环境参数的动态解耦及高频未来态推演；将 AI 预测的理想时空基线与真实传感器回传数据进行差分比对，实现系统微小物理异常的精准捕获。
+    \item \textbf{端到端系统集成：}协助团队打通了“3D态预测-多模态状态评估-大模型(LLM)专家诊断”的完整闭环，构建了具备初步自主决策能力的智能监控链路。
+    \item \textbf{项目成果：}基于该项目核心算法已申请\textbf{3项发明专利}及\textbf{2项软著}，并获\textbf{第十五届中兴捧月区域优胜奖}。
 \end{itemize}
-
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -168,12 +167,11 @@
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
-
 \begin{itemize}
-    \item \textbf{AI4Science理论：} PINN/PDE残差约束、Feynman-Kac公式重构、蒙特卡洛积分约束；FNO/PINO等神经算子
-    \item \textbf{深度学习框架与算法：} PyTorch, PyG；图注意力网络(GAT)、非结构化点云处理与曲率感知聚合
-    \item \textbf{编程语言与工程工具：} Python；Docker, Git, Ansys (数据生成), ParaView (可视化)
-    \item \textbf{通用能力：}CET-4，CET-6 (具备流畅的英文文献阅读与论文撰写能力)
+    \item \textbf{算法理论与前沿：} 时空序列预测 (Spatiotemporal Forecasting)、世界模型 (World Model) 底层逻辑；3D点云与网格表征；PINN、神经算子(FNO/PINO)及 AI4Science 物理约束架构理论。
+    \item \textbf{深度学习框架与网络：} PyTorch, PyG；熟练掌握图神经网络 (GNN/GAT)、Transformer、CNN 以及非结构化 3D 数据的特征聚合与提取技术。
+    \item \textbf{编程语言与工程开发：} 熟练使用 Python、C++；熟练掌握 Linux, Docker, Git 开发环境；了解数据清洗与工程化部署流程。
+    \item \textbf{通用能力：} CET-4，CET-6；具备极强的英文顶会文献(NeurIPS/ICLR/CVPR)阅读复现能力与扎实的数学推导能力。
 \end{itemize}
 
 \end{document}
