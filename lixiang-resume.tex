@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%% 主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸，上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.3} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm} % [c][3cm][c] 强行让这个盒子高3厘米，内部垂直居中
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.6em] % 名字和下方联系方式的间距
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}%
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.8cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+% --- 研究生 ---
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}AI4Science、神经算子、工业数字孪生
+
+\projectsep
+
+% --- 本科 ---
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
+
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
+
+% --- 项目一（最重要，放最前，IJCAI在审） ---
+\textbf{UNOP：物理约束无监督神经算子} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
+\begin{itemize}
+    \item \textbf{项目背景：}针对3D复杂几何神经算子训练中的梯度爆炸与长时发散问题，设计无监督PDE实时求解框架。
+    \item \textbf{独立提出 LIPE 积分物理嵌入：}基于Feynman-Kac公式将PDE微分残差转化为蒙特卡洛积分约束，\textbf{消除高阶自动微分显存指数膨胀}，支持高分辨率网格稳定训练。
+    \item \textbf{独立设计 GALA 几何适配器：}结合图注意力网络与空间锚点投影，将$\sim$5000点复杂点云映射至统一潜空间网格，实现几何结构与物理演化解耦。
+    \item \textbf{独立开发 GSEO 门控谱演化算子：}结合FFT频域卷积与曲率感知门控机制，保持长时PDE rollout激波稳定。
+    \item \textbf{核心成果：}1D/2D任务预测误差低至\textbf{0.09\%}和\textbf{3.02\%}，优于PINO和SP-FNO；3D阻力系数误差仅\textbf{4.06\%}。
+\end{itemize}
+
+% 使用 \projectsep 命令来分隔两个项目
+\projectsep
+
+% --- 项目二 ---
+\textbf{水轮机数字孪生与智能运维系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
+\begin{itemize}
+    \item \textbf{项目背景：}针对水电机组多物理场耦合难题与传统 FEM 计算慢的痛点，构建毫秒级实时数字孪生预警平台。
+    \item \textbf{AI 核心算子设计：}\textbf{引入 Geo-FNO} 构建可微坐标变换以处理非规则几何；\textbf{独立设计几何门控图神经网络}，利用曲率特征生成动态注意力，使\textbf{高曲率区预测误差降低 40\% 以上}。
+    \item \textbf{虚实融合与动态预警：}实现叶片拓扑与水流参数的动态解耦及高频二次推演；\textbf{将 AI 预测的理论振动基线与真实传感器数据进行差分比对}，实现设备微小异常的早期精准预警。
+    \item \textbf{全链路业务闭环：}协助团队集成多传感监测大屏与\textbf{基于大模型(LLM)的专家诊断接口}，打通了“场预测-状态评估-专家问答-自动降载”的完整系统链路。
+    \item \textbf{项目成果：}基于该项目已申请\textbf{3项发明专利}及\textbf{2项软件著作权}，同时获得\textbf{第十五届中兴捧月区域优胜奖}。
+\end{itemize}
+
+% ========================================================
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 成果与获奖%
+}
+
+\begin{itemize}
+    \item \textbf{专利：}一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法 \textit{（实审中）}
+    \item \textbf{专利：}基于几何门控注意力机制的结构感知图神经网络物理场预测方法 \textit{（实审中）}
+    \item \textbf{专利：}一种基于应力驱动转速响应的水轮机风扇智能运维方法 \textit{（已公开）}
+    \item \textbf{软件著作权：}多传感融合的部门数字孪生协同运维平台 (登记号: 2026SR0202932)
+    \item \textbf{软件著作权：}设计-仿真部门数字孪生协同运维平台 (登记号: 2026SR0202550)
+    \item \textbf{竞赛：}第十五届\textbf{中兴捧月}全球精英挑战赛 -- \textbf{区域优胜奖} \hfill 2025
+\end{itemize}
+
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
+    
+
+\begin{itemize}
+    \item \textbf{AI4Science理论：} PINN/PDE残差约束、Feynman-Kac公式重构、蒙特卡洛积分约束；FNO/PINO等神经算子
+    \item \textbf{深度学习框架与算法：} PyTorch, PyG；图注意力网络(GAT)、非结构化点云处理与曲率感知聚合
+    \item \textbf{编程语言与工程工具：} Python；Docker, Git, Ansys (数据生成), ParaView (可视化)
+    \item \textbf{通用能力：}CET-4，CET-6 (具备流畅的英文文献阅读与论文撰写能力)
+\end{itemize}
+
+\end{document}
