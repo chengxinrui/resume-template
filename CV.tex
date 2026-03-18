@@ -50,7 +50,7 @@
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.0} % 行间距设为1.5
+\renewcommand{\baselinestretch}{1.5} % 行间距设为1.5
 
 \usepackage{titlesec}
 \usepackage{enumitem}
@@ -118,7 +118,7 @@
 
 % --- 研究生 ---
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
-\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{方向：}AI4Science、3D几何深度学习、长时序物理演化
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}时空序列预测、3D点云与网格表征、AI物理仿真加速
 
 \projectsep
 
@@ -128,28 +128,29 @@
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
 
-% --- 项目一（最重要，高度契合时空生成大模型与AI4S） ---
-\textbf{UNOP：基于物理约束的无监督长时序生成架构} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
+% --- 项目一（契合自动驾驶时空预测与物理演化底层框架） ---
+\textbf{UNOP：面向复杂物理场景的 3D 时空推演与预测架构} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{项目背景：}针对现有时空生成大模型在长序列预测中极易产生自回归误差累积、违背物理规律的痛点，设计了具备高保真物理一致性的 3D 时空演化基础框架。
-    \item \textbf{长时序稳定演化 (LIPE)：}摒弃极易产生数值爆炸的微分残差，创新性引入基于 Feynman-Kac 的积分物理约束。有效抑制了高频噪声与梯度病态，\textbf{在缺乏真实仿真标签的情况下，大幅提升了极端长视距(Long-horizon rollout)推演的物理一致性与系统稳定性}。
-    \item \textbf{3D 空间表征适配器 (GALA)：}结合图注意力网络与空间锚点投影机制，将非结构化的复杂 3D 点云（$\sim$5000点）高效映射至统一的规则潜在网格（Latent Grid），突破了传统大模型难以直接处理非欧几里得 3D 几何的瓶颈。
-    \item \textbf{时空动态演化算子 (GSEO)：}结合频域演化与曲率感知门控机制，自适应保留时空预测过程中的高频剧烈变化区域（如边界突变、激波等），防止连续多帧生成后出现模糊失真。
-    \item \textbf{核心成果：}在 1D/2D 连续时空推演任务中，长程预测误差低至 \textbf{0.09\%} 和 \textbf{3.02\%}，远超现有基准；在复杂 3D 表面流场演化中，核心物理指标误差仅 \textbf{4.06\%}。
+    \item \textbf{项目背景：}针对长时序环境状态预测中极易产生自回归误差发散、违背物理规律的痛点，设计了具备高保真物理一致性的 3D 时空连续演化底层架构。
+    \item \textbf{长时序预测稳定性 (LIPE)：}摒弃极易产生数值爆炸的微分残差，创新性引入基于 Feynman-Kac 的积分物理约束。在无监督环境下，大幅提升了极端长视距 (Long-horizon) 连续物理态推演的稳定性，缓解了时序预测的误差累积问题。
+    \item \textbf{3D 点云空间表征 (GALA)：}结合图注意力网络与空间锚点投影，将非结构化的复杂 3D 点云（$\sim$5000点规模）高效映射至统一的规则三维网格（Latent Grid）。突破了传统模型难以直接处理复杂 3D 空间拓扑的瓶颈。
+    \item \textbf{动态演化控制算子 (GSEO)：}结合频域演化与曲率感知门控机制，自适应保留时空预测过程中的高频剧烈变化区域，有效防止了在连续多帧演化预测后出现的模糊与物理失真。
+    \item \textbf{核心成果：}在 1D/2D 连续时空推演任务中，长程预测误差低至 \textbf{0.09\%} 和 \textbf{3.02\%}；在复杂的 3D 表面流场空间演化中，核心物理指标误差仅 \textbf{4.06\%}。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
-% --- 项目二 ---
-\textbf{基于图神经网络的复杂 3D 物理环境仿真与预警系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
+% --- 项目二（契合自动驾驶/机器人底层仿真测试引擎建设） ---
+\textbf{基于图神经网络的复杂 3D 物理环境高频仿真与预警系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
 \begin{itemize}
-    \item \textbf{项目背景：}针对复杂物理场景下传统物理引擎（FEM）计算耗时长的痛点，开发毫秒级 3D 物理场高保真仿真预测平台。
-    \item \textbf{AI 空间特征建模：}\textbf{引入 Geo-FNO} 构建可微坐标变换以处理非规则 3D 几何拓扑；\textbf{独立设计几何门控图神经网络 (GNN)}，利用表面曲率特征生成动态注意力权重，使高频形变/高曲率区域的\textbf{物理态预测误差降低 40\% 以上}。
-    \item \textbf{虚实数据闭环与推演：}实现复杂 3D 拓扑与环境参数的动态解耦及高频未来态推演；将 AI 预测的理想时空基线与真实传感器回传数据进行差分比对，实现系统微小物理异常的精准捕获。
-    \item \textbf{端到端系统集成：}协助团队打通了3D态预测-多模态状态评估-大模型(LLM)专家诊断的完整闭环，构建了具备初步自主决策能力的智能监控链路。
-    \item \textbf{项目成果：}基于该项目核心算法已申请\textbf{3项发明专利}及\textbf{2项软著}，并获\textbf{第十五届中兴捧月区域优胜奖}。
+    \item \textbf{项目背景：}针对复杂机械在传统物理引擎（FEM）下仿真计算耗时长的痛点，开发基于\textbf{神经算子(Neural Operator)}的毫秒级实时 3D 物理场高频仿真预测平台，为环境推演提供加速支持。
+    \item \textbf{AI 空间特征建模：}引入 Geo-FNO 构建可微坐标变换以处理非规则 3D 几何；独立设计了几何门控图神经网络 (GNN)，利用表面曲率特征生成动态注意力权重，精准捕捉环境高频形变，使复杂物理态预测误差\textbf{降低 40\% 以上}。
+    \item \textbf{虚实多模态数据比对：}实现 3D 拓扑与物理参数的动态解耦及高频未来态推演；将 AI 加速预测的理论时空基线与真实物理传感器回传数据进行实时差分比对，实现物理异常的精准捕获。
+    \item \textbf{端到端系统集成：}协助团队打通了“3D物理态仿真预测-传感器状态评估-大模型诊断”的完整闭环，构建了初步的智能物理监控链路。
+    \item \textbf{项目成果：}有效缓解了多物理场仿真的算力瓶颈。核心算法已申请\textbf{3项发明专利}及\textbf{2项软著}，并获\textbf{第十五届中兴捧月区域优胜奖}。
 \end{itemize}
+
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -168,10 +169,10 @@
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
 \begin{itemize}
-    \item \textbf{算法理论与前沿：} 科学计算大模型 (AI4S Foundation Models)、时空序列生成 (Spatiotemporal Generation)；3D点云与网格特征表征；理解 PINN、神经算子(FNO/PINO)及基于物理约束的深度学习理论。
-    \item \textbf{深度学习框架与网络：} PyTorch, PyG；图神经网络 (GNN/GAT)、Transformer、CNN 以及非结构化 3D 数据的特征聚合与提取技术。
-    \item \textbf{编程语言与工程开发：} Python；Linux, Docker, Git 开发环境；
-    \item \textbf{通用能力：} CET-4，CET-6；
+    \item \textbf{算法理论与前沿：} 熟悉时空序列预测与 3D 点云/网格特征提取；深入理解物理信息神经网络 (PINN)、神经算子 (FNO/PINO) 及 AI4Science 物理仿真加速理论。
+    \item \textbf{深度学习框架与网络：} 熟悉 PyTorch, PyG 深度学习框架；熟悉图神经网络 (GNN/GAT)、Transformer、CNN 的底层原理，具备非结构化 3D 空间数据（点云/Mesh）的模型构建能力。
+    \item \textbf{编程语言与工程开发：} 使用 Python 进行算法开发；熟悉 Linux, Docker, Git 等常用开发与版本控制环境；了解 ParaView 等 3D 可视化工具及基础工程部署流程。
+    \item \textbf{通用能力：} CET-4，CET-6；具备良好的英文学术文献 (NeurIPS/ICLR/CVPR等) 阅读复现能力，拥有数学推导功底。
 \end{itemize}
 
 \end{document}
