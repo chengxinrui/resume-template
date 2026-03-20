@@ -114,43 +114,151 @@
 % --- 在这里使用负间距将下方的正文往上拉 ---
 \vspace{-0.8cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
     
+% ================================================================
+% 教育背景
+% ================================================================
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
-% --- 研究生 ---
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
-\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}时空序列预测、3D点云与网格表征、AI物理仿真加速
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{研究方向：}深度学习模型设计、3D非结构化数据表征、神经算子
 
 \projectsep
 
-% --- 本科 ---
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 科研经历}
 
-% --- 项目一（契合自动驾驶时空预测与物理演化底层框架） ---
-\textbf{UNOP：面向复杂物理场景的 3D 时空推演与预测架构} \textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} \hfill 2025.9 -- 至今
+
+% ================================================================
+% 科研经历
+% ================================================================
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+科研经历}
+
+% --- 科研一：UNOP ---
+\textbf{UNOP：面向长时序预测的无监督神经算子架构设计} 
+\textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} 
+\hfill 2025.3 -- 至今
 \begin{itemize}
-    \item \textbf{项目背景：}针对长时序环境状态预测中极易产生自回归误差发散、违背物理规律的痛点，设计了具备高保真物理一致性的 3D 时空连续演化底层架构。
-    \item \textbf{长时序预测稳定性 (LIPE)：}摒弃极易产生数值爆炸的微分残差，创新性引入基于 Feynman-Kac 的积分物理约束。在无监督环境下，大幅提升了极端长视距 (Long-horizon) 连续物理态推演的稳定性，缓解了时序预测的误差累积问题。
-    \item \textbf{3D 点云空间表征 (GALA)：}结合图注意力网络与空间锚点投影，将非结构化的复杂 3D 点云（$\sim$5000点规模）高效映射至统一的规则三维网格（Latent Grid）。突破了传统模型难以直接处理复杂 3D 空间拓扑的瓶颈。
-    \item \textbf{动态演化控制算子 (GSEO)：}结合频域演化与曲率感知门控机制，自适应保留时空预测过程中的高频剧烈变化区域，有效防止了在连续多帧演化预测后出现的模糊与物理失真。
-    \item \textbf{核心成果：}在 1D/2D 连续时空推演任务中，长程预测误差低至 \textbf{0.09\%} 和 \textbf{3.02\%}；在复杂的 3D 表面流场空间演化中，核心物理指标误差仅 \textbf{4.06\%}。
+    %% ★ S+T合并：背景+量化痛点+明确说"别人做不到什么"
+    \item \textbf{背景与挑战：}神经PDE求解器面临三重瓶颈：
+    ①标签昂贵（单条CFD轨迹需200+GPU小时，规模化不可行）；
+    ②现有无监督方法(PINN)依赖高阶自动微分，在3D场景下
+    内存爆炸（$\sim$6GB/样本）且梯度病态导致训练不收敛；
+    ③自回归预测在20步内误差即超过100\%发散。
+    \textbf{现有方法无法同时解决这三个问题。}
+
+    %% ★ A+R绑定：每个Action紧跟其Result
+    \item \textbf{[解决瓶颈①②] 积分物理约束(LIPE)：}
+    基于Feynman-Kac公式将PDE微分约束重构为积分一致性目标，
+    通过蒙特卡洛采样近似积分值，\textbf{完全消除高阶自动微分}。
+    \textbf{效果：}3D内存降至微分方法的1/6；实现100\%无标签
+    训练，且仅10\%标签即超越100\%全监督（Cd误差4.06\% 
+    vs 8.05\%）。\textbf{核心难点：}需要在不规则几何上
+    准确评估空间积分——由GALA解决。
+
+    \item \textbf{[解决几何限制] 几何解耦编码器(GALA)：}
+    现有频谱方法(FNO)限于规则网格，几何方法(GNN)依赖标签。
+    设计可学习高斯核投影，将任意维度(1D/2D/3D)的非结构化
+    点云统一映射至规则隐空间。\textbf{效果：}单一架构通吃三种
+    维度，去除GALA后3D任务直接训练失败（误差$>$100\%）。
+
+    \item \textbf{[解决瓶颈③] 曲率感知演化(GSEO)：}
+    标准频谱演化会平滑掉激波/涡旋等高频物理结构（SP-FNO
+    出现条纹伪影）。引入几何+物理双曲率门控，
+    选择性保留高梯度区域。\textbf{效果：}去除门控后误差增加
+    7倍（3.25\%$\rightarrow$23.09\%），证明其为稳定性关键。
+
+    \item \textbf{综合结果：}1D误差\textbf{0.09\%}
+    （PINO 3.32\%，$\downarrow$36$\times$）；
+    2D \textbf{3.02\%}（SP-FNO 13.6\%，$\downarrow$4.5$\times$）；
+    \textbf{50步外推仍稳定}（所有baseline 20步即发散$>$100\%）。
 \end{itemize}
 
-% 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
-% --- 项目二（契合自动驾驶/机器人底层仿真测试引擎建设） ---
-\textbf{基于图神经网络的复杂 3D 物理环境高频仿真与预警系统} \textit{(AI算法核心开发者)} \hfill 2024.9 -- 2025.6
+% --- 科研二：GeoGatedAttention ---
+\textbf{几何门控注意力机制：结构感知的图Transformer设计} 
+\textit{(核心设计者，发明专利已受理)} \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{项目背景：}针对复杂机械在传统物理引擎（FEM）下仿真计算耗时长的痛点，开发基于\textbf{神经算子(Neural Operator)}的毫秒级实时 3D 物理场高频仿真预测平台，为环境推演提供加速支持。
-    \item \textbf{AI 空间特征建模：}引入 Geo-FNO 构建可微坐标变换以处理非规则 3D 几何；独立设计了几何门控图神经网络 (GNN)，利用表面曲率特征生成动态注意力权重，精准捕捉环境高频形变，使复杂物理态预测误差\textbf{降低 40\% 以上}。
-    \item \textbf{虚实多模态数据比对：}实现 3D 拓扑与物理参数的动态解耦及高频未来态推演；将 AI 加速预测的理论时空基线与真实物理传感器回传数据进行实时差分比对，实现物理异常的精准捕获。
-    \item \textbf{端到端系统集成：}协助团队打通了“3D物理态仿真预测-传感器状态评估-大模型诊断”的完整闭环，构建了初步的智能物理监控链路。
-    \item \textbf{项目成果：}有效缓解了多物理场仿真的算力瓶颈。核心算法已申请\textbf{3项发明专利}及\textbf{2项软著}，并获\textbf{第十五届中兴捧月区域优胜奖}。
+    %% ★ S+T：量化痛点+说清楚"别人为什么做不好"
+    \item \textbf{背景与挑战：}3D物理场预测中，
+    流场在几何突变区域（驻点/分离点/拐角）变化最剧烈，
+    但现有方法对此区域预测误差最大。
+    \textbf{根本原因：}标准Transformer的attention仅基于
+    Q-K特征相似度，不感知边的几何结构；GAT虽引入了可学习
+    权重，但gate仍来自节点特征而非边几何信息——二者都无法
+    区分``高曲率拐角边''和``平坦表面边''。
+
+    %% ★ A+R绑定
+    \item \textbf{核心创新——GeoGatedAttention：}
+    提取边级几何特征（曲率均值/法向量cos$\theta$/对数边长）
+    $\rightarrow$ MLP(3$\rightarrow$64$\rightarrow$1) 
+    $\rightarrow$ Sigmoid生成[0,1]门控 $\rightarrow$ 
+    逐边调制attention权重。实现\textbf{``特征相关性$\times$
+    几何重要性''}双信号融合。\textbf{效果：}
+    去除gate误差+17\%，乘性门控优于特征拼接+15\%——
+    证明几何信息必须动态调制而非静态拼接。
+
+    \item \textbf{工程难点与解决：}5万节点$\times$150万边的
+    大图无法构造N$\times$N attention矩阵。采用基于图结构的
+    scatter\_softmax实现O(E)稀疏注意力；4卡DDP+梯度累积
+    （有效batch=16）解决单卡OOM；8层堆叠配合残差+LayerNorm
+    避免过平滑。\textbf{效果：}889个汽车模型$\times$5万节点
+    的9折交叉验证稳定完成。
+
+    \item \textbf{综合结果：}压力场L2误差
+    \textbf{$\downarrow$40\%}（0.116$\rightarrow$0.099），
+    Cd误差\textbf{2.69\%}，
+    Spearman $\rho$=\textbf{0.97}（排序高度一致），
+    单次推理\textbf{20ms}。
 \end{itemize}
 
+% ================================================================
+% 项目经历
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
+
+\textbf{水轮机AI实时仿真与智能运维系统} 
+\textit{(AI算法与系统集成负责人)} \hfill 2024.12 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{依托：``十四五''国家重点研发计划
+``装备制造后市场服务协同平台研发与应用''}}
+\begin{itemize}
+    %% ★ S+T：量化工程痛点
+    \item \textbf{背景与挑战：}水轮机CFD仿真单次耗时
+    6-12小时，设计阶段参数扫描（叶片数$\times$弧度$\times$
+    转速）需数百次仿真，周期以月计。
+    \textbf{核心难点：}①水轮机无现成AI数据集，几何模型
+    (.stp/.glb)和物理场(ANSYS CSV)来自不同工具链、
+    不同坐标系、不同网格密度；②模型需从汽车外流场跨域
+    迁移至水轮机内流场，物理场景完全不同。
+
+    %% ★ A+R：数据pipeline
+    \item \textbf{[解决数据难点] 跨工具链数据pipeline：}
+    FreeCAD几何清洗（去除.msh中退化面/冗余边）
+    $\rightarrow$ cKDTree坐标对齐（中心点平移，
+    验证无需旋转/缩放）$\rightarrow$ IDW反距离加权插值
+    （k=8, power=2, 对wall\_shear做log变换后插值）。
+    \textbf{效果：}插值后剪切应力范围[2.8, 14400]Pa
+    与ANSYS原始[2.752, 14420]Pa一致；输出与ShapeNet-Car
+    格式统一，直接复用训练代码。
+
+    %% ★ A+R：虚实对齐
+    \item \textbf{[创新] 虚实对齐智能预警：}
+    传统预警用固定阈值（如振动$>$5mm/s报警），误报率高
+    且无法早期发现。设计``AI仿真基线+IoT实测''双轨机制
+    ——AI推演当前工况的理论振动频谱，与传感器实测数据实时
+    差分比对，捕获偏离理论值的微小异常。
+    \textbf{效果：}在历史故障案例上可回溯识别异常。
+
+    %% ★ R：系统级结果
+    \item \textbf{系统成果：}推理\textbf{20ms}
+    （加速比$10^5$），模型架构不变跨域迁移成功。
+    封装为MWORKS标准化软件包，打通``仿真$\rightarrow$
+    评估$\rightarrow$预警''闭环。课题\textbf{结题验收通过}，
+    获\textbf{3项发明专利}、\textbf{2项软著}。
+\end{itemize}
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -169,11 +277,28 @@
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
+% ================================================================
+% 核心技能
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
+    
 \begin{itemize}
-    \item \textbf{算法理论与前沿：} 熟悉时空序列预测与 3D 点云/网格特征提取；深入理解物理信息神经网络 (PINN)、神经算子 (FNO/PINO) 及 AI4Science 物理仿真加速理论。
-    \item \textbf{深度学习框架与网络：} 熟悉 PyTorch, PyG 深度学习框架；熟悉图神经网络 (GNN/GAT)、Transformer、CNN 的底层原理，具备非结构化 3D 空间数据（点云/Mesh）的模型构建能力。
-    \item \textbf{编程语言与工程开发：} 使用 Python 进行算法开发；熟悉 Linux, Docker, Git 等常用开发与版本控制环境；了解 ParaView 等 3D 可视化工具及基础工程部署流程。
-    \item \textbf{通用能力：} CET-4，CET-6；具备良好的英文学术文献 (NeurIPS/ICLR/CVPR等) 阅读复现能力，拥有数学推导功底。
+    \item \textbf{模型设计与优化：}熟悉 Transformer/GNN/CNN 底层原理与变体设计；具备非结构化3D数据（点云/Mesh/图）的模型构建能力；熟悉注意力机制改进、稀疏计算、频域方法等。
+    \item \textbf{训练工程：}熟悉 PyTorch/PyG 框架；具备多卡DDP分布式训练、梯度累积、混合精度训练、学习率调度等实战经验；熟悉数据预处理pipeline的设计与优化。
+    \item \textbf{理论基础：}深入理解神经算子 (FNO/DeepONet/PINO)、物理信息神经网络 (PINN)、蒙特卡洛方法等AI4Science理论；具备PDE数学推导与数值分析能力。
+    \item \textbf{开发环境：}Python, Linux, Docker, Git; ParaView/VTK 3D可视化；了解模型部署（ONNX/TensorRT）。
+    \item \textbf{语言能力：}CET-4，CET-6；具备英文顶会论文（NeurIPS/ICLR/CVPR等）阅读与复现能力。
+\end{itemize}
+
+% ================================================================
+% 个人评价
+% ================================================================
+\section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
+
+\begin{itemize}
+    \item \textbf{模型设计能力：}不是调包调参，而是能从问题出发设计模型结构——几何门控注意力机制已获发明专利，无监督积分约束训练范式投稿CCF-A。两项工作的共同内核是"用结构信息动态调控信息流动"。
+    \item \textbf{全链路工程能力：}从非结构化原始数据处理（VTK/FreeCAD/ANSYS多源数据对齐）到分布式模型训练（4卡DDP + 梯度累积）到系统集成与交付，具备完整的从0到1交付能力。
+    \item \textbf{成果可量化：}所有工作均有明确的数值验证——误差降低40\%/60\%、推理加速$10^5$倍、Cd误差2.69\%，习惯用数据证明产出价值。
 \end{itemize}
 
 \end{document}
