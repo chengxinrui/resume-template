@@ -120,7 +120,7 @@
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
-\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{方向：}深度学习模型设计、3D非结构化数据表征、神经算子
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}校级一等、二等学业奖学金 \quad \textbf{方向：}深度学习模型设计、非结构化数据表征、神经算子
 
 \projectsep
 
@@ -141,24 +141,13 @@
 \textit{(一作，IJCAI CCF-A 审稿中)} 
 \hfill 2025.3 -- 至今
 \begin{itemize}
-    \item \textbf{背景：}现有神经PDE求解器面临标签昂贵
-    （单条轨迹200+ GPU小时）、3D场景内存爆炸、
-    自回归20步即发散三重瓶颈，无方法能同时解决。
+    \item \textbf{背景：}现有神经PDE求解器面临标签昂贵、3D场景内存爆炸、自回归20步即发散三重瓶颈，无方法能同时解决。
     
-    \item 提出积分物理约束(LIPE)替代微分残差，
-    \textbf{完全消除高阶自动微分}，3D内存降至
-    微分方法的\textbf{1/6}，实现\textbf{100\%无标签训练}，
-    且10\%标签超越100\%全监督。
+    \item 提出积分物理约束(LIPE)替代微分残差，\textbf{完全消除高阶自动微分}，3D内存降至微分方法的\textbf{1/6}，实现\textbf{100\%无标签训练}，且10\%标签超越100\%全监督。
     
-    \item 设计几何解耦编码器(GALA)，单一架构统一处理
-    1D/2D/3D非结构化输入；曲率感知门控(GSEO)选择性
-    保留高频物理结构，消融实验证明为稳定性关键（去除后
-    误差$\uparrow$7倍）。
+    \item 设计几何解耦编码器(GALA)，单一架构统一处理1D/2D/3D非结构化输入；曲率感知门控(GSEO)选择性保留高频物理结构，消融实验证明为稳定性关键（去除后误差增大7倍）。
     
-    \item \textbf{结果：}1D误差\textbf{0.09\%}
-    （优于PINO 36$\times$），2D \textbf{3.02\%}
-    （优于SP-FNO 4.5$\times$），3D Cd误差\textbf{4.06\%}，
-    \textbf{50步外推仍稳定}（baseline 20步即发散）。
+    \item \textbf{结果：}1D误差\textbf{0.09\%}（优于PINO 36$\times$），2D \textbf{3.02\%}（优于SP-FNO 4.5$\times$），3D Cd误差\textbf{4.06\%}，\textbf{50步外推仍稳定}（baseline 20步即发散）。
 \end{itemize}
 
 \projectsep
@@ -173,17 +162,11 @@
     
     \item 设计边级几何特征驱动的门控函数，
     生成[0,1]动态调节因子\textbf{逐边调制attention权重}，
-    实现``特征相关性$\times$几何重要性''双信号融合。
-    基于图稀疏结构实现\textbf{O(E)复杂度}
-    （5万节点$\times$150万边）。
+    实现特征相关性$\times$几何重要性双信号融合。
+    基于图稀疏结构实现\textbf{O(E)复杂度}。
     
-    \item 4卡DDP分布式训练，在ShapeNet-Car (889模型)
-    上完成9折交叉验证。消融实验证明门控贡献最大
-    （去除+17\%，优于特征拼接+15\%）。
-    
-    \item \textbf{结果：}压力场误差\textbf{$\downarrow$40\%}，
+    \item \textbf{结果：}压力场误差\textbf{下降40\%}，
     Cd误差\textbf{2.69\%}，
-    Spearman $\rho$=\textbf{0.97}，
     推理\textbf{20ms}。
 \end{itemize}
 
@@ -199,16 +182,14 @@
 ``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
     \item \textbf{背景：}水轮机CFD仿真单次6-12小时，
-    设计参数扫描周期以月计。水轮机领域无现成AI数据集，
-    原始数据分散在三套工具链（FreeCAD/ANSYS/Gmsh）中，
-    格式与坐标系均不统一。
+    设计参数扫描周期以月计，同时水轮机领域无公开数据集。
     
-    \item 独立构建\textbf{从零到一}的跨工具链数据pipeline，
+    \item 独立构建\textbf{从0到1}的跨工具链数据pipeline，
     实现几何清洗、坐标对齐、跨网格物理量插值全流程自动化，
     插值精度与ANSYS原始数据一致。上述专利模型架构不变
     直接跨域迁移至水轮机场景。
     
-    \item 设计``AI仿真基线+IoT传感器实测''
+    \item 设计AI仿真基线+IoT传感器实测
     \textbf{虚实对齐预警}机制，替代传统固定阈值预警，
     实现设备早期异常捕获。
     
