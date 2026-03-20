@@ -129,6 +129,7 @@
 
 
 
+
 % ================================================================
 % 科研经历
 % ================================================================
@@ -136,82 +137,54 @@
 科研经历}
 
 % --- 科研一：UNOP ---
-\textbf{UNOP：面向长时序预测的无监督神经算子架构设计} 
-\textit{(核心开发者/一作，IJCAI CCF-A 审稿中)} 
+\textbf{UNOP：面向长时序预测的无监督神经算子} 
+\textit{(一作，IJCAI CCF-A 审稿中)} 
 \hfill 2025.3 -- 至今
 \begin{itemize}
-    %% ★ S+T合并：背景+量化痛点+明确说"别人做不到什么"
-    \item \textbf{背景与挑战：}神经PDE求解器面临三重瓶颈：
-    ①标签昂贵（单条CFD轨迹需200+GPU小时，规模化不可行）；
-    ②现有无监督方法(PINN)依赖高阶自动微分，在3D场景下
-    内存爆炸（$\sim$6GB/样本）且梯度病态导致训练不收敛；
-    ③自回归预测在20步内误差即超过100\%发散。
-    \textbf{现有方法无法同时解决这三个问题。}
-
-    %% ★ A+R绑定：每个Action紧跟其Result
-    \item \textbf{[解决瓶颈①②] 积分物理约束(LIPE)：}
-    基于Feynman-Kac公式将PDE微分约束重构为积分一致性目标，
-    通过蒙特卡洛采样近似积分值，\textbf{完全消除高阶自动微分}。
-    \textbf{效果：}3D内存降至微分方法的1/6；实现100\%无标签
-    训练，且仅10\%标签即超越100\%全监督（Cd误差4.06\% 
-    vs 8.05\%）。\textbf{核心难点：}需要在不规则几何上
-    准确评估空间积分——由GALA解决。
-
-    \item \textbf{[解决几何限制] 几何解耦编码器(GALA)：}
-    现有频谱方法(FNO)限于规则网格，几何方法(GNN)依赖标签。
-    设计可学习高斯核投影，将任意维度(1D/2D/3D)的非结构化
-    点云统一映射至规则隐空间。\textbf{效果：}单一架构通吃三种
-    维度，去除GALA后3D任务直接训练失败（误差$>$100\%）。
-
-    \item \textbf{[解决瓶颈③] 曲率感知演化(GSEO)：}
-    标准频谱演化会平滑掉激波/涡旋等高频物理结构（SP-FNO
-    出现条纹伪影）。引入几何+物理双曲率门控，
-    选择性保留高梯度区域。\textbf{效果：}去除门控后误差增加
-    7倍（3.25\%$\rightarrow$23.09\%），证明其为稳定性关键。
-
-    \item \textbf{综合结果：}1D误差\textbf{0.09\%}
-    （PINO 3.32\%，$\downarrow$36$\times$）；
-    2D \textbf{3.02\%}（SP-FNO 13.6\%，$\downarrow$4.5$\times$）；
-    \textbf{50步外推仍稳定}（所有baseline 20步即发散$>$100\%）。
+    \item \textbf{背景：}现有神经PDE求解器面临标签昂贵
+    （单条轨迹200+ GPU小时）、3D场景内存爆炸、
+    自回归20步即发散三重瓶颈，无方法能同时解决。
+    
+    \item 提出积分物理约束(LIPE)替代微分残差，
+    \textbf{完全消除高阶自动微分}，3D内存降至
+    微分方法的\textbf{1/6}，实现\textbf{100\%无标签训练}，
+    且10\%标签超越100\%全监督。
+    
+    \item 设计几何解耦编码器(GALA)，单一架构统一处理
+    1D/2D/3D非结构化输入；曲率感知门控(GSEO)选择性
+    保留高频物理结构，消融实验证明为稳定性关键（去除后
+    误差$\uparrow$7倍）。
+    
+    \item \textbf{结果：}1D误差\textbf{0.09\%}
+    （优于PINO 36$\times$），2D \textbf{3.02\%}
+    （优于SP-FNO 4.5$\times$），3D Cd误差\textbf{4.06\%}，
+    \textbf{50步外推仍稳定}（baseline 20步即发散）。
 \end{itemize}
 
 \projectsep
 
 % --- 科研二：GeoGatedAttention ---
-\textbf{几何门控注意力机制：结构感知的图Transformer设计} 
-\textit{(核心设计者，发明专利已受理)} \hfill 2024.9 -- 2025.3
+\textbf{GeoGatedAttention：几何感知的稀疏图Transformer} 
+\textit{(发明专利已受理)} \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    %% ★ S+T：量化痛点+说清楚"别人为什么做不好"
-    \item \textbf{背景与挑战：}3D物理场预测中，
-    流场在几何突变区域（驻点/分离点/拐角）变化最剧烈，
-    但现有方法对此区域预测误差最大。
-    \textbf{根本原因：}标准Transformer的attention仅基于
-    Q-K特征相似度，不感知边的几何结构；GAT虽引入了可学习
-    权重，但gate仍来自节点特征而非边几何信息——二者都无法
-    区分``高曲率拐角边''和``平坦表面边''。
-
-    %% ★ A+R绑定
-    \item \textbf{核心创新——GeoGatedAttention：}
-    提取边级几何特征（曲率均值/法向量cos$\theta$/对数边长）
-    $\rightarrow$ MLP(3$\rightarrow$64$\rightarrow$1) 
-    $\rightarrow$ Sigmoid生成[0,1]门控 $\rightarrow$ 
-    逐边调制attention权重。实现\textbf{``特征相关性$\times$
-    几何重要性''}双信号融合。\textbf{效果：}
-    去除gate误差+17\%，乘性门控优于特征拼接+15\%——
-    证明几何信息必须动态调制而非静态拼接。
-
-    \item \textbf{工程难点与解决：}5万节点$\times$150万边的
-    大图无法构造N$\times$N attention矩阵。采用基于图结构的
-    scatter\_softmax实现O(E)稀疏注意力；4卡DDP+梯度累积
-    （有效batch=16）解决单卡OOM；8层堆叠配合残差+LayerNorm
-    避免过平滑。\textbf{效果：}889个汽车模型$\times$5万节点
-    的9折交叉验证稳定完成。
-
-    \item \textbf{综合结果：}压力场L2误差
-    \textbf{$\downarrow$40\%}（0.116$\rightarrow$0.099），
+    \item \textbf{背景：}3D物理场在几何突变区域
+    （驻点/分离点）变化最剧烈，但标准Transformer和GAT
+    的注意力均不感知边的几何结构，关键区域预测误差最大。
+    
+    \item 设计边级几何特征驱动的门控函数，
+    生成[0,1]动态调节因子\textbf{逐边调制attention权重}，
+    实现``特征相关性$\times$几何重要性''双信号融合。
+    基于图稀疏结构实现\textbf{O(E)复杂度}
+    （5万节点$\times$150万边）。
+    
+    \item 4卡DDP分布式训练，在ShapeNet-Car (889模型)
+    上完成9折交叉验证。消融实验证明门控贡献最大
+    （去除+17\%，优于特征拼接+15\%）。
+    
+    \item \textbf{结果：}压力场误差\textbf{$\downarrow$40\%}，
     Cd误差\textbf{2.69\%}，
-    Spearman $\rho$=\textbf{0.97}（排序高度一致），
-    单次推理\textbf{20ms}。
+    Spearman $\rho$=\textbf{0.97}，
+    推理\textbf{20ms}。
 \end{itemize}
 
 % ================================================================
@@ -220,45 +193,33 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{水轮机AI实时仿真与智能运维系统} 
-\textit{(AI算法与系统集成负责人)} \hfill 2024.12 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{依托：``十四五''国家重点研发计划
+\textbf{水轮机AI实时仿真与智能预警系统} 
+\textit{(AI算法与系统集成)} \hfill 2024.12 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划
 ``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    %% ★ S+T：量化工程痛点
-    \item \textbf{背景与挑战：}水轮机CFD仿真单次耗时
-    6-12小时，设计阶段参数扫描（叶片数$\times$弧度$\times$
-    转速）需数百次仿真，周期以月计。
-    \textbf{核心难点：}①水轮机无现成AI数据集，几何模型
-    (.stp/.glb)和物理场(ANSYS CSV)来自不同工具链、
-    不同坐标系、不同网格密度；②模型需从汽车外流场跨域
-    迁移至水轮机内流场，物理场景完全不同。
-
-    %% ★ A+R：数据pipeline
-    \item \textbf{[解决数据难点] 跨工具链数据pipeline：}
-    FreeCAD几何清洗（去除.msh中退化面/冗余边）
-    $\rightarrow$ cKDTree坐标对齐（中心点平移，
-    验证无需旋转/缩放）$\rightarrow$ IDW反距离加权插值
-    （k=8, power=2, 对wall\_shear做log变换后插值）。
-    \textbf{效果：}插值后剪切应力范围[2.8, 14400]Pa
-    与ANSYS原始[2.752, 14420]Pa一致；输出与ShapeNet-Car
-    格式统一，直接复用训练代码。
-
-    %% ★ A+R：虚实对齐
-    \item \textbf{[创新] 虚实对齐智能预警：}
-    传统预警用固定阈值（如振动$>$5mm/s报警），误报率高
-    且无法早期发现。设计``AI仿真基线+IoT实测''双轨机制
-    ——AI推演当前工况的理论振动频谱，与传感器实测数据实时
-    差分比对，捕获偏离理论值的微小异常。
-    \textbf{效果：}在历史故障案例上可回溯识别异常。
-
-    %% ★ R：系统级结果
-    \item \textbf{系统成果：}推理\textbf{20ms}
-    （加速比$10^5$），模型架构不变跨域迁移成功。
-    封装为MWORKS标准化软件包，打通``仿真$\rightarrow$
-    评估$\rightarrow$预警''闭环。课题\textbf{结题验收通过}，
-    获\textbf{3项发明专利}、\textbf{2项软著}。
+    \item \textbf{背景：}水轮机CFD仿真单次6-12小时，
+    设计参数扫描周期以月计。水轮机领域无现成AI数据集，
+    原始数据分散在三套工具链（FreeCAD/ANSYS/Gmsh）中，
+    格式与坐标系均不统一。
+    
+    \item 独立构建\textbf{从零到一}的跨工具链数据pipeline，
+    实现几何清洗、坐标对齐、跨网格物理量插值全流程自动化，
+    插值精度与ANSYS原始数据一致。上述专利模型架构不变
+    直接跨域迁移至水轮机场景。
+    
+    \item 设计``AI仿真基线+IoT传感器实测''
+    \textbf{虚实对齐预警}机制，替代传统固定阈值预警，
+    实现设备早期异常捕获。
+    
+    \item \textbf{成果：}推理\textbf{20ms}
+    （加速$10^5$倍），封装为MWORKS标准化软件包，
+    课题\textbf{结题验收通过}，获\textbf{3项发明专利}
+    +\textbf{2项软著}。
 \end{itemize}
+
+
+
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
