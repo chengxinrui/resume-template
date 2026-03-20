@@ -122,8 +122,8 @@
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
 %% ★ 仿真版研究方向
 \textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金 \\[0.2em]
-\textbf{研究方向：}AI驱动工程仿真加速、数字孪生、计算流体力学代理模型、AI4PDE
-% \projectsep
+\textcolor{CVBlue}{\textbf{研究方向：})AI驱动工程仿真加速、数字孪生、计算流体力学代理模型、AI4PDE
+\projectsep
 
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
@@ -141,7 +141,7 @@
 \begin{itemize}
     \item \textbf{背景：}AI仿真替代面临根本矛盾——训练AI需先做仿真生成标签。现有无监督方法(PINN)在3D工程几何上内存爆炸且梯度病态，自回归预测20步即发散，无法支撑工程级长时仿真。
     \item 提出基于积分一致性的物理约束(LIPE)替代微分残差，\textbf{无需仿真标签}，3D内存降至微分方法的1/6。
-    \item 设计几何解耦编码器(GALA)统一处理1D/2D/3D不规则几何；曲率感知门控(GSEO)保留激波/涡旋等高梯度物理结构。
+    \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留激波/涡旋等高梯度物理结构。
     \item \textbf{工程验证：}3D ShapeNet-Car Cd误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$，\textbf{50步外推仍稳定}。
 \end{itemize}
 
@@ -173,7 +173,7 @@
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{背景：}流场在几何突变区域变化最剧烈，但现有模型的注意力机制不感知边的几何结构，关键区域预测误差最大。
+    \item \textbf{背景：}流场在几何突变区域变化剧烈，但现有模型的注意力机制不感知边的几何结构，关键区域预测误差大。
     
     \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现O(E)稀疏计算。
     
