@@ -138,25 +138,25 @@
 \textbf{UNOP：无标签物理约束的AI仿真加速引擎} 
 \textit{(一作，IJCAI CCF-A 审稿中)} 
 \hfill 2025.3 -- 至今
-% \begin{itemize}
-%     \item \textbf{背景：}AI仿真替代面临根本矛盾——训练AI需先做仿真生成标签。现有无监督方法(PINN)在3D工程几何上内存爆炸且梯度病态，自回归预测20步即发散，无法支撑工程级长时仿真。
-%     \item 提出基于积分一致性的物理约束(LIPE)替代微分残差，\textbf{无需仿真标签}，3D内存降至微分方法的1/6。
-%     \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留激波/涡旋等高梯度物理结构。
-%     \item \textbf{工程验证：}3D ShapeNet-Car Cd误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$，\textbf{50步外推仍稳定}。
-% \end{itemize}
 \begin{itemize}
-    \item 针对CFD仿真“数据依赖强、长时预测不稳定”问题，提出无标签训练的神经算子框架。
-    
-    \item \textbf{核心成果：}
-    \begin{itemize}
-        \item 无需仿真数据训练，\textbf{3D内存降低至1/6}
-        \item \textbf{50步长时预测稳定}（传统方法约20步发散）
-    \end{itemize}
-    
-    \item 设计几何感知模型结构（GALA + GSEO），提升复杂几何下预测稳定性。
-    
-    \item \textbf{实验结果：}3D任务误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$。
+    \item \textbf{背景：}AI仿真替代面临根本矛盾——训练AI需先做仿真生成标签。现有无监督方法(PINN)在3D工程几何上内存爆炸且梯度病态，自回归预测20步即发散，无法支撑工程级长时仿真。
+    \item 提出基于积分一致性的物理约束(LIPE)替代微分残差，\textbf{无需仿真标签}，3D内存降至微分方法的1/6。
+    \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留激波/涡旋等高梯度物理结构。
+    \item \textbf{工程验证：}3D ShapeNet-Car Cd误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$，\textbf{50步外推仍稳定}。
 \end{itemize}
+% \begin{itemize}
+%     \item 针对CFD仿真“数据依赖强、长时预测不稳定”问题，提出无标签训练的神经算子框架。
+    
+%     \item \textbf{核心成果：}
+%     \begin{itemize}
+%         \item 无需仿真数据训练，\textbf{3D内存降低至1/6}
+%         \item \textbf{50步长时预测稳定}（传统方法约20步发散）
+%     \end{itemize}
+    
+%     \item 设计几何感知模型结构（GALA + GSEO），提升复杂几何下预测稳定性。
+    
+%     \item \textbf{实验结果：}3D任务误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$。
+% \end{itemize}
 
 % ================================================================
 % 项目经历
@@ -169,28 +169,28 @@
 \textit{(AI算法与系统集成)} \hfill 2024.12 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划
 ``装备制造后市场服务协同平台研发与应用''}}
-% \begin{itemize}
-%     \item \textbf{背景：}水轮机CFD仿真单次6-12小时，领域无现成AI数据集，几何与物理场，坐标系/网格/格式均不统一。需将汽车外流场模型跨域迁移至水轮机内流场。
-    
-%     \item 从零构建\textbf{跨工具链数据pipeline}从几何清洗到坐标对齐再到跨网格插值，插值精度与ANSYS原始数据一致。模型架构不变直接跨域迁移成功。
-    
-%     \item 设计``AI仿真基线+IoT实测''\textbf{虚实对齐预警}替代固定阈值，实现早期异常捕获。封装为\textbf{MWORKS标准化软件包}，打通仿真→评估→预警闭环。
-    
-%     \item \textbf{成果：}推理\textbf{20ms}（加速$10^5$），课题\textbf{结题验收通过}，获3项发明专利+2项软著。
-% \end{itemize}
 \begin{itemize}
-    \item 针对CFD仿真单次6--12小时、缺乏数据集的问题，构建AI替代仿真方案。
+    \item \textbf{背景：}水轮机CFD仿真单次6-12小时，领域无现成AI数据集，几何与物理场，坐标系/网格/格式均不统一。需将汽车外流场模型跨域迁移至水轮机内流场。
     
-    \item \textbf{核心成果：}
-    \begin{itemize}
-        \item 推理时间\textbf{20ms替代6--12小时}（$\sim10^5\times$加速）
-        \item 实现跨域迁移（汽车外流场$\rightarrow$水轮机内流场）
-    \end{itemize}
+    \item 从零构建\textbf{跨工具链数据pipeline}从几何清洗到坐标对齐再到跨网格插值，插值精度与ANSYS原始数据一致。模型架构不变直接跨域迁移成功。
     
-    \item 从0构建跨工具链数据pipeline（几何→网格→物理场），支撑模型训练与部署。
+    \item 设计``AI仿真基线+IoT实测''\textbf{虚实对齐预警}替代固定阈值，实现早期异常捕获。封装为\textbf{MWORKS标准化软件包}，打通仿真→评估→预警闭环。
     
-    \item 系统封装为工业软件并完成验收，获3项发明专利+2项软著。
+    \item \textbf{成果：}推理\textbf{20ms}（加速$10^5$），课题\textbf{结题验收通过}，获3项发明专利+2项软著。
 \end{itemize}
+% \begin{itemize}
+%     \item 针对CFD仿真单次6--12小时、缺乏数据集的问题，构建AI替代仿真方案。
+    
+%     \item \textbf{核心成果：}
+%     \begin{itemize}
+%         \item 推理时间\textbf{20ms替代6--12小时}（$\sim10^5\times$加速）
+%         \item 实现跨域迁移（汽车外流场$\rightarrow$水轮机内流场）
+%     \end{itemize}
+    
+%     \item 从0构建跨工具链数据pipeline（几何→网格→物理场），支撑模型训练与部署。
+    
+%     \item 系统封装为工业软件并完成验收，获3项发明专利+2项软著。
+% \end{itemize}
 
 % \projectsep
 
@@ -198,20 +198,20 @@
 \textbf{几何感知AI模型的汽车气动性能快速预测} 
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
-% \begin{itemize}
-%     \item \textbf{背景：}流场在几何突变区域变化剧烈，但现有模型的注意力机制不感知边的几何结构，关键区域预测误差大。
-    
-%     \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现O(E)稀疏计算。
-    
-%     \textbf{结果：}Cd误差\textbf{2.69\%}，$\rho$=\textbf{0.97}，推理\textbf{20ms}。
-% \end{itemize}
 \begin{itemize}
-    \item 针对复杂几何区域预测误差大的问题，设计几何感知注意力机制。
+    \item \textbf{背景：}流场在几何突变区域变化剧烈，但现有模型的注意力机制不感知边的几何结构，关键区域预测误差大。
     
-    \item 引入边级几何特征动态调制attention权重，实现结构感知的稀疏计算（O(E)）。
+    \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现O(E)稀疏计算。
     
-    \item \textbf{结果：}Cd误差\textbf{2.69\%}，相关系数$\rho=\textbf{0.97}$，推理\textbf{20ms}。
+    \textbf{结果：}Cd误差\textbf{2.69\%}，$\rho$=\textbf{0.97}，推理\textbf{20ms}。
 \end{itemize}
+% \begin{itemize}
+%     \item 针对复杂几何区域预测误差大的问题，设计几何感知注意力机制。
+    
+%     \item 引入边级几何特征动态调制attention权重，实现结构感知的稀疏计算（O(E)）。
+    
+%     \item \textbf{结果：}Cd误差\textbf{2.69\%}，相关系数$\rho=\textbf{0.97}$，推理\textbf{20ms}。
+% \end{itemize}
 
 
 % ========================================================
