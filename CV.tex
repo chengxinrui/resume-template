@@ -137,29 +137,29 @@
 科研经历}
 
 % --- 科研一：UNOP ---
-\textbf{UNOP：无监督神经算子用于长时序预测} 
+\textbf{UNOP：无监督神经算子用于结构物理场长时序预测} 
 \textit{(一作，IJCAI CCF-A 审稿中)} 
 \hfill 2025.3 -- 至今
 \begin{itemize}
-    \item 针对长时序预测中\textbf{误差累积与稳定性不足}问题，设计无监督神经算子框架，摆脱对仿真标签的依赖。
+    \item 针对结构性能预测中长时序误差累积与稳定性不足问题，设计无监督神经算子框架，无需有限元仿真标签即可完成物理场预测。
     
-    \item 提出基于积分一致性的物理约束（LIPE），\textbf{替代高阶自动微分}，将3D训练内存开销降低至\textbf{1/6}。
+    \item 提出基于PDE物理约束的积分一致性损失（LIPE），替代高阶自动微分，将3D网格数据训练内存降低至1/6。
     
-    \item 设计几何解耦编码器（GALA）与曲率感知门控机制（GSEO），提升非结构化几何数据下的表示能力与稳定性。
+    \item 设计几何解耦编码器（GALA）与曲率感知门控机制（GSEO），提升非结构化网格拓扑数据下的特征表示能力与预测稳定性。
     
-    \item \textbf{实验结果：}1D误差\textbf{0.09\%}（优于PINO 36$\times$），2D \textbf{3.02\%}（优于SP-FNO 4.5$\times$），3D Cd误差\textbf{4.06\%}，\textbf{50步外推稳定}（传统方法约20步发散）。
+    \item \textbf{实验结果：}实验覆盖1D/2D/3D多物理场场景：1D误差0.09%（优于PINO 36×），2D 应力/流场预测3.02%（优于SP-FNO 4.5×），3D气动力系数Cd误差4.06%，50步外推稳定。
 \end{itemize}
 
 % \projectsep
 
 % --- 科研二：GeoGatedAttention ---
-\textbf{GeoGatedAttention：几何感知的稀疏图Transformer} 
+\textbf{GeoGatedAttention：面向结构化网格的几何感知稀疏图Transformer} 
 \textit{(发明专利已受理)} \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item 针对复杂结构数据中\textbf{关键区域建模不足}问题，设计几何感知注意力机制。
-    \item 引入边级几何特征作为门控信号，动态调制attention权重，实现特征相关性与几何重要性的融合。
-    \item 基于图稀疏结构实现\textbf{O(E)}复杂度，在保证表达能力的同时提升计算效率。
-    \item \textbf{结果：}压力场误差下降\textbf{40\%}，Cd误差\textbf{2.69\%}，推理时间\textbf{20ms}。
+    \item 针对结构性能预测中复杂网格数据关键区域（如应力集中区）建模不足问题，设计几何感知注意力机制。
+    \item 引入网格边级几何特征（边长、法向量、曲率）作为门控信号，动态调制attention权重，实现特征相关性与几何重要性的融合。
+    \item 基于网格拓扑的图稀疏结构实现O(E)复杂度，在保证表达能力的同时提升计算效率。
+    \item \textbf{结果：}结构表面压力场误差下降40%，气动力系数Cd误差2.69%，单次推理20ms（相比CFD仿真加速~10⁵×）
 \end{itemize}
 
 % ================================================================
@@ -168,18 +168,18 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{水轮机AI实时仿真与智能预警系统} 
+\textbf{水轮机结构性能AI预测与智能预警系统} 
 \textit{(AI算法与系统集成)} \hfill 2024.12 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划
 ``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item 针对CFD仿真计算成本高（单次6--12小时）与数据缺失问题，构建基于深度学习的快速近似预测系统。
+    \item 针对有限元/CFD仿真计算成本高（单次6–12小时）的工程瓶颈，构建基于深度学习的结构性能快速预测系统，实现应力场、流场等多物理场的实时推理。
     \item \textbf{核心成果：}
     \begin{itemize}
         \item 推理时间\textbf{20ms}替代传统仿真（加速$\sim10^5\times$）
-        \item 支持跨场景迁移（汽车外流场$\rightarrow$水轮机内流场）
+        \item 支持多物理场统一预测框架：同一模型架构适配压力场、速度场等不同物理量输出，验证了跨场景迁移能力（汽车外流场 → 水轮机内流场）
     \end{itemize}
-    \item 从0构建跨工具链数据pipeline（几何清洗→坐标对齐→跨网格插值），支撑大规模训练与工程部署。
+    \item 从0构建CAE仿真数据处理pipeline：网格几何清洗→坐标系对齐→跨网格插值→网格拓扑编码，支撑大规模训练数据构建与工程部署。
     \item 设计“AI仿真基线+IoT实测”虚实对齐预警机制，实现设备早期异常检测；系统完成工程落地并通过验收。
 \end{itemize}
 
@@ -207,9 +207,10 @@
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
 \begin{itemize}
-    \item \textbf{模型设计：}熟悉 Transformer/GNN 等模型；具备非结构化数据（点云/Mesh/图）建模能力；熟悉注意力机制改进与稀疏计算。
+    \item \textbf{模型设计：}熟悉 Transformer/GNN 等模型；具备非结构化网格数据（Mesh/点云/图）建模能力；熟悉网格拓扑编码（图神经网络）、注意力机制改进与稀疏计算。
     \item \textbf{训练与工程：}熟悉 PyTorch/PyG；具备多卡DDP分布式训练、数据pipeline设计与优化经验。
-    \item \textbf{AI4Science基础：}理解神经算子（FNO/PINO/DeepONet）、物理信息神经网络（PINN）、无监督学习方法。
+    \item \textbf{物理驱动AI：}深入理解神经算子（FNO/PINO/DeepONet）、物理信息神经网络（PINN）；具备物理约束（PDE残差/积分守恒）融入训练的实践经验；了解结构力学基本原理。
+    \item \textbf{仿真数据处理：}具备有限元/CFD仿真数据（网格、物理场）的解析、预处理与特征工程经验；了解常见CAE数据格式。
     \item \textbf{工程能力：}Python, Linux, Docker, Git；具备模型部署与系统集成经验。
 \end{itemize}
 
@@ -219,9 +220,9 @@
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{建模与算法能力：}具备从问题出发设计模型结构的能力（非调参调包），在无监督神经算子与几何感知注意力方向有实际研究与成果积累。
-    \item \textbf{复杂数据建模经验：}具备非结构化3D数据（点云/Mesh/图）的建模能力，能够将结构信息融入模型设计以提升稳定性与泛化能力。
-    \item \textbf{工程落地能力：}具备从数据处理、模型训练到系统部署的完整经验，能够将模型转化为可运行系统并产生实际性能收益。
+    \item \textbf{结构性能AI预测能力：}围绕"用AI替代有限元仿真"开展系统研究，在无监督神经算子与几何感知注意力方向有一作论文（CCF-A在审）与多项专利积累，具备从问题出发设计模型架构的能力。
+    \item \textbf{网格数据建模经验：}具备非结构化3D网格/图数据的完整建模经验（拓扑编码→特征提取→物理场预测），能够将几何结构信息融入模型设计以提升应力集中区等关键区域的预测精度与稳定性。
+    \item \textbf{工程落地能力：}具备从CAE数据处理、模型训练（多卡DDP）到系统部署的完整经验，已完成国家重点研发项目的工程验收，能够将模型转化为可运行系统并产生实际性能收益（推理加速~10⁵×）。
 \end{itemize}
 
 \end{document}
