@@ -137,26 +137,26 @@
 科研经历}
 
 % --- 科研一：UNOP ---
-\textbf{UNOP：无监督神经算子用于长时序物理预测} 
+\textbf{UNOP：面向物理世界动态建模的无监督生成式预测框架} 
 \textit{(一作，IJCAI CCF-A 审稿中)} 
 \hfill 2025.3 -- 至今
 \begin{itemize}
-    \item 设计无监督神经算子框架，针对长时序预测中\textbf{误差累积与稳定性不足}问题，可生成高维物理状态序列，无需仿真标签。
-    \item 提出积分一致性物理约束（LIPE），替代高阶自动微分，3D训练内存降低至\textbf{1/6}，提升长时预测稳定性。
-    \item 几何解耦编码器（GALA） + 曲率感知门控机制（GSEO），提升非结构化几何数据表示能力与稳定性。
+    \item 设计\textbf{无监督世界模型框架}，在无仿真标签条件下自回归生成高维物理状态序列，解决长时序生成中\textbf{误差累积与时序一致性}问题。
+    \item 提出积分一致性物理约束（LIPE）作为\textbf{新型目标函数}，替代高阶自动微分；3D场景训练\textbf{显存降低至1/6}，使大规模3D世界模型训练成为可能。
+    \item 设计几何解耦编码器（GALA）+ 曲率感知门控（GSEO），增强模型对\textbf{非结构化3D几何}的表示与生成能力，支持任意网格拓扑。
     \item \textbf{实验结果：}1D误差\textbf{0.09\%}（优于PINO 36$\times$），2D \textbf{3.02\%}（优于SP-FNO 4.5$\times$），3D Cd误差\textbf{4.06\%}，\textbf{50步外推稳定}（传统方法约20步发散）。
 \end{itemize}
 
 % \projectsep
 
 % --- 科研二：GeoGatedAttention ---
-\textbf{GeoGatedAttention：几何感知的稀疏图Transformer} 
+\textbf{GeoGatedAttention：面向3D几何数据的稀疏图Transformer} 
 \textit{(发明专利已受理)} \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item 针对复杂结构数据中\textbf{关键区域建模不足}问题，设计几何感知注意力机制。
-    \item 引入边级几何特征作为门控信号，动态调制attention权重，实现特征相关性与几何重要性的融合。
-    \item 基于图稀疏结构实现\textbf{O(E)}复杂度，在保证表达能力的同时提升计算效率。
-    \item \textbf{结果：}压力场误差下降\textbf{40\%}，Cd误差\textbf{2.69\%}，推理时间\textbf{20ms}。
+    \item 针对3D非结构化数据中\textbf{关键区域建模不足}问题，设计几何感知\textbf{Transformer注意力机制}，可作为3D生成模型中的通用注意力模块。
+    \item 引入边级几何特征作为\textbf{门控条件信号}动态调制attention权重，实现几何条件与特征注意力的深度融合。
+    \item 基于图稀疏结构实现\textbf{O(E)}复杂度，兼顾大规模3D数据的表达能力与计算效率。
+    \item \textbf{结果：}压力场误差下降\textbf{40\%}，Cd误差\textbf{2.69\%}，单帧推理\textbf{20ms}。
 \end{itemize}
 
 % ================================================================
@@ -165,20 +165,20 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{数字孪生AI仿真与智能预警系统} 
+\textbf{3D/4D物理世界模拟与智能预警系统} 
 \textit{(AI算法与系统集成)} \hfill 2024.12 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划
-``装备制造后市场服务协同平台研发与应用''}}
+\textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item 针对CFD仿真计算成本高（单次6--12小时）与数据缺失问题，构建基于深度学习的快速近似预测系统。
-    \item 从0构建跨工具链数据pipeline（几何清洗→坐标对齐→跨网格插值），支撑大规模训练与工程部署。
+    \item 针对传统物理仿真计算成本高（单次6--12小时）与训练数据稀缺问题，构建基于深度学习的\textbf{3D物理世界快速生成系统}。
+    \item 从0构建\textbf{大规模训练数据pipeline}（几何清洗→坐标对齐→跨网格插值→数据增强），支撑3D模型训练与工程部署。
     \item \textbf{核心成果：}
     \begin{itemize}
         \item 推理时间\textbf{20ms}替代传统仿真（加速$\sim10^5\times$）
-        \item 支持跨场景迁移（汽车外流场$\rightarrow$水轮机内流场）
+        \item 支持\textbf{跨场景泛化生成}（汽车外流场$\rightarrow$水轮机内流场）
     \end{itemize}
-    \item 设计“AI仿真基线+IoT实测”虚实对齐预警机制，实现设备早期异常检测；系统完成工程落地并通过验收。
+    \item 设计``AI仿真基线+IoT实测''虚实对齐机制，实现设备异常检测与\textbf{模型持续监控}；系统完成工程落地并通过验收。
 \end{itemize}
+
 
 
 % ========================================================
@@ -204,10 +204,10 @@
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
 \begin{itemize}
-    \item \textbf{算法能力：}Transformer/GNN/神经算子/注意力机制改进，非结构化数据建模（点云/Mesh/图），大规模训练优化。
-    \item \textbf{仿真与物理建模：}理解 PDE/流体力学原理（Navier-Stokes, 对流扩散等），可将物理约束融入神经算子或大模型训练。
-    \item \textbf{工程落地：}PyTorch/PyG、多卡分布式训练(DDP)、跨工具链数据 pipeline、Docker/系统集成。
-    \item \textbf{应用能力：}3D/4D场景预测、虚实对齐、长时序物理状态建模，可直接迁移至生成模型/仿真场景。
+    \item \textbf{生成模型与架构：}深入理解Transformer/注意力机制并有\textbf{自研改进经验}；
+    \item \textbf{3D建模：}非结构化3D数据处理（点云/Mesh/图），3D几何表示学习，时序物理状态生成与\textbf{长时序一致性}建模。
+    \item \textbf{大规模训练：}PyTorch/PyG，多卡分布式训练(DDP)；具备目标函数设计、学习率调度、显存优化、训练数据增强等\textbf{训练策略设计}经验。
+    \item \textbf{工程部署：}跨工具链数据pipeline构建，Docker/系统集成，模型部署、监控与维护。
 \end{itemize}
 
 % ================================================================
@@ -216,9 +216,9 @@
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{科研 + 工程复合能力：}能将深度学习算法与物理建模结合，设计可解释、稳定的神经算子与生成模型结构。
-    \item \textbf{全流程落地经验：}从原始工程数据处理到模型训练再到系统部署，验证算法在真实场景中的效果。
-    \item \textbf{量化成果：}50步长时预测稳定，推理 20ms 替代 6-12小时 CFD，加速 $\sim 10^5\times$，成果可度量。
+    \item \textbf{世界模型思维：}研究方向本质是``学习物理世界动态规律并生成未来状态''，与世界模型核心范式高度一致，可迁移至视频/3D/4D生成场景。
+    \item \textbf{3D/4D全链路：}覆盖3D几何理解→Transformer架构设计→物理一致性约束，与世界模型技术栈对齐。
+    \item \textbf{科研+工程复合：}50步长时生成稳定，20ms推理替代6--12h仿真（$\sim10^5\times$加速），具备从算法设计到系统部署的\textbf{全流程落地}能力。
 \end{itemize}
 
 \end{document}
