@@ -137,29 +137,29 @@
 科研经历}
 
 % --- 科研一：UNOP ---
-\textbf{UNOP：无监督神经算子用于长时序预测} 
-\textit{(一作，投稿IJCAI CCF-A)} 
+\textbf{面向长序列预测的无监督深度学习框架} 
+\textit{(一作，投稿至CCF-A)} 
 \hfill 2025.3 -- 至今
 \begin{itemize}
-    \item 针对长序列预测中\textbf{误差累积与泛化性不足}问题，设计无监督深度学习框架，通过物理一致性约束替代标注数据，实现\textbf{无监督训练范式}。
+    \item 针对长序列预测中\textbf{误差累积与泛化不足}问题，设计无监督深度学习框架，通过一致性约束替代标注数据，解决真实场景中标签稀缺的瓶颈。
     
-    \item 提出低阶积分一致性损失（LIPE），将高维场景训练显存降低至\textbf{1/6}，使大规模3D数据训练成为可能。
+    \item 提出高效损失函数LIPE，通过\textbf{低阶近似替代高阶自动微分}，将高维场景训练显存降低至\textbf{1/6}，使大规模数据训练成为可能。
     
-    \item 设计几何感知编码器与自适应门控机制，针对\textbf{非结构化数据}（点云/Mesh）实现高效特征提取，提升模型在不规则拓扑结构上的泛化能力。。
+    \item 设计\textbf{自适应特征编码与门控融合机制}，有效提取非结构化/异构数据中的关键特征，提升模型在复杂数据分布下的泛化能力。
     
-    \item \textbf{实验结果：}多场景预测误差优于SOTA方法，长序列外推步数达\textbf{50步}，（基线方法约20步发散），验证了框架的鲁棒性与可扩展性。
+    \item \textbf{实验结果：}多场景预测精度\textbf{优于SOTA方法4--36$\times$}，长序列外推步数达\textbf{50步}（基线方法约20步发散），验证了框架的鲁棒性与可扩展性。
 \end{itemize}
 
 % \projectsep
 
 % --- 科研二：GeoGatedAttention ---
-\textbf{GeoGatedAttention：结构感知的稀疏图注意力网络} 
+\textbf{结构感知的稀疏图注意力网络} 
 \textit{(发明专利已受理)} \hfill 2024.9 -- 2025.3
 \begin{itemize}
     \item 针对图结构数据中\textbf{局部关键区域建模不足}问题，设计结构感知的稀疏注意力机制。
-    \item 引入边级结构特征作为门控信号，动态调制注意力权重，实现\textbf{特征语义与结构重要性的自适应融合}。
-    \item 基于图稀疏结构实现\textbf{O(E)}复杂度，在保证表达能力的同时提升计算效率。
-    \item \textbf{结果：}关键指标误差下降\textbf{40\%}，推理时间\textbf{20ms}，满足实时推理需求。
+    \item 引入\textbf{边级结构特征作为门控信号}，动态调制注意力权重，实现特征语义与结构重要性的自适应融合。
+    \item 基于图稀疏结构实现\textbf{O(E)线性复杂度}，相比全连接注意力大幅降低计算开销，在保证表达能力的同时显著提升效率。
+    \item \textbf{结果：}关键指标误差下降\textbf{40\%}，单次推理\textbf{20ms}，满足在线实时推理需求。
 \end{itemize}
 
 % ================================================================
@@ -168,20 +168,20 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{水轮机AI实时仿真与智能预警系统} 
+\textbf{AI实时预测与智能预警系统} 
 \textit{(核心算法设计 \& 工程落地负责人)} \hfill 2024.12 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划
-``装备制造后市场服务协同平台研发与应用''}}
+\textcolor{CVBlue}{\textbf{``十四五''国家重点研发计划课题}}
 \begin{itemize}
-    \item 针对传统物理仿真计算成本高（单次6--12h）与标注数据稀缺问题，设计基于深度学习的\textbf{端到端预测系统}，覆盖数据处理→模型训练→在线部署全流程。
+    \item 针对传统方法计算成本高（单次6--12h）与标注数据稀缺问题，设计基于深度学习的\textbf{端到端实时预测系统}，覆盖数据处理→模型训练→在线部署全流程。
     \item \textbf{核心成果：}
     \begin{itemize}
-        \item 单次推理\textbf{20ms}，相比传统方法加速$\sim 10^5\times$
-        \item 支持跨场景迁移（汽车外流场$\rightarrow$水轮机内流场）
+        \item 单次推理\textbf{20ms}，相比传统方法加速$\sim 10^5\times$；采用\textbf{多卡DDP分布式训练}将训练周期缩短\textbf{3$\times$}
+        \item 支持\textbf{跨场景迁移学习}，预训练模型fine-tune后在新场景快速收敛
     \end{itemize}
-    \item 独立构建\textbf{自动化数据pipeline}，从几何清洗到坐标对齐，再到跨网格插值，最后标准化。支撑大规模训练数据生产与工程部署。
-    \item 设计AI预测基线与传感器实测数据的\textbf{虚实对齐预警机制}，实现设备早期异常检测；系统已通过\textbf{国家重点研发计划项目验收}。
+    \item 独立构建\textbf{自动化数据pipeline}（数据清洗→特征对齐→跨域插值→标准化），支撑大规模训练数据生产，具备良好的可扩展性与复用性。
+    \item 设计AI预测基线与传感器实测数据的\textbf{异常检测机制}，实现设备早期预警；系统完成工程落地并通过\textbf{国家级项目验收}。
 \end{itemize}
+
 
 
 % ========================================================
@@ -207,10 +207,10 @@
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
 \begin{itemize}
-    \item \textbf{算法与模型：}熟悉 Transformer / GNN / CNN 等主流架构；熟悉注意力机制改进、图计算与稀疏优化；具备非结构化/异构数据建模能力。
-    \item \textbf{框架与工具：}熟练使用 PyTorch / PyG；具备多卡DDP分布式训练经验；熟悉 Linux 开发环境，了解分布式计算基本原理。
-    \item \textbf{算法基础：}扎实的数据结构与算法功底；熟悉常用机器学习算法（树模型/集成学习/聚类等）与深度学习方法（CNN/RNN/Transformer/GNN）。
-    \item \textbf{工程能力：}Python, C++(基础), SQL(基础), Linux, Docker, Git；具备端到端模型部署与系统集成经验。
+    \item \textbf{算法基础：}扎实的\textbf{概率统计、最优化理论与模式识别}基础；熟悉常用机器学习算法（决策树/集成学习/SVM/聚类等）与深度学习方法（CNN/RNN/Transformer/GNN）；了解\textbf{强化学习}基本原理。
+    \item \textbf{模型设计与优化：}熟悉 Transformer/GNN/CNN 等主流架构的设计与改进；具备\textbf{注意力机制优化、无监督/自监督学习、超参数调优}等实际研究经验。
+    \item \textbf{框架与工具：}熟练使用 \textbf{PyTorch}/PyG；了解 \textbf{TensorFlow, XGBoost}；具备\textbf{多卡DDP分布式训练}经验，了解模型并行与数据并行原理。
+    \item \textbf{编程与工程：}\textbf{Python}（熟练）, \textbf{C/C++}（掌握）, SQL, Linux, Docker, Git；具备端到端模型部署、数据pipeline设计与系统集成经验。
 \end{itemize}
 
 % ================================================================
@@ -219,11 +219,11 @@
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{算法设计能力：}具备从业务问题出发独立设计模型结构的能力，在注意力机制改进、无监督学习框架设计方向有实际研究成果。
-    \item \textbf{复杂数据建模：}具备非结构化3D数据（点云/Mesh/图）与时序数据的建模经验，能将结构先验融入模型设计提升泛化能力。
-    \item \textbf{全流程落地：}具备数据处理→算法设计→模型训练→工程部署的完整项目经验，能将算法原型转化为可运行系统。
-    \item \textbf{前沿跟踪与创新：}持续跟踪深度学习前沿进展，具备将新技术快速验证并应用于实际场景的能力。
-    \item \textbf{业务驱动意识：}关注算法对业务指标的实际影响，习惯用实验数据（A/B思维）验证方案有效性，能够从业务问题出发反向驱动算法改进。
+    \item \textbf{算法设计能力：}具备从问题出发独立设计\textbf{网络结构与训练策略}的能力，在注意力机制改进、无监督学习框架、模型效率优化方向有实际研究成果（一作论文 + 专利）。
+    \item \textbf{复杂数据建模：}具备非结构化数据（图/序列/高维数据）的建模经验，能将结构先验融入模型设计提升泛化能力，方法论可迁移至推荐/内容理解等场景。
+    \item \textbf{全流程落地：}具备数据处理→算法设计→\textbf{分布式训练}→工程部署的完整项目经验，注重算法的工程可用性与实际效果。
+    \item \textbf{前沿跟踪与快速迁移：}持续跟踪深度学习前沿进展，具备\textbf{快速学习新领域}、将已有方法论迁移到新应用场景的能力。
+    \item \textbf{业务驱动意识：}关注算法对实际指标的影响，习惯用实验数据验证方案有效性，能从业务需求出发反向驱动技术迭代。
 \end{itemize}
 
 \end{document}
