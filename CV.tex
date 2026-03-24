@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%%  主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸， 上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+     
+    {\large \textbf{世界模型 / 时空预测 / 长时序生成 / 神经算子}}\\[0.5em]
+    
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+% ================================================================
+% 教育背景 ★差异：研究方向描述不同
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
+
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
+
+
+
+% ================================================================
+% 科研经历
+% ================================================================
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+科研经历}
+
+\textbf{UNOP：面向长时序时空预测的无监督神经算子} 
+\textit{(\textbf{一作}，IJCAI CCF-A 审稿中)} 
+\hfill 2025.3 -- 至今
+\begin{itemize}
+    \item \textbf{问题：}现有自回归时序模型在复杂几何场景下\textbf{20步即发散}，无法支撑长时序预测；传统物理约束方法(PINN)在3D场景内存爆炸。
+    
+    \item \textbf{方法：}提出基于积分一致性的物理约束(LIPE)，\textbf{无需监督标签}训练，3D内存降至微分方法的\textbf{1/6}。
+    
+    \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留高梯度时空结构（类似视频中的运动边缘/物体边界）。
+    
+    \item \textbf{核心成果：}\textbf{50步长时序外推仍稳定}，3D场景预测误差\textbf{4.06\%}，物理一致性误差$2.9\times10^{-3}$。
+    
+    \item \textbf{与世界模型的关联：}该方法可直接迁移至自动驾驶场景的\textbf{未来状态预测}与\textbf{时空一致性建模}。
+\end{itemize}
+
+
+% ================================================================
+% 项目经历
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
+
+% --- 项目一：水轮机系统 → 重新包装为"时空预测+跨域迁移" ---
+\textbf{工业场景时空预测模型的跨域迁移与部署} 
+\textit{(核心算法开发)} \hfill 2024.12 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划项目}}
+\begin{itemize}
+    \item \textbf{背景：}需将外部场景（汽车外流场）的时空预测模型\textbf{跨域迁移}至内部场景（水轮机内流场），数据格式/坐标系/网格完全不同。
+    
+    \item 从零构建\textbf{跨域数据对齐Pipeline}：几何清洗→坐标统一→跨网格插值，实现\textbf{模型架构不变直接迁移}。
+    
+    \item 设计``预测基线+实测对比''的\textbf{时空异常检测}机制，用于捕获预测与真实轨迹的偏差。
+    
+    \item \textbf{成果：}推理\textbf{20ms}（原仿真6-12小时，加速$10^5\times$），项目\textbf{结题验收通过}，获3项发明专利。
+\end{itemize}
+
+% --- 项目二：GeoGatedAttention → 包装为几何感知的时空建模 ---
+\textbf{几何感知注意力机制的时空场预测} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
+\begin{itemize}
+    \item \textbf{问题：}标准Attention在几何突变区域（物体边界、运动边缘）预测误差大，缺乏结构感知能力。
+    
+    \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现\textbf{O(E)稀疏计算}。
+    
+    \item \textbf{结果：}预测误差\textbf{2.69\%}，相关系数$\rho$=\textbf{0.97}，推理\textbf{20ms}。
+    
+    \item \textbf{可迁移性：}该机制可应用于视频生成中的\textbf{物体边界保持}与\textbf{运动一致性建模}。
+\end{itemize}
+
+
+
+
+% ========================================================
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 成果与获奖%
+}
+
+\begin{itemize}
+    \item \textbf{学术论文：}Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A 审稿中)
+    \item \textbf{专利：}一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法 \textit{（实审中）}
+    \item \textbf{专利：}基于几何门控注意力机制的结构感知图神经网络物理场预测方法 \textit{（实审中）}
+    \item \textbf{专利：}一种基于应力驱动转速响应的水轮机风扇智能运维方法 \textit{（已公开）}
+    \item \textbf{软件著作权：}多传感融合的部门数字孪生协同运维平台 (登记号: 2026SR0202932)
+    \item \textbf{软件著作权：}设计-仿真部门数字孪生协同运维平台 (登记号: 2026SR0202550)
+    \item \textbf{竞赛：}第十五届\textbf{中兴捧月}全球精英挑战赛 -- \textbf{区域优胜奖} \hfill 2025
+\end{itemize}
+
+  
+% ================================================================
+% 核心技能
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
+    
+\begin{itemize}
+    \item \textbf{时序生成模型：}熟悉自回归时序预测、Diffusion Model原理；有长时序稳定性优化经验（50步不发散）。
+    
+    \item \textbf{深度学习框架：}精通PyTorch/PyG；Transformer/GNN模型构建，注意力机制改进，稀疏计算优化。
+    
+    \item \textbf{3D时空数据处理：}VTK/ParaView 3D数据处理，跨网格插值，多源数据对齐Pipeline构建。
+    
+    \item \textbf{物理约束建模：}神经算子(FNO/PINO)、物理信息神经网络(PINN)、蒙特卡洛积分等AI4Science方法。
+    
+    \item \textbf{工程能力：}Python, C++, Linux, Docker, Git；有国家级项目落地部署经验。
+    
+    \item \textbf{语言能力：}CET-6；具备NeurIPS/ICLR/CVPR等顶会论文阅读与复现能力。
+\end{itemize}
+
+% ================================================================
+% 个人评价
+% ================================================================
+\section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
+
+\begin{itemize}
+    \item \textbf{核心匹配：}专注\textbf{长时序时空预测}研究，解决自回归发散问题（50步稳定外推），与世界模型的时空一致性需求高度契合。
+    
+    \item \textbf{跨域迁移：}有将时空预测模型从一个物理场景迁移到另一场景的完整经验，可快速适配自动驾驶场景。
+    
+    \item \textbf{工程落地：}从算法设计到工业级部署全流程经验，完成国家重点研发计划交付。
+    
+    \item \textbf{科研产出：}IJCAI一作在投 + 3项发明专利，具备快速跟踪前沿并产出的能力。
+\end{itemize}
+
+\end{document}
