@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%%  主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸， 上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+     
+    {\large \textbf{3D深度学习 / 长序列生成 / 
+    自回归建模 / 3D场景理解}}\\[0.5em]
+    
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+% ================================================================
+% 教育背景 ★差异：研究方向描述不同
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
+
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
+
+% ================================================================
+% 科研经历 —— 用世界模型语言重述
+% ================================================================
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+科研经历}
+
+\textbf{UNOP：面向不规则3D几何的
+长时序世界模型} 
+\textit{(一作，IJCAI CCF-A 审稿中)} 
+\hfill 2025.3 -- 至今
+\begin{itemize}
+    \item \textbf{问题定义：}
+    在复杂3D几何（非结构化网格）上
+    进行\textbf{长序列自回归生成}，
+    核心挑战与世界模型一致：
+    \textbf{(1)} 长时序自回归漂移与
+    发散（现有方法$\sim$20步崩溃）；
+    \textbf{(2)} 不规则3D拓扑下的
+    空间一致性维护；
+    \textbf{(3)} 训练数据获取成本极高。
+    
+    \item \textbf{3D几何编码：}
+    设计\textbf{几何解耦编码器(GALA)}，
+    将不规则3D网格分解为局部几何
+    基函数，统一异构拓扑的表征——
+    类似3DGS中用基元表达
+    复杂3D场景的思路。
+    
+    \item \textbf{长序列一致性：}
+    提出基于\textbf{积分一致性}的
+    全局约束(LIPE)，替代逐点微分
+    监督，从\textbf{全局守恒律}角度
+    约束自回归生成的一致性，
+    3D内存降至微分方法的
+    \textbf{1/6}。
+    
+    \item \textbf{结构感知生成：}
+    设计\textbf{曲率感知门控(GSEO)}，
+    在自回归rollout中自适应
+    增强高梯度区域（边缘/
+    突变/细节结构）的生成精度。
+    
+    \item \textbf{结果：}3D ShapeNet-Car 
+    误差\textbf{4.06\%}，
+    \textbf{50步自回归外推仍稳定}
+    （SOTA $\sim$20步发散），
+    \textbf{无需任何标注数据}训练。
+\end{itemize}
+
+% \projectsep
+
+% --- 科研二：GeoGatedAttention ---
+\textbf{GeoGatedAttention：面向3D几何数据的稀疏图Transformer} 
+\textit{(发明专利已受理)} \hfill 2024.9 -- 2025.3
+\begin{itemize}
+    \item 针对3D非结构化数据中\textbf{关键区域建模不足}问题，设计几何感知\textbf{Transformer注意力机制}，可作为3D生成模型中的通用注意力模块。
+    \item 引入边级几何特征作为\textbf{门控条件信号}动态调制attention权重，实现几何条件与特征注意力的深度融合。
+    \item 基于图稀疏结构实现\textbf{O(E)}复杂度，兼顾大规模3D数据的表达能力与计算效率。
+    \item \textbf{结果：}压力场误差下降\textbf{40\%}，Cd误差\textbf{2.69\%}，单帧推理\textbf{20ms}。
+\end{itemize}
+
+% ================================================================
+% 项目经历
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
+
+% --- 项目一 ---
+\textbf{3D数字孪生系统：
+从3D重建到长时序预测的端到端Pipeline} 
+\textit{(核心开发者)} \hfill 2024.12 -- 2025.6
+\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划项目}}
+\begin{itemize}
+    \item \textbf{3D数据生成Pipeline：}
+    从零构建跨工具链3D数据流水线
+    （\textbf{3D几何获取→网格重建→
+    坐标对齐→跨网格插值}），
+    处理工业级非结构化3D数据，
+    插值精度与原始数据一致。
+    
+    \item \textbf{跨域3D泛化：}
+    将汽车外流场3D模型
+    \textbf{零样本跨域迁移}至
+    水轮机内流场，
+    验证3D几何表征的
+    \textbf{跨场景泛化能力}。
+    
+    \item \textbf{3D虚实闭环：}
+    构建``AI 3D预测基线
+    + IoT实测''的\textbf{虚实对齐}
+    验证体系，将3D世界模型
+    预测与真实观测闭环对比。
+    
+    \item \textbf{成果：}推理\textbf{20ms}
+    （加速$10^5\times$），
+    课题\textbf{结题验收通过}，
+    获3项发明专利+2项软著。
+\end{itemize}
+
+\projectsep
+
+% --- 项目二 ---
+\textbf{GeoGatedAttention：
+面向3D场景的几何感知注意力机制} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
+\begin{itemize}
+    \item \textbf{问题：}标准Attention
+    不感知3D边的几何拓扑，
+    在\textbf{几何细节区域}
+    （尖角、薄壁、高曲率面）
+    生成/预测质量显著下降。
+    
+    \item 设计\textbf{边级几何门控
+    注意力}(GeoGatedAttention)，
+    用\textbf{法向量、曲率、
+    二面角}等几何特征动态
+    调制attention权重，
+    实现\textbf{O(E)稀疏计算}
+    ——该机制可直接嵌入
+    3D生成/重建模型中作为
+    几何感知模块。
+    
+    \item \textbf{结果：}预测误差
+    \textbf{2.69\%}，
+    相关系数$\rho$=\textbf{0.97}，
+    推理\textbf{20ms}。
+\end{itemize}
+
+  
+% ================================================================
+% 核心技能 —— 对齐JD关键技术栈
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]
+{\color{CVBlue}\faCogs}\ 核心技能}
+    
+\begin{itemize}
+    \item \textbf{3D深度学习（核心）：}
+    深入掌握\textbf{3D非结构化网格/
+    点云}上的深度学习建模；
+    熟悉\textbf{Transformer / GNN}
+    在3D场景中的应用；
+    设计过几何感知注意力机制；
+    了解\textbf{3DGS、NeRF}
+    的3D表征原理。
+    
+    \item \textbf{生成式建模：}
+    有\textbf{长序列自回归(AR)生成}
+    的实战经验（50步稳定rollout）；
+    熟悉连续动力学建模
+    （ODE/PDE，与\textbf{Flow Matching}
+    的连续归一化流思想相通）；
+    了解\textbf{Diffusion Model}
+    基本原理与训练流程。
+    
+    \item \textbf{3D数据与重建：}
+    熟练处理3D网格数据
+    （VTK/ParaView/FreeCAD）；
+    有\textbf{跨网格插值、
+    坐标对齐、几何清洗}
+    等3D数据工程经验。
+    
+    \item \textbf{模型训练：}
+    熟练使用\textbf{PyTorch / PyG}；
+    有大规模3D模型训练、
+    多GPU并行训练经验。
+    
+    \item \textbf{开发工具：}
+    Python, C++(基础), 
+    Linux, Docker, Git。
+    
+    \item \textbf{论文能力：}
+    持续跟踪NeurIPS/ICML/ICLR/
+    CVPR等顶会，
+    已独立复现\textbf{10+篇}
+    前沿3D建模工作；CET-6通过。
+\end{itemize}
+
+% ================================================================
+% 个人评价
+% ================================================================
+\section{\makebox[\widthof{\faUser}][c]
+{\color{CVBlue}\faUser}\ 个人评价}
+
+\begin{itemize}
+    \item \textbf{3D建模能力突出：}
+    深耕3D不规则几何的深度学习
+    建模一年，对\textbf{3D表征、
+    几何编码、3D注意力机制}
+    有深入理解和创新成果。
+    
+    \item \textbf{长序列生成经验稀缺：}
+    已解决自回归生成的核心难题
+    （50步不发散），对
+    \textbf{长序列一致性约束}
+    有独到方法论（积分守恒约束），
+    可直接迁移至世界模型的
+    长时序一致性问题。
+    
+    \item \textbf{强复现与创新闭环：}
+    系统复现GNOT/GAOT/Transolver
+    等10+篇顶会工作$\rightarrow$
+    提炼不足$\rightarrow$
+    提出UNOP投稿CCF-A。
+    
+\end{itemize}
+
+
+\end{document}
