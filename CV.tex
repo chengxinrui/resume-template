@@ -1,0 +1,389 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%%  主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸， 上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+     
+    {\large \textbf{3D深度学习 / 长序列生成 / 
+    自回归建模 / 3D场景理解}}\\[0.5em]
+    
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+% ================================================================
+% 教育背景 ★差异：研究方向描述不同
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
+
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
+
+
+% ================================================================
+% 项目经历 —— 比亚迪 CAE/仿真/数字孪生 方向
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
+
+% ================================================================
+% 项目一：汽车气动性能AI快速预测（放第一个！直接命中车企需求）
+% ================================================================
+\textbf{汽车气动性能AI快速预测系统} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
+\begin{itemize}
+    \item \textbf{业务背景：}
+    汽车外流场CFD仿真（ANSYS Fluent）
+    单次耗时\textbf{6--12小时}，
+    造型迭代阶段需反复计算
+    气动阻力系数$C_d$与压力分布，
+    严重制约研发效率。
+    目标：用AI模型实现
+    \textbf{秒级气动性能评估}，
+    支撑快速造型筛选。
+    
+    \item \textbf{核心难点与方案：}
+    车身曲面几何复杂
+    （A柱转角、后视镜、
+    扰流板等局部特征），
+    标准深度学习模型在
+    \textbf{几何突变区域}预测误差大。
+    设计\textbf{几何门控注意力机制}
+    (GeoGatedAttention)，
+    利用网格\textbf{法向量、曲率、
+    二面角}等边级几何特征
+    动态调制注意力权重，
+    自适应聚焦气动关键区域。
+    
+    \item \textbf{工程指标：}
+    \begin{itemize}
+        \item 气动阻力系数$C_d$
+        预测误差 \textbf{2.69\%}
+        （工程可接受阈值通常5\%）
+        \item $C_d$预测值与CFD真���
+        相关系数 $\rho$ = \textbf{0.97}
+        \item 单次推理 \textbf{20ms}，
+        \textbf{替代6--12小时CFD}，
+        加速比$\sim$$10^5$
+    \end{itemize}
+    
+    \item \textbf{落地价值：}
+    可嵌入造型评审流程，
+    设计师调整造型后秒级获得
+    $C_d$反馈，将``设计—仿真''
+    迭代周期从\textbf{天级缩短至
+    分钟级}。
+\end{itemize}
+
+\projectsep
+% ================================================================
+% 项目二：水轮机数字孪生（突出工程交付能力）
+% ================================================================
+\textbf{旋转机械数字孪生AI仿真与智能运维系统} 
+\textit{(AI算法与系统集成负责人)} 
+\hfill 2024.12 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划
+``装备制造后市场服务协同平台研发与应用''}}
+\begin{itemize}
+    \item \textbf{业务背景：}
+    水轮机内流场CFD仿真单次
+    \textbf{6--12小时}，
+    领域无现成AI训练数据集，
+    需从零构建\textbf{从几何模型
+    到AI推理}的完整技术链路，
+    并实现在线运维预警。
+    
+    \item \textbf{数据工程（从零到一）：}
+    构建\textbf{跨工具链数据Pipeline}
+    ——FreeCAD几何导出$\rightarrow$
+    ANSYS网格与物理场提取
+    $\rightarrow$坐标系统一
+    $\rightarrow$跨网格插值，
+    插值精度与ANSYS原始数据一致。
+    \textbf{该Pipeline可复用于
+    任意CAE场景}（换热、结构、
+    电磁等）。
+    
+    \item \textbf{跨场景迁移验证：}
+    将\textbf{汽车外流场模型}
+    直接迁移至水轮机内流场，
+    \textbf{模型架构不变}即泛化成功，
+    证明AI仿真替代模型
+    \textbf{可跨零部件复用}，
+    降低每个新场景的重复开发成本。
+    
+    \item \textbf{运维闭环系统：}
+    设计``\textbf{AI仿真基线
+    +IoT传感器实测}''虚实对齐
+    预警方案，替代人工设定的
+    固定阈值，实现设备
+    早期异常检测。
+    封装为\textbf{标准化工业软件包}，
+    打通仿真→评估→预警闭环。
+    
+    \item \textbf{交付成果：}
+    推理\textbf{20ms}（加速$10^5$），
+    课题\textbf{结题验收通过}，
+    获得\textbf{3项发明专利
+    + 2项软件著作权}。
+\end{itemize}
+
+
+\projectsep
+
+% ================================================================
+% 项目三：UNOP（精简为技术储备，不占太多篇幅）
+% ================================================================
+\textbf{无标签物理约束的通用AI仿真引擎（UNOP）} 
+\textit{(一作，IJCAI CCF-A 审稿中)} 
+\hfill 2025.3 -- 至今
+\begin{itemize}
+    \item \textbf{解决的工程痛点：}
+    训练AI仿真替代模型
+    需先跑大量CFD生成训练数据，
+    ``用仿真训练替代仿真''
+    的悖论导致前期成本高。
+    本工作实现\textbf{无需任何
+    CFD标签数据}即可训练，
+    直接从物理方程
+    （N-S方程/对流扩散方程）
+    学习。
+    
+    \item \textbf{关键技术突破：}
+    \begin{itemize}
+        \item 基于\textbf{积分守恒}
+        约束替代微分残差，
+        天然满足质量/动量守恒，
+        3D训练\textbf{内存降至1/6}
+        \item 适配\textbf{任意复杂
+        CAD几何}（非结构化网格），
+        无需规则化预处理
+        \item 多工况连续预测
+        \textbf{50步仍稳定}
+        （现有方法约20步发散）
+    \end{itemize}
+    
+    \item \textbf{验证结果：}
+    3D汽车外流场$C_d$误差
+    \textbf{4.06\%}，
+    物理守恒违背量
+    $2.9\times10^{-3}$。
+    \textbf{可推广至热管理、
+    结构强度等多物理场景。}
+\end{itemize}
+
+
+% ================================================================
+% 核心技能 —— 对齐JD关键技术栈
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]
+{\color{CVBlue}\faCogs}\ 核心技能}
+    
+\begin{itemize}
+    \item \textbf{CAE仿真理解：}
+    熟悉\textbf{Navier-Stokes方程、
+    对流扩散方程、热传导方程}
+    等工程常用PDE；
+    了解ANSYS Fluent/Mechanical
+    仿真流程与数据格式；
+    能读懂CFD/FEA仿真结果
+    并提取关键工程指标
+    （$C_d$、压力分布、
+    温度场、应力场等）。
+    
+    \item \textbf{AI仿真替代（核心能力）：}
+    掌握\textbf{神经算子}
+    （FNO/PINO/GINO）、
+    \textbf{物理信息神经网络}（PINN）、
+    \textbf{图神经网络}（GNN）
+    等AI仿真替代方法；
+    有在\textbf{非结构化3D网格}上
+    建模的实战经验；
+    实现过\textbf{$10^5$倍加速}
+    （20ms替代6--12小时CFD）。
+    
+    \item \textbf{深度学习框架：}
+    熟练使用\textbf{PyTorch / PyG}；
+    熟悉\textbf{Transformer、GNN、
+    注意力机制}的设计与调优；
+    有大规模3D模型训练、
+    多GPU并行训练经验。
+    
+    \item \textbf{3D工程数据处理：}
+    熟练使用\textbf{VTK/ParaView}
+    进行3D场数据可视化与后处理；
+    有\textbf{FreeCAD几何处理、
+    ANSYS数据导出、跨网格插值、
+    坐标系对齐}等工程数据
+    Pipeline构建经验，
+    可覆盖\textbf{气动/热管理/
+    结构强度}等多种CAE场景。
+    
+    \item \textbf{工程开发与部署：}
+    Python（主力），C++（基础）；
+    Linux, Docker, Git；
+    有将AI模型封装为
+    \textbf{标准化工业软件包}
+    并交付验收的经验。
+    
+    \item \textbf{科研与学习能力：}
+    持续跟踪NeurIPS/ICML/ICLR等
+    顶会AI4Science方向论文，
+    已独立复现\textbf{10+篇}
+    前沿工作（GNOT/GAOT/
+    Transolver/FNO等）；
+    CET-6通过，可阅读英文文献。
+\end{itemize}
+% ================================================================
+% 个人评价
+% ================================================================
+\section{\makebox[\widthof{\faUser}][c]
+{\color{CVBlue}\faUser}\ 个人评价}
+
+\begin{itemize}
+    \item \textbf{稀缺的复合背景：}
+    同时理解\textbf{工程仿真物理}
+    （流体/传热/结构力学）和
+    \textbf{深度学习算法}
+    （Transformer/GNN/神经算子），
+    能把CAE工程师的需求
+    翻译成AI算法问题，
+    也能把AI结果翻译回
+    工程指标（$C_d$、温度、应力）。
+    
+    \item \textbf{经过验证的加速效果：}
+    在\textbf{汽车外流场}实际数据上
+    实现$C_d$预测误差\textbf{2.69\%}、
+    推理\textbf{20ms}
+    （替代6--12小时CFD），
+    精度在\textbf{工程可接受范围}内，
+    加速比达\textbf{$10^5$}。
+    
+    \item \textbf{完整的工程交付经验：}
+    从\textbf{数据Pipeline构建→
+    模型设计训练→软件封装→
+    验收交付}，独立完成
+    \textbf{国家重点研发计划}项目
+    全链路开发，
+    非纯论文型选手。
+    
+    \item \textbf{跨场景可复用：}
+    已验证模型可\textbf{跨零部件
+    迁移}（汽车外流场→水轮机
+    内流场），算法框架可直接
+    推广至比亚迪多个仿真场景。
+\end{itemize}
+
+
+\end{document}
