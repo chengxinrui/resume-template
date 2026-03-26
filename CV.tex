@@ -104,7 +104,7 @@
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{世界模型 / 时空预测 / 长时序生成 / 神经算子}}\\[0.5em]
+    {\large \textbf{{AI4Science / 3D深度学习 / CAE网格与数据流 / 神经算子}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -133,23 +133,44 @@
 % ================================================================
 % 科研经历
 % ================================================================
+
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 科研经历}
-
-\textbf{UNOP：面向长时序时空预测的无监督神经算子} 
-\textit{(\textbf{一作}，IJCAI CCF-A 审稿中)} 
-\hfill 2025.3 -- 至今
+% ================================================================
+\textbf{几何感知AI模型的汽车气动性能快速预测} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{问题：}现有自回归时序模型在复杂几何场景下\textbf{20步即发散}，无法支撑长时序预测；传统物理约束方法(PINN)在3D场景内存爆炸。
-    
-    \item \textbf{方法：}提出基于积分一致性的物理约束(LIPE)，\textbf{无需监督标签}训练，3D内存降至微分方法的\textbf{1/6}。
-    
-    \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留高梯度时空结构（类似视频中的运动边缘/物体边界）。
-    
-    \item \textbf{核心成果：}\textbf{50步长时序外推仍稳定}，3D场景预测误差\textbf{4.06\%}，物理一致性误差$2.9\times10^{-3}$。
-    
-    \item \textbf{与世界模型的关联：}该方法可直接迁移至自动驾驶场景的\textbf{未来状态预测}与\textbf{时空一致性建模}。
+    \item \textbf{工业级Benchmark与痛点定位：} 在真实汽车工业数据集（DrivAerNet++）和 ShapeNet-Car 上复现并测试了多款前沿神经算子（Transolver等）。发现现有模型在处理溜背/三厢、光滑/细节底盘等\textbf{几何突变区域}时，难以捕捉局部边界层效应，导致预测误差飙升。
+    \item \textbf{核心算法创新 (GeoGatedAttention)：} 为解决上述痛点，设计了\textbf{几何门控注意力机制}。通过底层脚本提取网格的边缘曲率($tanh$缩放)、法向量夹角($cos\theta$)与边长，作为图结构中的 \texttt{edge\_geom\_feat} 动态调制 Attention 权重。让模型自适应感知“折角”与“平滑面”。
+    \item \textbf{工程指标与业务价值：} 气动阻力系数 $C_d$ 预测误差降至 \textbf{2.69\%}，相关系数 $\rho = 0.97$。单次推理 \textbf{20ms}，替代传统CFD 6-12小时的计算，将“设计-仿真”迭代周期从\textbf{天级缩短至分钟级}。
 \end{itemize}
+
+
+% ================================================================
+\textbf{UNOP：面向长时序时空预测的无监督神经算子} 
+\textit{(一作，CCF-A 审稿中)} 
+\hfill 2025.9 -- 至今
+\begin{itemize}
+    \item \textbf{创新：} 针对“用仿真训练AI替代仿真”的成本悖论，提出基于\textbf{积分一致性}的物理约束（LIPE）替代传统微分残差。天然满足质量/动量守恒，实现\textbf{无需CFD标签数据}的自回归训练。
+    \item \textbf{效果：} 适配任意复杂非结构化 CAD 几何，3D模型训练内存降至传统微分方法的 \textbf{1/6}。多工况连续预测 50 步仍保持稳定。
+\end{itemize}
+
+
+% \textbf{UNOP：面向长时序时空预测的无监督神经算子} 
+% \textit{(\textbf{一作}，IJCAI CCF-A 审稿中)} 
+% \hfill 2025.3 -- 至今
+% \begin{itemize}
+%     \item \textbf{问题：}现有自回归时序模型在复杂几何场景下\textbf{20步即发散}，无法支撑长时序预测；传统物理约束方法(PINN)在3D场景内存爆炸。
+    
+%     \item \textbf{方法：}提出基于积分一致性的物理约束(LIPE)，\textbf{无需监督标签}训练，3D内存降至微分方法的\textbf{1/6}。
+    
+%     \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留高梯度时空结构（类似视频中的运动边缘/物体边界）。
+    
+%     \item \textbf{核心成果：}\textbf{50步长时序外推仍稳定}，3D场景预测误差\textbf{4.06\%}，物理一致性误差$2.9\times10^{-3}$。
+    
+%     \item \textbf{与世界模型的关联：}该方法可直接迁移至自动驾驶场景的\textbf{未来状态预测}与\textbf{时空一致性建模}。
+% \end{itemize}
 
 
 % ================================================================
@@ -157,35 +178,21 @@
 % ================================================================
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
+================================================================
 
-% --- 项目一：水轮机系统 → 重新包装为"时空预测+跨域迁移" ---
-\textbf{工业场景时空预测模型的跨域迁移与部署} 
-\textit{(核心算法开发)} \hfill 2024.12 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{十四五国家重点研发计划项目}}
+\textbf{旋转机械数字孪生AI仿真与智能运维系统} 
+\textit{(AI算法与系统集成负责人)} 
+\hfill 2024.9 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{背景：}需将外部场景（汽车外流场）的时空预测模型\textbf{跨域迁移}至内部场景（水轮机内流场），数据格式/坐标系/网格完全不同。
-    
-    \item 从零构建\textbf{跨域数据对齐Pipeline}：几何清洗→坐标统一→跨网格插值，实现\textbf{模型架构不变直接迁移}。
-    
-    \item 设计``预测基线+实测对比''的\textbf{时空异常检测}机制，用于捕获预测与真实轨迹的偏差。
-    
-    \item \textbf{成果：}推理\textbf{20ms}（原仿真6-12小时，加速$10^5\times$），项目\textbf{结题验收通过}，获3项发明专利。
+    \item \textbf{挑战：} 工业现场数据极度混乱，水轮机几何（.glb/.stl）存在非流形破损；流场速度（CSV点云）与叶片压力场坐标系错配，完全无法直接送入深度学习框架。
+    \item \textbf{从零构建自动化 3D 网格 Pipeline（全链路）：} 
+        1) 拓扑修复：利用 PyVista 提取特征边定位孔洞，结合 Meshlab/Blender 完成流形网格封闭；
+        2) 网格划分：调用 TetGen 将表面转换为四面体体网格；
+        3) 多源融合：编写基于 KD-Tree 的 IDW(反距离权重) 算法，将 CSV 散乱点云的流速与壁面剪切力\textbf{精准映射到 VTK 节点}上。
+    \item \textbf{图数据重构与跨域泛化：} 编写自定义 PyG Dataset，批量提取 SDF、法向量，构建 \texttt{radius\_graph} 图拓扑。在\textbf{不改变网络架构}的前提下，将汽车外流场模型直接零样本迁移至水轮机内流场，成功完成 FSI（流固耦合）的第一步压力场预测验证。
+    \item \textbf{交付成果：} 封装为标准化软件包，打通 仿真→评估→预警 闭环。课题结题验收通过，获\textbf{3项发明专利+2项软件著作权}。
 \end{itemize}
-
-% --- 项目二：GeoGatedAttention → 包装为几何感知的时空建模 ---
-\textbf{几何感知注意力机制的时空场预测} 
-\textit{(核心开发者，发明专利已受理)} 
-\hfill 2024.9 -- 2025.3
-\begin{itemize}
-    \item \textbf{问题：}标准Attention在几何突变区域（物体边界、运动边缘）预测误差大，缺乏结构感知能力。
-    
-    \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现\textbf{O(E)稀疏计算}。
-    
-    \item \textbf{结果：}预测误差\textbf{2.69\%}，相关系数$\rho$=\textbf{0.97}，推理\textbf{20ms}。
-    
-    \item \textbf{可迁移性：}该机制可应用于视频生成中的\textbf{物体边界保持}与\textbf{运动一致性建模}。
-\end{itemize}
-
 
 
 
@@ -212,32 +219,32 @@
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
     
 \begin{itemize}
-    \item \textbf{时序生成模型：}熟悉自回归时序预测、Diffusion Model原理；有长时序稳定性优化经验（50步不发散）。
-    
-    \item \textbf{深度学习框架：}精通PyTorch/PyG；Transformer/GNN模型构建，注意力机制改进，稀疏计算优化。
-    
-    \item \textbf{3D时空数据处理：}VTK/ParaView 3D数据处理，跨网格插值，多源数据对齐Pipeline构建。
-    
-    \item \textbf{物理约束建模：}神经算子(FNO/PINO)、物理信息神经网络(PINN)、蒙特卡洛积分等AI4Science方法。
-    
-    \item \textbf{工程能力：}Python, C++, Linux, Docker, Git；有国家级项目落地部署经验。
-    
-    \item \textbf{语言能力：}CET-6；具备NeurIPS/ICLR/CVPR等顶会论文阅读与复现能力。
+    \item \textbf{3D 几何与网格处理：} 精通 \textbf{VTK, PyVista, Open3D, Trimesh}；熟练使用 Gmsh, TetGen 进行体/面网格生成与质量优化；精通基于 KD-Tree 的多源空间数据映射与插值。熟练处理 .stl, .stp, .vtk, .vtu 等格式。
+    \item \textbf{AI 仿真与图神经网络：} 精通 \textbf{PyTorch, PyG}；熟练构建复杂 Graph Dataset；深刻理解并能魔改 Transformer, GNN, 神经算子 (FNO/GAOT/Transolver) 底层架构。
+    \item \textbf{物理与工程仿真底蕴：} 熟悉 Navier-Stokes 方程与流体力学边界条件；了解 ANSYS Fluent / OpenFOAM 仿真机制与 FSI 流固耦合载荷传递逻辑（速度/压力场 $\rightarrow$ 结构受力）。
+    \item \textbf{工程开发：} Python (主力), Linux, Docker, Git；具备将零散算法封装为工业可交付软件包的能力。
 \end{itemize}
+
 
 % ================================================================
 % 个人评价
 % ================================================================
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
+% \begin{itemize}
+%     \item \textbf{核心匹配：}专注\textbf{长时序时空预测}研究，解决自回归发散问题（50步稳定外推），与世界模型的时空一致性需求高度契合。
+    
+%     \item \textbf{跨域迁移：}有将时空预测模型从一个物理场景迁移到另一场景的完整经验，可快速适配自动驾驶场景。
+    
+%     \item \textbf{工程落地：}从算法设计到工业级部署全流程经验，完成国家重点研发计划交付。
+    
+%     \item \textbf{科研产出：}IJCAI一作在投 + 3项发明专利，具备快速跟踪前沿并产出的能力。
+% \end{itemize}
+
 \begin{itemize}
-    \item \textbf{核心匹配：}专注\textbf{长时序时空预测}研究，解决自回归发散问题（50步稳定外推），与世界模型的时空一致性需求高度契合。
-    
-    \item \textbf{跨域迁移：}有将时空预测模型从一个物理场景迁移到另一场景的完整经验，可快速适配自动驾驶场景。
-    
-    \item \textbf{工程落地：}从算法设计到工业级部署全流程经验，完成国家重点研发计划交付。
-    
-    \item \textbf{科研产出：}IJCAI一作在投 + 3项发明专利，具备快速跟踪前沿并产出的能力。
+    \item \textbf{稀缺的 3D CAE + AI 全栈落地能力：} 既能处理底层“脏数据”（精通 STL破损修复、TetGen体网格划分、VTK/ParaView多源物理场插值）；又能驾驭顶层算法（精通 PyG 图数据结构构建、Transformer/GNN/神经算子架构调优）。
+    \item \textbf{工业级基准测试与性能优化：} 深入研究 DrivAerNet++ 等工业级大型数据集，主导过对 Transolver、GAOT、GNOT 等前沿模型的 Benchmark，精准定位并解决模型在复杂拓扑（如后视镜、底盘）上的误差突增问题。验证 $C_d$ 误差低至 \textbf{2.69\%}，推理耗时 \textbf{20ms}。
 \end{itemize}
+
 
 \end{document}
