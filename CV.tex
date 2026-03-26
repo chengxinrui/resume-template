@@ -104,7 +104,7 @@
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{AI for CFD / 神经算子 / 物理约束时空预测 / 3D几何深度学习}}\\[0.5em]
+    {\large \textbf{长时序时空预测 / 自回归生成模型 / 3D几何深度学习 / 物理一致性约束}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -141,9 +141,20 @@
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{工业级Benchmark与痛点定位：} 在真实汽车工业数据集（DrivAerNet++）和 ShapeNet-Car 上复现并测试了多款前沿神经算子（Transolver等）。发现现有模型在处理溜背/三厢、光滑/细节底盘等\textbf{几何突变区域}时，难以捕捉局部边界层效应，导致预测误差飙升。
-    \item \textbf{核心算法创新 (GeoGatedAttention)：} 为解决上述痛点，设计了\textbf{几何门控注意力机制}。通过底层脚本提取网格的边缘曲率($tanh$缩放)、法向量夹角($cos\theta$)与边长，作为图结构中的 \texttt{edge\_geom\_feat} 动态调制 Attention 权重。让模型自适应感知“折角”与“平滑面”。
-    \item \textbf{工程指标与业务价值：} 气动阻力系数 $C_d$ 预测误差降至 \textbf{2.69\%}，相关系数 $\rho = 0.97$。单次推理 \textbf{20ms}，替代传统CFD 6-12小时的计算，将“设计-仿真”迭代周期从\textbf{天级缩短至分钟级}。
+    \item \textbf{Benchmark与问题发现：}
+      在工业级3D数据集(DrivAerNet++, ShapeNet-Car)上系统评测
+      Transolver等前沿模型，定位其在\textbf{几何突变区域}
+      （拓扑/曲率剧烈变化处）的预测失效问题——
+      类似自动驾驶中遮挡边缘、车辆轮廓等空间不连续区域的建模难点。
+    \item \textbf{核心算法 (GeoGatedAttention)：}
+      设计几何门控注意力机制，从3D网格中提取曲率($\tanh$缩放)、
+      法向量夹角($\cos\theta$)、边长作为边特征，
+      \textbf{动态调制Attention权重}，使模型自适应感知
+      空间结构突变。该机制可直接迁移至BEV/3D场景的
+      空间注意力模块。
+    \item \textbf{性能指标：}
+      预测误差 \textbf{2.69\%}，相关系数 $\rho{=}0.97$，
+      单次推理 \textbf{20ms}（替代传统仿真6-12小时）。
 \end{itemize}
 
 
@@ -152,10 +163,30 @@
 \textit{(一作，CCF-A 审稿中)} 
 \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{问题与挑战：} 现有自回归时序模型在复杂3D几何下\textbf{20步即发散}；传统物理约束(PINN)在3D场景下内存爆炸且梯度病态，难以支撑长时序工程级仿真。
-    \item \textbf{核心方法 (LIPE+GALA+GSEO)：} 提出基于\textbf{积分一致性}的物理约束(LIPE)替代微分残差，\textbf{无需CFD标签}即可训练，3D内存降至\textbf{1/6}。设计几何解耦编码器(GALA)统一处理不规则网格，并利用曲率感知门控(GSEO)保留激波/涡旋等高梯度时空结构。
-    \item \textbf{工程指标：} 多工况连续外推 \textbf{50步仍保持稳定}。3D汽车外流场预测误差 \textbf{4.06\%}，物理守恒违背量极低 ($2.9\times10^{-3}$)。
-    \item \textbf{跨域扩展性：} 其底层的长序列自回归与时空一致性建模能力，可无缝迁移至自动驾驶场景中的\textbf{未来状态预测}。
+    \item \textbf{核心问题（与世界模型同源）：}
+      现有自回归模型在复杂3D场景下\textbf{20步即发散}，
+      这与自动驾驶世界模型面临的长时序时空连贯性挑战
+      \textbf{本质同构}；传统逐帧监督(PINN)在3D下
+      内存爆炸且梯度病态。
+    \item \textbf{时空一致性约束 (LIPE)：}
+      提出基于\textbf{积分一致性}的无监督时空约束，
+      替代逐帧标注监督信号，\textbf{无需标签}即可训练，
+      3D显存降至\textbf{1/6}。该思路可直接类比
+      视频生成中的时序连贯性损失设计。
+    \item \textbf{几何感知自回归架构 (GALA+GSEO)：}
+      设计几何解耦编码器(GALA)统一处理非结构化空间数据，
+      曲率感知门控(GSEO)保留高梯度时空结构
+      （激波/涡旋 $\leftrightarrow$ 驾驶场景中的
+      运动边界/遮挡边缘）。
+    \item \textbf{长时序稳定性：}
+      多工况连续外推\textbf{50步仍保持稳定}，
+      3D场景预测误差 \textbf{4.06\%}，
+      时空一致性违背量极低($2.9{\times}10^{-3}$)。
+    \item \textbf{可迁移至世界模型：}
+      底层的\textbf{长序列自回归稳定性}与
+      \textbf{无监督时空一致性约束}，
+      可直接迁移至视频序列的未来帧预测与
+      环境状态演化建模。
 \end{itemize}
 
 
@@ -170,13 +201,23 @@
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{挑战：} 工业现场数据极度混乱，水轮机几何（.glb/.stl）存在非流形破损；流场速度（CSV点云）与叶片压力场坐标系错配，完全无法直接送入深度学习框架。
-    \item \textbf{从零构建自动化 3D 网格 Pipeline（全链路）：} 
-        1) 拓扑修复：利用 PyVista 提取特征边定位孔洞，结合 Meshlab/Blender 完成流形网格封闭；
-        2) 网格划分：调用 TetGen 将表面转换为四面体体网格；
-        3) 多源融合：编写基于 KD-Tree 的 IDW(反距离权重) 算法，将 CSV 散乱点云的流速与壁面剪切力\textbf{精准映射到 VTK 节点}上。
-    \item \textbf{图数据重构与跨域泛化：} 编写自定义 PyG Dataset，批量提取 SDF、法向量，构建 \texttt{radius\_graph} 图拓扑。在\textbf{不改变网络架构}的前提下，将汽车外流场模型直接零样本迁移至水轮机内流场，成功完成 FSI（流固耦合）的第一步压力场预测验证。
-    \item \textbf{交付成果：} 封装为标准化软件包，打通 仿真→评估→预警 闭环。课题结题验收通过，获\textbf{3项发明专利+2项软件著作权}。
+    \item \textbf{挑战：}
+      工业现场3D数据极度混乱——几何模型(.glb/.stl)
+      存在非流形破损，多源传感数据坐标系错配，
+      完全无法直接送入深度学习框架。
+    \item \textbf{3D数据Pipeline全链路构建：}
+      1) 拓扑修复：PyVista特征边检测 + Meshlab流形封闭；
+      2) 体网格生成：TetGen四面体划分；
+      3) 多源对齐：KD-Tree + IDW算法将散乱点云
+      \textbf{精准映射到统一网格节点}——
+      该空间对齐能力可直接复用于多传感器融合场景。
+    \item \textbf{跨域零样本迁移：}
+      构建PyG图数据集(SDF/法向量/radius\_graph)，
+      \textbf{不改网络架构}即将外流场模型迁移至
+      全新内流场几何，验证了模型的\textbf{跨域泛化能力}。
+    \item \textbf{交付：}
+      封装为标准化软件包，打通仿真$\to$评估$\to$预警闭环。
+      获\textbf{3项发明专利+2项软著}，课题验收通过。
 \end{itemize}
 
 
@@ -203,12 +244,25 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与深度学习：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, 注意力机制}；深入掌握 \textbf{神经算子} (FNO/GAOT/Transolver) 与无监督物理约束架构；具备长时序自回归建模实战能力。
-    \item \textbf{3D几何与数据工程：} 作为CS背景，精通 \textbf{VTK, PyVista, Open3D} 底层数据结构；具备处理大规模非结构化网格的代码能力（STL拓扑修复、TetGen网格划分）；熟练编写基于 KD-Tree/IDW 的多源空间数据映射算法。
-    \item \textbf{领域知识：} 了解 Navier-Stokes 方程等流体力学基本概念；熟悉 ANSYS Fluent 仿真数据格式；\textbf{擅长将 CAE 工程师的物理痛点，转化为图神经网络的数学特征（如SDF、曲率、法向量）与代码实现。}
-    \item \textbf{工程开发与部署：} Python, Linux, Docker, Git；具备将零散AI模型封装为标准化工业级软件包，并打通数据Pipeline的能力。
+    \item \textbf{自回归与时序生成模型：}
+      精通长时序自回归建模（\textbf{50步稳定外推}）；
+      深入理解时空一致性约束设计与无监督训练范式；
+    \item \textbf{深度学习架构设计：}
+      精通 \textbf{PyTorch, PyG}；
+      熟练设计 \textbf{Transformer, GNN, 注意力机制}
+      及其变体（几何门控Attention等）；
+      深入掌握神经算子(FNO/Transolver)架构。
+    \item \textbf{3D空间数据工程：}
+      精通 \textbf{VTK, PyVista, Open3D} 底层数据结构；
+      具备大规模非结构化3D数据处理全链路能力
+      （拓扑修复/体网格划分/多源空间对齐）；
+      熟练构建图拓扑与空间特征
+      （SDF、曲率、法向量）。
+    \item \textbf{工程能力：}
+      Python, C++(基础), Linux, Docker, Git；
+      具备将AI模型封装为标准化软件包并打通
+      端到端Pipeline的工程落地经验。
 \end{itemize}
-
 
 % ================================================================
 % 个人评价
@@ -216,8 +270,22 @@
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{稀缺的 3D CAE + AI 全栈落地能力：} 既能处理底层“脏数据”（精通 STL破损修复、TetGen体网格划分、VTK/ParaView多源物理场插值）；又能驾驭顶层算法（精通 PyG 图数据结构构建、Transformer/GNN/神经算子架构调优）。
-    \item \textbf{工业级基准测试与性能优化：} 深入研究 DrivAerNet++ 等工业级大型数据集，主导过对 Transolver、GAOT、GNOT 等前沿模型的 Benchmark，精准定位并解决模型在复杂拓扑（如后视镜、底盘）上的误差突增问题。验证 $C_d$ 误差低至 \textbf{2.69\%}，推理耗时 \textbf{20ms}。
+    \item \textbf{长时序自回归建模的深度积累：}
+      在3D复杂场景下实现50步稳定外推，
+      深入研究并解决了自回归发散、时空一致性崩溃
+      等核心难题——这与世界模型中的
+      长时序连贯生成挑战\textbf{技术同构}。
+    \item \textbf{稀缺的3D空间理解+AI全栈能力：}
+      既能处理底层3D``脏数据''
+      （拓扑修复、网格划分、多源空间对齐），
+      又能设计顶层算法
+      （Transformer/GNN/注意力机制/自回归架构），
+      具备从数据到模型的端到端闭环交付能力。
+    \item \textbf{快速迁移新领域的学习能力：}
+      已有的物理约束无监督学习经验，
+      与 Diffusion/Score-based 生成模型在
+      数学框架上高度相通（SDE/ODE视角），
+      可快速切入视频生成与世界模型方向。
 \end{itemize}
 
 
