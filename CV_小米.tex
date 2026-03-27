@@ -137,6 +137,17 @@
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 科研经历}
 % ================================================================
+
+\textbf{面向复杂网格的统一连续神经算子与物理感知时空预测} 
+\textit{(独立在研 / 架构设计与核心验证阶段)} 
+\hfill 2025.1 -- 至今
+\begin{itemize}
+    \item \textbf{统一连续算子架构 (Continuous Operator)：} 针对传统算子依赖规则网格与 1D/2D/3D 维度割裂的痛点，引入\textbf{隐式神经卷积 (INC)} 参数化空间连续积分核，替代离散卷积，实现分辨率无关的特征提取。
+    \item \textbf{双域物理感知门控 (Dual-Domain Gating)：} 首创时空与频率统一的注意力机制。通过\textbf{空间域门控} (结合SDF/曲率) 自动聚焦高梯度边界层；通过\textbf{谱域门控} (自适应谱核) 根据激波/层流等物理条件，动态过滤与保留关键频率模态。
+    \item \textbf{几何约束与零样本超分落地：} 提出\textbf{统一积分守恒自监督损失}，规避复杂 3D 几何下传统 PINN 的梯度病态问题。框架具备极强的\textbf{Zero-shot 超分辨率泛化能力}（支持粗网格训练、细网格推理），天然适配底层异构的 CAE 结构受力与多物理场仿真需求。
+\end{itemize}
+
+
 \textbf{几何感知AI模型的汽车气动性能快速预测} 
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
@@ -203,7 +214,7 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与深度学习：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, 注意力机制}；深入掌握 \textbf{神经算子} (FNO/GAOT/Transolver) 与无监督物理约束架构；具备长时序自回归建模实战能力。
+    \item \textbf{AI算法与深度学习：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, 注意力机制}；深入掌握 \textbf{神经算子} (FNO/GAOT/Transolver) 与无监督物理约束架构；具备长时序自回归建模实战能力，能独立推演基于连续积分提升与隐式神经卷积（INC）的大一统架构，具备跨维度（1D/2D/3D）时空序列建模视野。
     \item \textbf{3D几何与数据工程：} 作为CS背景，精通 \textbf{VTK, PyVista, Open3D} 底层数据结构；具备处理大规模非结构化网格的代码能力（STL拓扑修复、TetGen网格划分）；熟练编写基于 KD-Tree/IDW 的多源空间数据映射算法。
     \item \textbf{领域知识：} 了解 Navier-Stokes 方程等流体力学基本概念；熟悉 ANSYS Fluent 仿真数据格式；\textbf{擅长将 CAE 工程师的物理痛点，转化为图神经网络的数学特征（如SDF、曲率、法向量）与代码实现。}
     \item \textbf{工程开发与部署：} Python, Linux, Docker, Git；具备将零散AI模型封装为标准化工业级软件包，并打通数据Pipeline的能力。
@@ -216,7 +227,7 @@
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{稀缺的 3D CAE + AI 全栈落地能力：} 既能处理底层“脏数据”（精通 STL破损修复、TetGen体网格划分、VTK/ParaView多源物理场插值）；又能驾驭顶层算法（精通 PyG 图数据结构构建、Transformer/GNN/神经算子架构调优）。
+    \item \textbf{稀缺的 3D CAE多物理场 + AI 全栈落地能力：} 具备强悍的底层“脏数据”处理手腕（精通 STL破损修复、TetGen四面体网格划分、VTK多源物理场精准映射）；且具备极高的算法认知，擅长将 CAE 工程师在\textbf{流体力学、结构力学、碰撞响应}中的底层物理痛点（如边界层效应、高频误差累积），转化为 AI 模型中的数学特征（如SDF、曲率、几何门控）并用代码实现。
     \item \textbf{工业级基准测试与性能优化：} 深入研究 DrivAerNet++ 等工业级大型数据集，主导过对 Transolver、GAOT、GNOT 等前沿模型的 Benchmark，精准定位并解决模型在复杂拓扑（如后视镜、底盘）上的误差突增问题。验证 $C_d$ 误差低至 \textbf{2.69\%}，推理耗时 \textbf{20ms}。
 \end{itemize}
 
