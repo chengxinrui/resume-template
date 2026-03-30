@@ -103,8 +103,8 @@
 \begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
-    
-    {\large \textbf{工程仿真加速 / AI4Science / 神经算子 / 物理建模}}\\[0.5em]
+     
+    {\large \textbf{AI for CFD / 神经算子 / 物理约束时空预测 / 3D几何深度学习}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -129,34 +129,35 @@
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
 
+
 % ================================================================
 % 科研经历
 % ================================================================
+
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 科研经历}
-
-\textbf{UNOP：无标签物理约束的AI仿真加速引擎} 
-\textit{(一作，IJCAI CCF-A 审稿中)} 
-\hfill 2025.3 -- 至今
+% ================================================================
+\textbf{几何感知AI模型的汽车气动性能快速预测} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{背景：}AI仿真替代面临根本矛盾——训练AI需先做仿真生成标签。现有无监督方法(PINN)在3D工程几何上内存爆炸且梯度病态，自回归预测20步即发散，无法支撑工程级长时仿真。
-    \item 提出基于积分一致性的物理约束(LIPE)替代微分残差，\textbf{无需仿真标签}，3D内存降至微分方法的1/6。
-    \item 设计几何解耦编码器(GALA)统一处理不规则几何；曲率感知门控(GSEO)保留激波/涡旋等高梯度物理结构。
-    \item \textbf{工程验证：}3D ShapeNet-Car Cd误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$，\textbf{50步外推仍稳定}。
+    \item \textbf{工业级Benchmark与痛点定位：} 在真实汽车工业数据集（DrivAerNet++）和 ShapeNet-Car 上复现并测试了多款前沿神经算子（Transolver等）。发现现有模型在处理溜背/三厢、光滑/细节底盘等\textbf{几何突变区域}时，难以捕捉局部边界层效应，导致预测误差飙升。
+    \item \textbf{核心算法创新 (GeoGatedAttention)：} 为解决上述痛点，设计了\textbf{几何门控注意力机制}。通过底层脚本提取网格的边缘曲率($tanh$缩放)、法向量夹角($cos\theta$)与边长，作为图结构中的 \texttt{edge\_geom\_feat} 动态调制 Attention 权重。让模型自适应感知“折角”与“平滑面”。
+    \item \textbf{工程指标与业务价值：} 气动阻力系数 $C_d$ 预测误差降至 \textbf{2.69\%}，相关系数 $\rho = 0.97$。单次推理 \textbf{20ms}，替代传统CFD 6-12小时的计算，将“设计-仿真”迭代周期从\textbf{天级缩短至分钟级}。
 \end{itemize}
-% \begin{itemize}
-%     \item 针对CFD仿真“数据依赖强、长时预测不稳定”问题，提出无标签训练的神经算子框架。
-    
-%     \item \textbf{核心成果：}
-%     \begin{itemize}
-%         \item 无需仿真数据训练，\textbf{3D内存降低至1/6}
-%         \item \textbf{50步长时预测稳定}（传统方法约20步发散）
-%     \end{itemize}
-    
-%     \item 设计几何感知模型结构（GALA + GSEO），提升复杂几何下预测稳定性。
-    
-%     \item \textbf{实验结果：}3D任务误差\textbf{4.06\%}，物理违背量$2.9\times10^{-3}$。
-% \end{itemize}
+
+
+% ================================================================
+\textbf{UNOP：面向长时序时空预测的无监督神经算子} 
+\textit{(一作，CCF-A 审稿中)} 
+\hfill 2025.9 -- 至今
+\begin{itemize}
+    \item \textbf{问题与挑战：} 现有自回归时序模型在复杂3D几何下\textbf{20步即发散}；传统物理约束(PINN)在3D场景下内存爆炸且梯度病态，难以支撑长时序工程级仿真。
+    \item \textbf{核心方法 (LIPE+GALA+GSEO)：} 提出基于\textbf{积分一致性}的物理约束(LIPE)替代微分残差，\textbf{无需CFD标签}即可训练，3D内存降至\textbf{1/6}。设计几何解耦编码器(GALA)统一处理不规则网格，并利用曲率感知门控(GSEO)保留激波/涡旋等高梯度时空结构。
+    \item \textbf{工程指标：} 多工况连续外推 \textbf{50步仍保持稳定}。3D汽车外流场预测误差 \textbf{4.06\%}，物理守恒违背量极低 ($2.9\times10^{-3}$)。
+    \item \textbf{跨域扩展性：} 其底层的长序列自回归与时空一致性建模能力，可无缝迁移至自动驾驶场景中的\textbf{未来状态预测}。
+\end{itemize}
+
 
 % ================================================================
 % 项目经历
@@ -164,54 +165,20 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-% --- 项目一：水轮机系统 ---
-\textbf{水轮机数字孪生AI仿真与智能运维系统} 
-\textit{(AI算法与系统集成)} \hfill 2024.12 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{十四五国家重点研发计划
-``装备制造后市场服务协同平台研发与应用''}}
+\textbf{旋转机械数字孪生AI仿真与智能运维系统} 
+\textit{(AI算法与系统集成负责人)} 
+\hfill 2024.9 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{背景：}水轮机CFD仿真单次6-12小时，领域无现成AI数据集，几何与物理场，坐标系/网格/格式均不统一。需将汽车外流场模型跨域迁移至水轮机内流场。
-    
-    \item 从零构建\textbf{跨工具链数据pipeline}从几何清洗到坐标对齐再到跨网格插值，插值精度与ANSYS原始数据一致。模型架构不变直接跨域迁移成功。
-    
-    \item 设计``AI仿真基线+IoT实测''\textbf{虚实对齐预警}替代固定阈值，实现早期异常捕获。封装为\textbf{MWORKS标准化软件包}，打通仿真→评估→预警闭环。
-    
-    \item \textbf{成果：}推理\textbf{20ms}（加速$10^5$），课题\textbf{结题验收通过}，获3项发明专利+2项软著。
+    \item \textbf{挑战：} 工业现场数据极度混乱，水轮机几何（.glb/.stl）存在非流形破损；流场速度（CSV点云）与叶片压力场坐标系错配，完全无法直接送入深度学习框架。
+    \item \textbf{从零构建自动化 3D 网格 Pipeline（全链路）：} 
+        1) 拓扑修复：利用 PyVista 提取特征边定位孔洞，结合 Meshlab/Blender 完成流形网格封闭；
+        2) 网格划分：调用 TetGen 将表面转换为四面体体网格；
+        3) 多源融合：编写基于 KD-Tree 的 IDW(反距离权重) 算法，将 CSV 散乱点云的流速与壁面剪切力\textbf{精准映射到 VTK 节点}上。
+    \item \textbf{图数据重构与跨域泛化：} 编写自定义 PyG Dataset，批量提取 SDF、法向量，构建 \texttt{radius\_graph} 图拓扑。在\textbf{不改变网络架构}的前提下，将汽车外流场模型直接零样本迁移至水轮机内流场，成功完成 FSI（流固耦合）的第一步压力场预测验证。
+    \item \textbf{交付成果：} 封装为标准化软件包，打通 仿真→评估→预警 闭环。课题结题验收通过，获\textbf{3项发明专利+2项软件著作权}。
 \end{itemize}
-% \begin{itemize}
-%     \item 针对CFD仿真单次6--12小时、缺乏数据集的问题，构建AI替代仿真方案。
-    
-%     \item \textbf{核心成果：}
-%     \begin{itemize}
-%         \item 推理时间\textbf{20ms替代6--12小时}（$\sim10^5\times$加速）
-%         \item 实现跨域迁移（汽车外流场$\rightarrow$水轮机内流场）
-%     \end{itemize}
-    
-%     \item 从0构建跨工具链数据pipeline（几何→网格→物理场），支撑模型训练与部署。
-    
-%     \item 系统封装为工业软件并完成验收，获3项发明专利+2项软著。
-% \end{itemize}
 
-% \projectsep
-
-% --- 项目二：GeoGatedAttention ---
-\textbf{几何感知AI模型的汽车气动性能快速预测} 
-\textit{(核心开发者，发明专利已受理)} 
-\hfill 2024.9 -- 2025.3
-\begin{itemize}
-    \item \textbf{背景：}流场在几何突变区域变化剧烈，但现有模型的注意力机制不感知边的几何结构，关键区域预测误差大。
-    
-    \item 设计\textbf{几何门控注意力}(GeoGatedAttention)，用边级几何特征动态调制attention权重，实现O(E)稀疏计算。
-    
-    \textbf{结果：}Cd误差\textbf{2.69\%}，$\rho$=\textbf{0.97}，推理\textbf{20ms}。
-\end{itemize}
-% \begin{itemize}
-%     \item 针对复杂几何区域预测误差大的问题，设计几何感知注意力机制。
-    
-%     \item 引入边级几何特征动态调制attention权重，实现结构感知的稀疏计算（O(E)）。
-    
-%     \item \textbf{结果：}Cd误差\textbf{2.69\%}，相关系数$\rho=\textbf{0.97}$，推理\textbf{20ms}。
-% \end{itemize}
 
 
 % ========================================================
@@ -230,30 +197,28 @@
     \item \textbf{竞赛：}第十五届\textbf{中兴捧月}全球精英挑战赛 -- \textbf{区域优胜奖} \hfill 2025
 \end{itemize}
 
+  
 % ================================================================
-% 核心技能 ★差异：侧重点不同
+% 核心技能
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
-    
 \begin{itemize}
-    %% ★ 仿真版：物理仿真理论放前面
-    \item \textbf{仿真与物理建模：}了解对流扩散方程、Navier-Stokes方程；熟悉神经算子 (FNO/PINO)、物理信息神经网络 (PINN)、蒙特卡洛积分等 AI4Science 方法。
-    %% 
-    \item \textbf{深度学习与AI方法：}熟悉 PyTorch/PyG 框架；Transformer/GNN模型构建，注意力机制改进，稀疏计算与长时序预测。
-    \item \textbf{工程数据处理：}VTK/ParaView 3D数据处理，FreeCAD/ANSYS数据导出与跨网格插值。
-    \item \textbf{开发与部署：}Python, Linux, Docker, Git。
-    \item \textbf{语言能力：}CET-4，CET-6；具备英文顶会论文（NeurIPS/ICLR/CVPR等）阅读与复现能力。
+    \item \textbf{AI算法与深度学习：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, 注意力机制}；深入掌握 \textbf{神经算子} (FNO/GAOT/Transolver) 与无监督物理约束架构；具备长时序自回归建模实战能力。
+    \item \textbf{3D几何与数据工程：} 作为CS背景，精通 \textbf{VTK, PyVista, Open3D} 底层数据结构；具备处理大规模非结构化网格的代码能力（STL拓扑修复、TetGen网格划分）；熟练编写基于 KD-Tree/IDW 的多源空间数据映射算法。
+    \item \textbf{领域知识：} 了解 Navier-Stokes 方程等流体力学基本概念；熟悉 ANSYS Fluent 仿真数据格式；\textbf{擅长将 CAE 工程师的物理痛点，转化为图神经网络的数学特征（如SDF、曲率、法向量）与代码实现。}
+    \item \textbf{工程开发与部署：} Python, Linux, Docker, Git；具备将零散AI模型封装为标准化工业级软件包，并打通数据Pipeline的能力。
 \end{itemize}
 
+
 % ================================================================
-% 个人评价 ★差异：叙事角度完全不同
+% 个人评价
 % ================================================================
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
 \begin{itemize}
-    \item \textbf{复合能力：}理解物理原理和工程问题，能用神经算子/深度学习加速仿真。
-    \item \textbf{落地经验：}从数据处理、模型训练到系统部署，完成国家重点研发计划交付。
-    \item \textbf{可量化成果：}AI推理20ms替代CFD 6-12小时，预测误差控制在工程可接受范围。
+    \item \textbf{稀缺的 3D CAE + AI 全栈落地能力：} 既能处理底层“脏数据”（精通 STL破损修复、TetGen体网格划分、VTK/ParaView多源物理场插值）；又能驾驭顶层算法（精通 PyG 图数据结构构建、Transformer/GNN/神经算子架构调优）。
+    \item \textbf{工业级基准测试与性能优化：} 深入研究 DrivAerNet++ 等工业级大型数据集，主导过对 Transolver、GAOT、GNOT 等前沿模型的 Benchmark，精准定位并解决模型在复杂拓扑（如后视镜、底盘）上的误差突增问题。验证 $C_d$ 误差低至 \textbf{2.69\%}，推理耗时 \textbf{20ms}。
 \end{itemize}
+
 
 \end{document}
