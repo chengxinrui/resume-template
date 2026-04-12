@@ -203,10 +203,10 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与深度学习：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, 注意力机制}；深入掌握 \textbf{神经算子} (FNO/GAOT/Transolver) 与无监督物理约束架构；具备长时序自回归建模实战能力。
-    \item \textbf{3D几何与数据工程：} 作为CS背景，精通 \textbf{VTK, PyVista, Open3D} 底层数据结构；具备处理大规模非结构化网格的代码能力（STL拓扑修复、TetGen网格划分）；熟练编写基于 KD-Tree/IDW 的多源空间数据映射算法。
-    \item \textbf{领域知识：} 了解 Navier-Stokes 方程等流体力学基本概念；熟悉 ANSYS Fluent 仿真数据格式；\textbf{擅长将 CAE 工程师的物理痛点，转化为图神经网络的数学特征（如SDF、曲率、法向量）与代码实现。}
-    \item \textbf{工程开发与部署：} Python, Linux, Docker, Git；具备将零散AI模型封装为标准化工业级软件包，并打通数据Pipeline的能力。
+    \item \textbf{AI算法与自动驾驶建模：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, Attention机制, Diffusion建模思想}；深入掌握 \textbf{神经算子（FNO / GAOT / Transolver）与物理约束学习方法}；具备长时序时空建模与自回归预测能力，可用于 \textbf{BEV / OCC / Motion Forecasting / World Model rollout} 等任务。
+    \item \textbf{3D场景理解与几何建模：} 具备复杂3D结构数据处理能力，熟悉 \textbf{VTK, PyVista, Open3D}；能够处理大规模非结构化网格与点云数据（STL修复、TetGen体网格划分）；熟练实现基于 KD-Tree / IDW 的多源空间数据融合与重建，可支持 \textbf{3D Scene Representation / BEV建模}。
+    \item \textbf{自动驾驶相关建模能力：} 了解 \textbf{多传感器融合（Camera / LiDAR / Radar）基本原理}；理解 \textbf{时空预测、轨迹建模、物理约束运动建模}；可将连续物理场建模方法迁移至 \textbf{交通参与体行为预测与交互建模}问题。
+    \item \textbf{工程开发与系统能力：} 熟练使用 Python, Linux, Docker, Git；具备模型训练、实验管理与Pipeline构建能力；能够将研究模型封装为可复现实验系统，并支持基础部署与性能分析。
 \end{itemize}
 
 
@@ -215,10 +215,9 @@
 % ================================================================
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
-\begin{itemize}
-    \item \textbf{稀缺的 3D CAE + AI 全栈落地能力：} 既能处理底层“脏数据”（精通 STL破损修复、TetGen体网格划分、VTK/ParaView多源物理场插值）；又能驾驭顶层算法（精通 PyG 图数据结构构建、Transformer/GNN/神经算子架构调优）。
-    \item \textbf{工业级基准测试与性能优化：} 深入研究 DrivAerNet++ 等工业级大型数据集，主导过对 Transolver、GAOT、GNOT 等前沿模型的 Benchmark，精准定位并解决模型在复杂拓扑（如后视镜、底盘）上的误差突增问题。验证 $C_d$ 误差低至 \textbf{2.69\%}，推理耗时 \textbf{20ms}。
-\end{itemize}
+begin{itemize}
+    \item \textbf{3D时空建模与自动驾驶AI融合能力：} 具备从复杂3D物理建模到学习型时空预测模型的完整方法链路能力，可覆盖 \textbf{BEV表示学习、Occupancy Prediction、Trajectory Forecasting、World Model建模} 等自动驾驶核心问题。
+    \item \textbf{工业级建模与算法优化经验：} 在真实工业数据集（DrivAerNet++ 等）上完成多模型Benchmark，对复杂几何结构（如局部突变拓扑）具有稳定建模能力，显著提升预测精度与推理效率（误差低至 \textbf{2.69\%}，推理 \textbf{20ms级}）。
 
 
 \end{document}
