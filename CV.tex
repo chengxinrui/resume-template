@@ -143,9 +143,11 @@
 \textit{(一作，CCF-A 审稿中)} 
 \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{攻克了轨迹预测长时序发散难题：} 针对现有模型在动态场景下20步即发散的问题，独创基于\textbf{积分一致性(LIPE)的无监督物理约束}，实现多工况下连续\textbf{50步}稳定外推。
-    \item \textbf{大幅降低3D场景训练与部署门槛：} 新方法\textbf{无需CFD真值标签}，3D训练内存占用降至\textbf{1/6}，为模型在资源受限的车端/端侧落地提供了可行性。
-    \item \textbf{直击自动驾驶核心应用：} 模型能力可直接迁移至\textbf{BEV Occupancy / 轨迹预测 / 世界模型Rollout}，实现多智能体未来状态的物理一致性推演。
+    \item \textbf{任务：} 针对自动驾驶\textbf{多目标轨迹预测（车辆/行人）}在长时序下发散（>20 step）问题，设计稳定外推模型。
+    \item \textbf{成果：} 独创基于\textbf{积分一致性(LIPE)的无监督物理约束}，实现多工况下连续\textbf{50步}稳定外推，模型能力可直接迁移至\textbf{BEV Occupancy / 轨迹预测 / 世界模型Rollout}。
+    \item \textbf{价值：} 新方法\textbf{无需CFD真值标签}，3D训练内存占用降至\textbf{1/6}，为模型在资源受限的车端/端侧落地提供了可行性。
+    \item \textbf{工程化落地：} 已构建对应的数据处理与训练\textbf{Pipeline}，可对接自动驾驶场景数据（如BEV/多目标轨迹）进行训练与评估。
+    \item \textbf{系统对接能力：} 支持接入自动驾驶预测/规控模块（如多目标轨迹预测、BEV Occupancy），可用于端到端模型训练与推理链路。
 \end{itemize}
 
 % ================================================================
@@ -153,8 +155,9 @@
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{解决了3D感知在复杂几何体上的预测精度难题：} 针对溜背/三厢车等复杂外形，自研\textbf{几何门控注意力机制(GeoGatedAttention)}，模型可动态感知网格曲率与法向量，精准捕捉局部几何特征。
-    \item \textbf{实现了毫秒级高性能预测与业务赋能：} 推理仅\textbf{20ms}，可将智驾仿真系统中“设计-验证”周期从\textbf{天级缩短至分钟级}，相关系数 $\rho=0.97$，预测误差低至\textbf{2.69\%}。
+    \item \textbf{任务：} 面向自动驾驶\textbf{3D目标建模（车辆/障碍物）}，提升复杂几何结构下的状态表征与感知精度。
+    \item \textbf{成果：} 自研\textbf{几何门控注意力机制(GeoGatedAttention)}，模型可动态感知网格曲率与法向量，精准捕捉局部几何特征，将预测误差降至\textbf{2.69\%} ($\rho=0.97$)。
+    \item \textbf{价值：} 推理仅\textbf{20ms}，可将智驾仿真系统中“设计-验证”周期从\textbf{天级缩短至分钟级}，为实时感知与仿真系统提供支持。
 \end{itemize}
 
 % ================================================================
@@ -168,8 +171,9 @@
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{主导构建了自动化3D数据处理全流程：} 针对工业现场的非流形、坐标错配等\textbf{脏数据}，利用PyVista/Meshlab/KD-Tree等工具，实现从拓扑修复、网格生成到多源数据融合的全链路自动化，\textbf{可直接复用于智驾大规模点云/Mesh数据预处理}。
-    \item \textbf{验证了模型跨域泛化能力并交付工程化系统：} 将汽车模型\textbf{零样本迁移}至新场景并成功验证，证明了架构的鲁棒性。最终封装为标准化软件包，成果已形成\textbf{3项发明专利与2项软著}。
+    \item \textbf{挑战：} 针对工业现场的非流形、坐标错配等\textbf{脏数据}，主导构建了自动化3D数据处理全流程。
+    \item \textbf{方案：} 利用PyVista/Meshlab/KD-Tree等工具，实现从拓扑修复、网格生成到多源数据融合的全链路自动化，支持自动驾驶点云/BEV数据预处理与训练数据构建。
+    \item \textbf{交付：} 将汽车模型至新场景并成功验证，证明了架构的鲁棒性。最终封装为标准化软件包，成果已形成\textbf{3项发明专利与2项软著}。
 \end{itemize}
 
 
@@ -196,22 +200,12 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与模型：} 精通 \textbf{PyTorch/PyG}；熟练掌握 Transformer、GNN、几何注意力机制；深入理解\textbf{神经算子}、物理约束模型，具备\textbf{长时序时空预测}与建模能力。
-    \item \textbf{智驾核心技术：} 熟悉 \textbf{BEV} 感知、3D目标检测、动态目标\textbf{轨迹预测}、\textbf{世界模型}建模与Rollout、自动驾驶仿真与场景重建等任务。
+    \item \textbf{AI算法与模型：} 精通 \textbf{PyTorch/PyG}；熟练掌握 Transformer、GNN、几何注意力机制；深入理解\textbf{神经算子}与物理约束模型，具备从零设计与实现复杂模型的能力。
+    \item \textbf{智驾相关经验：} 具备 \textbf{BEV} 表达下的\textbf{多目标状态建模与轨迹预测}经验；\textbf{已实现}基于物理约束的长时序预测（\textbf{>50 step}）与 \textbf{World Model rollout}。
     \item \textbf{3D数据与工程：} 熟练使用 \textbf{VTK/PyVista/Open3D} 处理点云与非结构化网格；主导过3D拓扑修复、网格构建、多源空间数据精准映射的\textbf{完整Pipeline}。
     \item \textbf{软件工程能力：} 熟练掌握 Python/C++、Linux、Docker、Git；具备从算法原型到\textbf{工业级AI系统}的开发、部署与维护能力。
 \end{itemize}
 
-% ================================================================
-% 个人评价
-% ================================================================
-\section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
-
-\begin{itemize}
-    \item \textbf{具备跨领域时空建模能力：} 能够将复杂3D物理系统中的时空演化建模方法迁移至自动驾驶场景预测与世界模型构建任务。
-    \item \textbf{具备数据驱动仿真与预测能力：} 熟悉从非结构化3D数据构建可学习表示的方法，可用于BEV场景建模、轨迹预测与仿真数据生成。
-    \item \textbf{工程与科研结合能力较强：} 能够完成从算法设计、实验复现到系统化pipeline构建的完整流程，在复杂场景下保持模型稳定性与可扩展性。
-\end{itemize}
 
 \end{document}
