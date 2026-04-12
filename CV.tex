@@ -203,20 +203,23 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与自动驾驶建模：} 精通 \textbf{PyTorch, PyG} 框架；熟练设计 \textbf{Transformer, GNN, Attention机制, Diffusion建模思想}；深入掌握 \textbf{神经算子（FNO / GAOT / Transolver）与物理约束学习方法}；具备长时序时空建模与自回归预测能力，可用于 \textbf{BEV / OCC / Motion Forecasting / World Model rollout} 等任务。
-    \item \textbf{3D场景理解与几何建模：} 具备复杂3D结构数据处理能力，熟悉 \textbf{VTK, PyVista, Open3D}；能够处理大规模非结构化网格与点云数据（STL修复、TetGen体网格划分）；熟练实现基于 KD-Tree / IDW 的多源空间数据融合与重建，可支持 \textbf{3D Scene Representation / BEV建模}。
-    \item \textbf{自动驾驶相关建模能力：} 了解 \textbf{多传感器融合（Camera / LiDAR / Radar）基本原理}；理解 \textbf{时空预测、轨迹建模、物理约束运动建模}；可将连续物理场建模方法迁移至 \textbf{交通参与体行为预测与交互建模}问题。
-    \item \textbf{工程开发与系统能力：} 熟练使用 Python, Linux, Docker, Git；具备模型训练、实验管理与Pipeline构建能力；能够将研究模型封装为可复现实验系统，并支持基础部署与性能分析。
+    \item \textbf{深度学习与时空建模：} 熟练使用 PyTorch / PyG，具备 Transformer、GNN、Attention 等模型设计经验；深入理解神经算子（FNO / Transolver）及长时序时空建模方法，具备多步稳定外推能力。
+    \item \textbf{自动驾驶3D感知与预测：} 熟悉 BEV 表达、3D空间建模与时序预测任务，具备从3D几何结构中提取 SDF / 曲率 / 法向量等特征用于轨迹预测与场景建模的实践经验。
+    \item \textbf{世界模型与仿真建模能力：} 具备复杂3D环境建模与仿真数据构建能力，能够构建可用于预测/规划的场景级数据管线（Scene-level Data Pipeline），支持多步未来状态推演。
+    \item \textbf{3D数据与工程能力：} 熟悉 Open3D / PyVista / VTK，具备点云、网格与非结构化3D数据处理经验；掌握 KD-Tree、插值与多源数据融合方法。
+    \item \textbf{工程开发能力：} 熟练 Python / Linux / Git / Docker；具备从算法原型到可复现实验Pipeline的工程化能力，能够支持模型训练、评估与实验管理闭环。
 \end{itemize}
-
 
 % ================================================================
 % 个人评价
 % ================================================================
 \section{\makebox[\widthof{\faUser}][c]{\color{CVBlue}\faUser}\ 个人评价}
 
+
 \begin{itemize}
-    \item \textbf{3D时空建模与自动驾驶AI融合能力：} 具备从复杂3D物理建模到学习型时空预测模型的完整方法链路能力，可覆盖 \textbf{BEV表示学习、Occupancy Prediction、Trajectory Forecasting、World Model建模} 等自动驾驶核心问题。
-    \item \textbf{工业级建模与算法优化经验：} 在真实工业数据集（DrivAerNet++ 等）上完成多模型Benchmark，对复杂几何结构（如局部突变拓扑）具有稳定建模能力，显著提升预测精度与推理效率（误差低至 \textbf{2.69\%}，推理 \textbf{20ms级}）。
-\end{itemize}  
+    \item \textbf{具备跨领域时空建模能力：} 能够将复杂3D物理系统中的时空演化建模方法迁移至自动驾驶场景预测与世界模型构建任务。
+    \item \textbf{具备数据驱动仿真与预测能力：} 熟悉从非结构化3D数据构建可学习表示的方法，可用于BEV场景建模、轨迹预测与仿真数据生成。
+    \item \textbf{工程与科研结合能力较强：} 能够完成从算法设计、实验复现到系统化pipeline构建的完整流程，在复杂场景下保持模型稳定性与可扩展性。
+\end{itemize}
+
 \end{document}
