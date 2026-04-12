@@ -146,7 +146,7 @@
     \item \textbf{任务：} 针对自动驾驶\textbf{多目标轨迹预测（车辆/行人）}在长时序下发散（>20 step）问题，设计稳定外推模型。
     \item \textbf{成果：} 独创基于\textbf{积分一致性(LIPE)的无监督物理约束}，实现多工况下连续\textbf{50步}稳定外推，模型能力可直接迁移至\textbf{BEV Occupancy / 轨迹预测 / 世界模型Rollout}。
     \item \textbf{价值：} 新方法\textbf{无需CFD真值标签}，3D训练内存占用降至\textbf{1/6}，为模型在资源受限的车端/端侧落地提供了可行性。
-    \item \textbf{工程化落地：} 已构建对应的数据处理与训练\textbf{Pipeline}，可对接自动驾驶场景数据（如BEV/多目标轨迹）进行训练与评估。
+    \item \textbf{工程化落地：} 已构建完整数据处理与训练\textbf{Pipeline}，可无缝对接自动驾驶场景数据（如BEV），其输出可直接服务于预测/规控模块，支持端到端训练与推理链路。
     \item \textbf{系统对接能力：} 支持接入自动驾驶预测/规控模块（如多目标轨迹预测、BEV Occupancy），可用于端到端模型训练与推理链路。
 \end{itemize}
 
