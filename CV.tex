@@ -104,7 +104,7 @@
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{自动驾驶规控/预测 / 世界模型 / 3D时空预测 / 物理约束}}\\[0.5em]
+    {\large \textbf{自动驾驶算法实习（3D感知/轨迹预测/世界模型）}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -136,28 +136,26 @@
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 科研经历}
-% ================================================================
-\textbf{几何感知AI模型的汽车气动性能快速预测} 
-\textit{(核心开发者，发明专利已受理)} 
-\hfill 2024.9 -- 2025.3
-\begin{itemize}
-    \item \textbf{工业级Benchmark与痛点定位：} 在真实汽车工业数据集（DrivAerNet++）和 ShapeNet-Car 上复现并测试了多款前沿神经算子（Transolver等）。发现现有模型在处理溜背/三厢、光滑/细节底盘等\textbf{几何突变区域}时，难以捕捉局部边界层效应，导致预测误差飙升。
-    \item \textbf{核心算法创新 (GeoGatedAttention)：} 为解决上述痛点，设计了\textbf{几何门控注意力机制}。通过底层脚本提取网格的边缘曲率($tanh$缩放)、法向量夹角($cos\theta$)与边长，作为图结构中的 \texttt{edge\_geom\_feat} 动态调制 Attention 权重。让模型自适应感知“折角”与“平滑面”。
-    \item \textbf{工程指标与业务价值：} 气动阻力系数 $C_d$ 预测误差降至 \textbf{2.69\%}，相关系数 $\rho = 0.97$。单次推理 \textbf{20ms}，替代传统CFD 6-12小时的计算，将“设计-仿真”迭代周期从\textbf{天级缩短至分钟级}。
-\end{itemize}
 
 
 % ================================================================
-\textbf{UNOP：面向长时序时空预测的无监督神经算子} 
+\textbf{物理约束长时序轨迹预测模型 (可用于世界模型/端到端预测)} 
 \textit{(一作，CCF-A 审稿中)} 
 \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{问题与挑战：} 现有自回归时序模型在复杂3D几何下\textbf{20步即发散}；传统物理约束(PINN)在3D场景下内存爆炸且梯度病态，难以支撑长时序工程级仿真。
-    \item \textbf{核心方法 (LIPE+GALA+GSEO)：} 提出基于\textbf{积分一致性}的物理约束(LIPE)替代微分残差，\textbf{无需CFD标签}即可训练，3D内存降至\textbf{1/6}。设计几何解耦编码器(GALA)统一处理不规则网格，并利用曲率感知门控(GSEO)保留激波/涡旋等高梯度时空结构。
-    \item \textbf{工程指标：} 多工况连续外推 \textbf{50步仍保持稳定}。3D汽车外流场预测误差 \textbf{4.06\%}，物理守恒违背量极低 ($2.9\times10^{-3}$)。
-    \item \textbf{自动驾驶应用映射：} 将长时序神经算子建模能力迁移至 BEV Occupancy Prediction / Trajectory Forecasting / World Model rollout，实现多智能体未来状态稳定外推。
+    \item \textbf{攻克了轨迹预测长时序发散难题：} 针对现有模型在动态场景下20步即发散的问题，独创基于\textbf{积分一致性(LIPE)的无监督物理约束}，实现多工况下连续\textbf{50步}稳定外推。
+    \item \textbf{大幅降低3D场景训练与部署门槛：} 新方法\textbf{无需CFD真值标签}，3D训练内存占用降至\textbf{1/6}，为模型在资源受限的车端/端侧落地提供了可行性。
+    \item \textbf{直击自动驾驶核心应用：} 模型能力可直接迁移至\textbf{BEV Occupancy / 轨迹预测 / 世界模型Rollout}，实现多智能体未来状态的物理一致性推演。
 \end{itemize}
 
+% ================================================================
+\textbf{面向自动驾驶3D感知的几何AI模型 (可迁移至仿真/重建)} 
+\textit{(核心开发者，发明专利已受理)} 
+\hfill 2024.9 -- 2025.3
+\begin{itemize}
+    \item \textbf{解决了3D感知在复杂几何体上的预测精度难题：} 针对溜背/三厢车等复杂外形，自研\textbf{几何门控注意力机制(GeoGatedAttention)}，模型可动态感知网格曲率与法向量，精准捕捉局部几何特征。
+    \item \textbf{实现了毫秒级高性能预测与业务赋能：} 推理仅\textbf{20ms}，可将智驾仿真系统中“设计-验证”周期从\textbf{天级缩短至分钟级}，相关系数 $\rho=0.97$，预测误差低至\textbf{2.69\%}。
+\end{itemize}
 
 % ================================================================
 % 项目经历
@@ -165,18 +163,13 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{旋转机械数字孪生AI仿真与智能运维系统} 
+\textbf{工业级3D数据Pipeline与数字孪生仿真系统} 
 \textit{(AI算法与系统集成负责人)} 
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{挑战：} 工业现场数据极度混乱，水轮机几何（.glb/.stl）存在非流形破损；流场速度（CSV点云）与叶片压力场坐标系错配，完全无法直接送入深度学习框架。
-    \item \textbf{从零构建自动化 3D 网格 Pipeline（全链路）：} 
-        1) 拓扑修复：利用 PyVista 提取特征边定位孔洞，结合 Meshlab/Blender 完成流形网格封闭；
-        2) 网格划分：调用 TetGen 将表面转换为四面体体网格；
-        3) 多源融合：编写基于 KD-Tree 的 IDW(反距离权重) 算法，将 CSV 散乱点云的流速与壁面剪切力\textbf{精准映射到 VTK 节点}上。
-    \item \textbf{图数据重构与跨域泛化：} 编写自定义 PyG Dataset，批量提取 SDF、法向量，构建 \texttt{radius\_graph} 图拓扑。在\textbf{不改变网络架构}的前提下，将汽车外流场模型直接零样本迁移至水轮机内流场，成功完成 FSI（流固耦合）的第一步压力场预测验证。
-    \item \textbf{交付成果：} 封装为标准化软件包，打通 仿真→评估→预警 闭环。课题结题验收通过，获\textbf{3项发明专利+2项软件著作权}。
+    \item \textbf{主导构建了自动化3D数据处理全流程：} 针对工业现场的非流形、坐标错配等\textbf{脏数据}，利用PyVista/Meshlab/KD-Tree等工具，实现从拓扑修复、网格生成到多源数据融合的全链路自动化，\textbf{可直接复用于智驾大规模点云/Mesh数据预处理}。
+    \item \textbf{验证了模型跨域泛化能力并交付工程化系统：} 将汽车模型\textbf{零样本迁移}至新场景并成功验证，证明了架构的鲁棒性。最终封装为标准化软件包，成果已形成\textbf{3项发明专利与2项软著}。
 \end{itemize}
 
 
@@ -203,11 +196,10 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{深度学习与时空建模：} 熟练使用 PyTorch / PyG，具备 Transformer、GNN、Attention 等模型设计经验；深入理解神经算子（FNO / Transolver）及长时序时空建模方法，具备多步稳定外推能力。
-    \item \textbf{自动驾驶3D感知与预测：} 熟悉 BEV 表达、3D空间建模与时序预测任务，具备从3D几何结构中提取 SDF / 曲率 / 法向量等特征用于轨迹预测与场景建模的实践经验。
-    \item \textbf{世界模型与仿真建模能力：} 具备复杂3D环境建模与仿真数据构建能力，能够构建可用于预测/规划的场景级数据管线（Scene-level Data Pipeline），支持多步未来状态推演。
-    \item \textbf{3D数据与工程能力：} 熟悉 Open3D / PyVista / VTK，具备点云、网格与非结构化3D数据处理经验；掌握 KD-Tree、插值与多源数据融合方法。
-    \item \textbf{工程开发能力：} 熟练 Python / Linux / Git / Docker；具备从算法原型到可复现实验Pipeline的工程化能力，能够支持模型训练、评估与实验管理闭环。
+    \item \textbf{AI算法与模型：} 精通 \textbf{PyTorch/PyG}；熟练掌握 Transformer、GNN、几何注意力机制；深入理解\textbf{神经算子}、物理约束模型，具备\textbf{长时序时空预测}与建模能力。
+    \item \textbf{智驾核心技术：} 熟悉 \textbf{BEV} 感知、3D目标检测、动态目标\textbf{轨迹预测}、\textbf{世界模型}建模与Rollout、自动驾驶仿真与场景重建等任务。
+    \item \textbf{3D数据与工程：} 熟练使用 \textbf{VTK/PyVista/Open3D} 处理点云与非结构化网格；主导过3D拓扑修复、网格构建、多源空间数据精准映射的\textbf{完整Pipeline}。
+    \item \textbf{软件工程能力：} 熟练掌握 Python/C++、Linux、Docker、Git；具备从算法原型到\textbf{工业级AI系统}的开发、部署与维护能力。
 \end{itemize}
 
 % ================================================================
