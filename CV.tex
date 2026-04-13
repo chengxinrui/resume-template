@@ -104,7 +104,7 @@
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{自动驾驶算法实习（3D感知/轨迹预测/世界模型）}}\\[0.5em]
+    {\large \textbf{3D几何学习 / 神经算子 / 长时序预测（可迁移自动驾驶感知与预测）}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -143,21 +143,23 @@
 \textit{(一作，CCF-A 审稿中)} 
 \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{任务：} 针对自动驾驶\textbf{多目标轨迹预测（车辆/行人）}在长时序下发散（>20 step）问题，设计稳定外推模型。
-    \item \textbf{成果：} 独创基于\textbf{积分一致性(LIPE)的无监督物理约束}，实现多工况下连续\textbf{50步}稳定外推，模型能力可直接迁移至\textbf{BEV Occupancy / 轨迹预测 / 世界模型Rollout}。
-    \item \textbf{价值：} 新方法\textbf{无需CFD真值标签}，3D训练内存占用降至\textbf{1/6}，为模型在资源受限的车端/端侧落地提供了可行性。
-    \item \textbf{工程化落地：} 已构建完整数据处理与训练\textbf{Pipeline}，可无缝对接自动驾驶场景数据（如BEV），其输出可直接服务于预测/规控模块，支持端到端训练与推理链路。
-    \item \textbf{系统对接能力：} 支持接入自动驾驶预测/规控模块（如多目标轨迹预测、BEV Occupancy），可用于端到端模型训练与推理链路。
+    \item \textbf{任务：} 针对复杂3D场景下长时序预测易发散（>20 step）的问题，设计稳定外推模型。
+    \item \textbf{方法：} 提出基于\textbf{积分一致性（LIPE）的无监督物理约束}，避免传统PINN中梯度不稳定与内存开销问题。
+    \item \textbf{结果：} 实现多工况下连续\textbf{50步}稳定外推，3D训练内存占用降至\textbf{1/6}。
+    \item \textbf{工程：} 构建完整数据处理与训练Pipeline，支持复杂3D结构输入与模型训练。
+    \item \textbf{能力迁移：} 该方法具备长时序建模与状态外推能力，可迁移至\textbf{轨迹预测、BEV Occupancy及世界模型}等任务。
 \end{itemize}
 
 % ================================================================
-\textbf{面向自动驾驶3D感知的几何AI模型 (可迁移至仿真/重建)} 
+\textbf{几何感知3D建模与物理场预测模型（GeoGatedAttention） (可迁移至仿真/重建)} 
 \textit{(核心开发者，发明专利已受理)} 
 \hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{任务：} 面向自动驾驶\textbf{3D目标建模（车辆/障碍物）}，提升复杂几何结构下的状态表征与感知精度。
-    \item \textbf{成果：} 自研\textbf{几何门控注意力机制(GeoGatedAttention)}，模型可动态感知网格曲率与法向量，精准捕捉局部几何特征，将预测误差降至\textbf{2.69\%} ($\rho=0.97$)。
-    \item \textbf{价值：} 推理仅\textbf{20ms}，可将智驾仿真系统中“设计-验证”周期从\textbf{天级缩短至分钟级}，为实时感知与仿真系统提供支持。
+    \item \textbf{问题：} 针对复杂几何结构（曲率突变、边界不连续）下模型难以捕捉局部特征的问题，影响预测精度。
+    \item \textbf{方法：} 设计\textbf{几何门控注意力机制（GeoGatedAttention）}，融合曲率、法向量与边结构信息，对Attention权重进行动态调制。
+    \item \textbf{结果：} 在3D物理场预测任务中将误差降至\textbf{2.69\%}（$\rho=0.97$），推理时间仅\textbf{20ms}。
+    \item \textbf{工程：} 完成从几何特征提取到模型训练的完整实现，支持非结构化网格输入。
+    \item \textbf{能力迁移：} 方法具备结构感知与局部特征建模能力，可迁移至\textbf{3D感知、目标建模及场景理解}等任务。
 \end{itemize}
 
 % ================================================================
@@ -171,9 +173,11 @@
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{挑战：} 针对工业现场的非流形、坐标错配等\textbf{脏数据}，主导构建了自动化3D数据处理全流程。
-    \item \textbf{方案：} 利用PyVista/Meshlab/KD-Tree等工具，实现从拓扑修复、网格生成到多源数据融合的全链路自动化，支持自动驾驶点云/BEV数据预处理与训练数据构建。
-    \item \textbf{交付：} 将汽车模型至新场景并成功验证，证明了架构的鲁棒性。最终封装为标准化软件包，成果已形成\textbf{3项发明专利与2项软著}。
+    \item \textbf{问题：} 工业现场3D数据存在严重质量问题（非流形破损、孔洞、坐标错配、多源异构），无法直接用于AI模型训练。
+    \item \textbf{方法：} 从零构建自动化3D数据处理Pipeline，涵盖拓扑修复（PyVista/Meshlab）、体网格生成（TetGen）及多源数据融合（基于KD-Tree的IDW映射）。
+    \item \textbf{结果：} 实现多源几何与物理场数据的高精度对齐与结构化重建，支持复杂3D场景下的稳定建模与训练。
+    \item \textbf{工程：} 封装为标准化软件系统，打通“数据处理→模型训练→仿真预测”全流程，支持跨场景快速迁移。
+    \item \textbf{能力迁移：} 该Pipeline适用于点云/网格数据处理与多源融合任务，可迁移至\textbf{自动驾驶3D感知、BEV构建及仿真数据生成}等场景。
 \end{itemize}
 
 
@@ -200,12 +204,10 @@
 % ================================================================
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI算法与模型：} 精通 \textbf{PyTorch/PyG}；熟练掌握 Transformer、GNN、几何注意力机制；深入理解\textbf{神经算子}与物理约束模型，具备从零设计与实现复杂模型的能力。
-    \item \textbf{智驾相关经验：} 具备 \textbf{BEV} 表达下的\textbf{多目标状态建模与轨迹预测}经验；\textbf{已实现}基于物理约束的长时序预测（\textbf{>50 step}）与 \textbf{World Model rollout}。
-    \item \textbf{3D数据与工程：} 熟练使用 \textbf{VTK/PyVista/Open3D} 处理点云与非结构化网格；主导过3D拓扑修复、网格构建、多源空间数据精准映射的\textbf{完整Pipeline}。
-    \item \textbf{软件工程能力：} 熟练掌握 Python/C++、Linux、Docker、Git；具备从算法原型到\textbf{工业级AI系统}的开发、部署与维护能力。
+    \item \textbf{AI算法与模型：} 精通 \textbf{PyTorch/PyG}；熟练掌握 Transformer、GNN 与注意力机制；深入理解\textbf{神经算子}（FNO/Transolver等）及物理约束建模方法，具备从零设计与实现复杂模型的能力。
+    \item \textbf{3D数据与几何建模：} 熟练使用 \textbf{VTK/PyVista/Open3D} 处理点云与非结构化网格；具备拓扑修复、体网格构建及多源空间数据融合（KD-Tree/IDW）的工程经验。
+    \item \textbf{长时序建模能力：} 掌握自回归预测与稳定外推方法，已实现复杂3D场景下\textbf{50步}长时序稳定预测，具备向轨迹预测与时空建模任务迁移的能力。
+    \item \textbf{工程与系统能力：} 熟练掌握 Python/C++、Linux、Docker、Git；具备从数据处理、模型训练到系统封装的完整Pipeline开发能力，能够构建可落地的工业级AI系统。
 \end{itemize}
-
-
 
 \end{document}
