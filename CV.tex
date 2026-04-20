@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} 
+
+%%  Main Font Settings
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf,
+]{texgyretermes-regular.otf}
+
+% CJK Font Settings (Keep for potential Chinese characters or compatibility)
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf,
+]{NotoSansSC-Regular.otf}
+
+\usepackage{relsize}
+\usepackage{xspace}
+\usepackage{fontawesome} 
+
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.3} 
+
+\usepackage{titlesec}
+\setlist{noitemsep} 
+\setlist[itemize]{topsep=0.2em, leftmargin=*}
+\setlist[enumerate]{topsep=0.2em, leftmargin=*}
+
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em}
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+\titleformat{\section}         
+{\large\bfseries\raggedright} 
+{}{0em}                      
+{}                           
+[{\color{CVBlue}\titlerule}]  
+\titlespacing*{\section}{0cm}{*1.4}{*0.8}
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% Photo Positioning
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% University Logo Positioning
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% Name and Contact
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{Xinrui Cheng}}\\[0.4em]
+     
+    {\large \textbf{3D Geometric Learning / Neural Operators / Long-horizon Forecasting}}\\[0.5em]
+    
+    {\normalsize 
+        Age: 24 \quad
+        \faPhone\ (+86) 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \\
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP} \quad
+        \faMapMarker\ Harbin, China
+    }
+\end{minipage}
+
+\vspace{-0.4cm} 
+    
+% ================================================================
+% EDUCATION
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education} 
+
+\textbf{Harbin Institute of Technology (HIT)} \hfill 2024.09 -- Present \\
+M.S. in Software Engineering (Electronic Information) \hfill Harbin, China \\
+\textcolor{CVBlue}{\textbf{Ranking: Top 20\%}} \quad \textbf{Honors:} First/Second Class Academic Scholarships
+
+\textbf{Changchun University of Technology (CCUT)} \hfill 2019.09 -- 2023.06 \\
+B.S. in Software Engineering \hfill Changchun, China \\
+\textcolor{CVBlue}{\textbf{Ranking: Top 5\%}} \quad \textbf{Honors:} 6x University Academic Scholarships (2nd/3rd Class)
+
+
+
+% ================================================================
+% RESEARCH EXPERIENCE
+% ================================================================
+
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Research Experience}
+
+\textbf{Physics-Constrained Long-horizon Trajectory Prediction (for World Models/E2E)} \\
+\textit{First Author, CCF-A Level Target} \hfill 2025.09 -- Present
+\begin{itemize}
+    \item \textbf{Task:} Addressed the divergence issue in long-term forecasting (>20 steps) within complex 3D scenarios.
+    \item \textbf{Methodology:} Proposed an unsupervised physics constraint based on \textbf{Integration Consistency (LIPE)}, mitigating gradient instability and high memory overhead common in traditional PINNs.
+    \item \textbf{Results:} Achieved stable \textbf{50-step} extrapolation across multiple conditions; reduced 3D training memory by \textbf{83\% (1/6)}.
+    \item \textbf{Engineering:} Built a full pipeline for 3D data processing and training, supporting complex geometric inputs.
+    \item \textbf{Transferability:} The method's long-term state extrapolation is applicable to \textbf{Trajectory Prediction, BEV Occupancy, and World Models}.
+\end{itemize}
+
+\projectsep
+
+\textbf{GeoGatedAttention: Geometry-Aware 3D Physical Field Prediction} \\
+\textit{Core Developer, Patent Pending} \hfill 2024.09 -- 2025.03
+\begin{itemize}
+    \item \textbf{Problem:} Standard models fail to capture local features in complex geometries (curvature mutations, discontinuities).
+    \item \textbf{Methodology:} Designed a \textbf{Geometric Gated Attention (GeoGatedAttention)} mechanism that dynamically modulates attention weights using curvature, normal vectors, and edge structures.
+    \item \textbf{Results:} Reduced error to \textbf{2.69\%} ($\rho=0.97$) in 3D physical field tasks; achieved inference time of \textbf{20ms}.
+    \item \textbf{Engineering:} Implemented the full workflow from geometric feature extraction to non-structured grid training.
+    \item \textbf{Transferability:} Features structural perception/local modeling, transferable to \textbf{3D Perception and Scene Understanding}.
+\end{itemize}
+
+
+% ================================================================
+% PROJECT EXPERIENCE
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ Project Experience}
+
+\textbf{Industrial-grade 3D Data Pipeline \& Digital Twin Simulation System} \\
+\textit{Lead of AI Algorithms \& System Integration} \hfill 2024.09 -- 2025.06\\[0.2em]
+\textcolor{CVBlue}{\textit{National Key R\&D Program: "Collaborative Platform for Equipment Manufacturing Aftermarket"}}
+\begin{itemize}
+    \item \textbf{Problem:} Raw industrial 3D data suffered from non-manifold defects, holes, and coordinate mismatch, making it unusable for AI training.
+    \item \textbf{Methodology:} Developed an automated 3D pipeline including \textbf{Topology Repair} (PyVista/Meshlab), \textbf{Volumetric Meshing} (TetGen), and \textbf{Multi-source Fusion} (KD-Tree based IDW mapping).
+    \item \textbf{Results:} Enabled high-precision alignment of geometric/physical data for complex 3D scenarios.
+    \item \textbf{Engineering:} Standardized the software system, bridging "Data Processing $\rightarrow$ Training $\rightarrow$ Simulation."
+    \item \textbf{Transferability:} Applicable to point cloud/mesh processing and multi-sensor fusion for \textbf{Autonomous Driving (BEV construction) and Synthetic Data Generation}.
+\end{itemize}
+
+
+
+% ========================================================
+\section{\makebox[\widthof{\faTrophy}][c]{\color{CVBlue}\faTrophy}\ Publications \& Awards}
+
+\begin{itemize}
+    \item \textbf{Paper:} \textit{Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries} (\textbf{1st Author}, Submitted to IJCAI [CCF-A])
+    \item \textbf{Patent:} A Digital Twin Method for Turbine Components using Geometric Features and FNO \textit{(Under Review)}
+    \item \textbf{Patent:} Structure-Aware GNN for Physical Field Prediction via Geometric Gated Attention \textit{(Under Review)}
+    \item \textbf{Patent:} Intelligent Maintenance for Hydro-turbines based on Stress-driven Response \textit{(Published)}
+    \item \textbf{Software Copyright:} Multi-sensor Fusion Digital Twin Collaborative Maintenance Platform (No. 2026SR0202932)
+    \item \textbf{Competition:} Regional Excellence Award, 15th \textbf{ZTE Blue Shark} Global Elite Challenge \hfill 2025
+\end{itemize}
+
+  
+% ================================================================
+% CORE SKILLS
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ Core Skills}
+\begin{itemize}
+    \item \textbf{AI Algorithms:} Proficient in \textbf{PyTorch / PyG}; deep understanding of Transformers, GNNs, and Attention mechanisms; expert in \textbf{Neural Operators} (FNO, Transolver) and Physics-Informed Neural Networks (PINNs).
+    \item \textbf{3D Geometry:} Proficient in \textbf{VTK / PyVista / Open3D} for point cloud and unstructured mesh processing; experienced in topology repair, volumetric meshing, and spatial data fusion (KD-Tree/IDW).
+    \item \textbf{Forecasting:} Specialized in autoregressive prediction and stable extrapolation; achieved \textbf{50-step} stable prediction in complex 3D environments.
+    \item \textbf{Engineering:} Proficient in \textbf{Python / C++}, Linux, Docker, and Git; capable of building end-to-end industrial AI pipelines from data ingestion to model deployment.
+\end{itemize}
+
+\end{document}
