@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+
 \setlength{\parindent}{0pt}
 \usepackage{xltxtra}
 \usepackage{hyperref}
@@ -15,26 +16,31 @@
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{enumitem}
-\CJKsetecglue{} 
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
 
-%%  Main Font Settings
+
+%%  主文档字体设置
 \setmainfont[
     Path = fonts/Main/,
     Extension = .otf,
-    BoldFont = texgyretermes-bold.otf,
-]{texgyretermes-regular.otf}
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
 
-% CJK Font Settings (Keep for potential Chinese characters or compatibility)
+% 中文字体设置
 \setCJKmainfont[
     Path = fonts/hansans/,
     Extension = .ttf,
-    BoldFont = NotoSansSC-Bold.ttf,
-]{NotoSansSC-Regular.otf}
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
 
 \usepackage{relsize}
 \usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
 \usepackage{fontawesome} 
 
+% A4纸， 上下左右边距
 \usepackage[
     a4paper,
     left=1.2cm,
@@ -44,140 +50,166 @@
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.3} 
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
 
 \usepackage{titlesec}
-\setlist{noitemsep} 
-\setlist[itemize]{topsep=0.2em, leftmargin=*}
-\setlist[enumerate]{topsep=0.2em, leftmargin=*}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
 
+% --- 用于控制【不同项目之间】的垂直距离 ---
 \newlength{\interProjectSpacing}
-\setlength{\interProjectSpacing}{0.9em}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
 \newcommand{\projectsep}{\vspace{\interProjectSpacing}}
 
-\titleformat{\section}         
-{\large\bfseries\raggedright} 
-{}{0em}                      
-{}                           
-[{\color{CVBlue}\titlerule}]  
-\titlespacing*{\section}{0cm}{*1.4}{*0.8}
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
 
 \begin{document}
 \pagenumbering{gobble}
 
-%%%% Photo Positioning
+%%%% 利用tikz来定位照片
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
 \end{tikzpicture}%
-%%%% University Logo Positioning
+%%%% 利用tikz来定位学校Logo
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
 \end{tikzpicture}%
 
-% Name and Contact
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
 \vspace*{-0.5em} 
 \noindent
 \begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
     \centering
-    {\LARGE\bfseries{Xinrui Cheng}}\\[0.4em]
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{3D Geometric Learning / Neural Operators / Long-horizon Forecasting}}\\[0.5em]
+    {\large \textbf{3D场景建模 / 时空预测 / 感知算法工程（自动驾驶与具身智能方向）}}\\[0.5em]
     
     {\normalsize 
-        Age: 24 \quad
-        \faPhone\ (+86) 150-4336-5908 \quad 
-        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \\
-        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP} \quad
-        \faMapMarker\ Harbin, China
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}
     }
 \end{minipage}
 
-\vspace{-0.4cm} 
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
     
 % ================================================================
-% EDUCATION
+% 教育背景 ★差异：研究方向描述不同
 % ================================================================
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education} 
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
-\textbf{Harbin Institute of Technology (HIT)} \hfill 2024.09 -- Present \\
-M.S. in Software Engineering (Electronic Information) \hfill Harbin, China \\
-\textcolor{CVBlue}{\textbf{Ranking: Top 20\%}} \quad \textbf{Honors:} First/Second Class Academic Scholarships
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
 
-\textbf{Changchun University of Technology (CCUT)} \hfill 2019.09 -- 2023.06 \\
-B.S. in Software Engineering \hfill Changchun, China \\
-\textcolor{CVBlue}{\textbf{Ranking: Top 5\%}} \quad \textbf{Honors:} 6x University Academic Scholarships (2nd/3rd Class)
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
 
 
 % ================================================================
-% RESEARCH EXPERIENCE
+% 科研经历
 % ================================================================
 
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Research Experience}
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+科研经历}
 
-\textbf{Physics-Constrained Long-horizon Trajectory Prediction (for World Models/E2E)} \\
-\textit{First Author, CCF-A Level Target} \hfill 2025.09 -- Present
+
+% ================================================================
+\textbf{复杂场景下的长时序状态预测模型} 
+\textit{（一作，CCF-A）} 
+\hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{Task:} Addressed the divergence issue in long-term forecasting (>20 steps) within complex 3D scenarios.
-    \item \textbf{Methodology:} Proposed an unsupervised physics constraint based on \textbf{Integration Consistency (LIPE)}, mitigating gradient instability and high memory overhead common in traditional PINNs.
-    \item \textbf{Results:} Achieved stable \textbf{50-step} extrapolation across multiple conditions; reduced 3D training memory by \textbf{83\% (1/6)}.
-    \item \textbf{Engineering:} Built a full pipeline for 3D data processing and training, supporting complex geometric inputs.
-    \item \textbf{Transferability:} The method's long-term state extrapolation is applicable to \textbf{Trajectory Prediction, BEV Occupancy, and World Models}.
+    \item \textbf{任务：} 针对复杂3D场景中长时序预测易发散（>20 step）的问题，设计稳定的状态外推与时空建模方法。
+    \item \textbf{方法：} 构建稳定增强的自回归预测框架，引入积分一致性约束提升长时序滚动预测稳定性，同时显著降低显存占用与梯度不稳定问题。
+    \item \textbf{结果：} 实现多工况下连续\textbf{50步}稳定外推，3D训练显存占用降低至原有的\textbf{1/6}。
+    \item \textbf{工程：} 独立搭建完整数据处理与训练Pipeline，支持复杂几何结构输入及批量化训练。
+    \item \textbf{应用场景：} 可用于轨迹预测、占用栅格（Occupancy）预测及复杂场景状态建模等时空预测任务。
 \end{itemize}
 
 \projectsep
 
-\textbf{GeoGatedAttention: Geometry-Aware 3D Physical Field Prediction} \\
-\textit{Core Developer, Patent Pending} \hfill 2024.09 -- 2025.03
+\textbf{几何感知3D场景特征建模方法（GeoGatedAttention）} 
+\textit{（核心开发者，发明专利受理）} 
+\hfill 2024.9 -- 2025.3
 \begin{itemize}
-    \item \textbf{Problem:} Standard models fail to capture local features in complex geometries (curvature mutations, discontinuities).
-    \item \textbf{Methodology:} Designed a \textbf{Geometric Gated Attention (GeoGatedAttention)} mechanism that dynamically modulates attention weights using curvature, normal vectors, and edge structures.
-    \item \textbf{Results:} Reduced error to \textbf{2.69\%} ($\rho=0.97$) in 3D physical field tasks; achieved inference time of \textbf{20ms}.
-    \item \textbf{Engineering:} Implemented the full workflow from geometric feature extraction to non-structured grid training.
-    \item \textbf{Transferability:} Features structural perception/local modeling, transferable to \textbf{3D Perception and Scene Understanding}.
+    \item \textbf{问题：} 在复杂几何结构（曲率突变、边界不连续）下，传统模型难以准确建模局部结构特征。
+    \item \textbf{方法：} 设计几何门控注意力机制（GeoGatedAttention），融合曲率、法向量与边结构信息，对特征权重进行动态调制。
+    \item \textbf{结果：} 在复杂3D结构建模任务中误差降至\textbf{2.69\%}（$\rho=0.97$），推理延迟\textbf{20ms}，具备实时系统部署潜力。
+    \item \textbf{工程：} 实现从几何特征提取、图结构构建到模型训练的完整流程，支持非结构化网格与复杂场景输入。
+    \item \textbf{应用场景：} 适用于点云特征建模、结构理解与3D场景建模等感知类任务。
 \end{itemize}
 
-
 % ================================================================
-% PROJECT EXPERIENCE
+% 项目经历
 % ================================================================
-\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ Project Experience}
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
 
-\textbf{Industrial-grade 3D Data Pipeline \& Digital Twin Simulation System} \\
-\textit{Lead of AI Algorithms \& System Integration} \hfill 2024.09 -- 2025.06\\[0.2em]
-\textcolor{CVBlue}{\textit{National Key R\&D Program: "Collaborative Platform for Equipment Manufacturing Aftermarket"}}
+\textbf{大规模3D数据处理与多源融合系统} 
+\textit{（AI算法与系统负责人）} 
+\hfill 2024.9 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划课题}}
 \begin{itemize}
-    \item \textbf{Problem:} Raw industrial 3D data suffered from non-manifold defects, holes, and coordinate mismatch, making it unusable for AI training.
-    \item \textbf{Methodology:} Developed an automated 3D pipeline including \textbf{Topology Repair} (PyVista/Meshlab), \textbf{Volumetric Meshing} (TetGen), and \textbf{Multi-source Fusion} (KD-Tree based IDW mapping).
-    \item \textbf{Results:} Enabled high-precision alignment of geometric/physical data for complex 3D scenarios.
-    \item \textbf{Engineering:} Standardized the software system, bridging "Data Processing $\rightarrow$ Training $\rightarrow$ Simulation."
-    \item \textbf{Transferability:} Applicable to point cloud/mesh processing and multi-sensor fusion for \textbf{Autonomous Driving (BEV construction) and Synthetic Data Generation}.
+    \item \textbf{问题：} 原始3D数据存在非流形破损、孔洞、坐标错配及多源异构问题，无法直接用于模型训练与场景建模。
+    \item \textbf{方法：} 从零构建自动化3D数据处理Pipeline，包括点云/网格修复、坐标系统一、体网格构建及多源空间数据融合（KD-Tree + IDW映射）。
+    \item \textbf{结果：} 实现多源几何与属性数据的高精度空间对齐与结构化重建，支撑复杂场景下稳定建模与预测任务。
+    \item \textbf{工程：} 封装标准化软件系统，打通“数据处理 → 模型训练 → 预测推理”全流程，支持跨场景快速迁移。
+    \item \textbf{应用场景：} 适用于点云处理、多传感融合、BEV构建及复杂3D场景建模等任务。
 \end{itemize}
 
 
 
 % ========================================================
-\section{\makebox[\widthof{\faTrophy}][c]{\color{CVBlue}\faTrophy}\ Publications \& Awards}
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 成果与获奖%
+}
 
 \begin{itemize}
-    \item \textbf{Paper:} \textit{Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries} (\textbf{1st Author}, Submitted to IJCAI [CCF-A])
-    \item \textbf{Patent:} A Digital Twin Method for Turbine Components using Geometric Features and FNO \textit{(Under Review)}
-    \item \textbf{Patent:} Structure-Aware GNN for Physical Field Prediction via Geometric Gated Attention \textit{(Under Review)}
-    \item \textbf{Patent:} Intelligent Maintenance for Hydro-turbines based on Stress-driven Response \textit{(Published)}
-    \item \textbf{Software Copyright:} Multi-sensor Fusion Digital Twin Collaborative Maintenance Platform (No. 2026SR0202932)
-    \item \textbf{Competition:} Regional Excellence Award, 15th \textbf{ZTE Blue Shark} Global Elite Challenge \hfill 2025
+    \item \textbf{学术论文：}Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)
+    \item \textbf{专利：}一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法 \textit{（实审中）}
+    \item \textbf{专利：}基于几何门控注意力机制的结构感知图神经网络物理场预测方法 \textit{（实审中）}
+    \item \textbf{专利：}一种基于应力驱动转速响应的水轮机风扇智能运维方法 \textit{（已公开）}
+    \item \textbf{软件著作权：}多传感融合的部门数字孪生协同运维平台 (登记号: 2026SR0202932)
+    \item \textbf{软件著作权：}设计-仿真部门数字孪生协同运维平台 (登记号: 2026SR0202550)
+    \item \textbf{竞赛：}第十五届\textbf{中兴捧月}全球精英挑战赛 -- \textbf{区域优胜奖} \hfill 2025
 \end{itemize}
 
   
 % ================================================================
-% CORE SKILLS
+% 核心技能
 % ================================================================
-\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ Core Skills}
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 核心技能}
 \begin{itemize}
-    \item \textbf{AI Algorithms:} Proficient in \textbf{PyTorch / PyG}; deep understanding of Transformers, GNNs, and Attention mechanisms; expert in \textbf{Neural Operators} (FNO, Transolver) and Physics-Informed Neural Networks (PINNs).
-    \item \textbf{3D Geometry:} Proficient in \textbf{VTK / PyVista / Open3D} for point cloud and unstructured mesh processing; experienced in topology repair, volumetric meshing, and spatial data fusion (KD-Tree/IDW).
-    \item \textbf{Forecasting:} Specialized in autoregressive prediction and stable extrapolation; achieved \textbf{50-step} stable prediction in complex 3D environments.
-    \item \textbf{Engineering:} Proficient in \textbf{Python / C++}, Linux, Docker, and Git; capable of building end-to-end industrial AI pipelines from data ingestion to model deployment.
+    \item \textbf{算法与模型：} 熟练使用 PyTorch/PyG；掌握 Transformer、GNN 与注意力机制；具备复杂3D场景特征建模与时空预测建模能力。
+    \item \textbf{3D数据处理：} 熟练使用 VTK/PyVista/Open3D 进行点云与非结构化网格处理；具备拓扑修复、空间对齐、多源融合与结构重建经验。
+    \item \textbf{时空建模能力：} 掌握自回归预测与稳定滚动外推方法，具备长时序状态预测与场景建模能力。
+    \item \textbf{工程能力：} 熟练掌握 Python/C++、Linux、Docker、Git；能够构建从数据处理到模型部署的完整工程Pipeline。
+    \item \textbf{3D感知理解：} 理解BEV表示、占用预测与时空建模等核心概念，具备向自动驾驶与具身智能方向迁移的技术基础。
 \end{itemize}
 
 \end{document}
