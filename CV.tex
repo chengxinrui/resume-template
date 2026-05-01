@@ -123,6 +123,7 @@
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{研究方向：}} AI4Science / Neural Operator / 3D Geometric Learning\\
 \textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
 
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
@@ -139,15 +140,14 @@
 
 
 % ================================================================
-\textbf{物理约束长时序轨迹预测模型 (可用于世界模型/端到端预测)} 
-\textit{(一作，CCF-A)} 
+\textbf{物理约束神经算子的长时序稳定预测模型} 
+\textit{\textbf{一作，CCF-A}}
 \hfill 2025.9 -- 至今
 \begin{itemize}
-    \item \textbf{任务：} 针对复杂3D场景下长时序预测易发散（>20 step）的问题，设计稳定外推模型。
-    \item \textbf{方法：} 提出基于\textbf{积分一致性（LIPE）的无监督物理约束}，避免传统PINN中梯度不稳定与内存开销问题。
-    \item \textbf{结果：} 实现多工况下连续\textbf{50步}稳定外推，3D训练内存占用降至\textbf{1/6}。
-    \item \textbf{工程：} 构建完整数据处理与训练Pipeline，支持复杂3D结构输入与模型训练。
-    \item \textbf{能力迁移：} 该方法具备长时序建模与状态外推能力，可迁移至\textbf{轨迹预测、BEV Occupancy及世界模型}等任务。
+    \item \textbf{核心思路：} 基于 \textbf{Fourier Neural Operator (FNO)} 构建算子级时空建模框架，针对自回归预测在20+步后误差快速累积的问题，提出积分一致性物理约束，替代传统PINN依赖的高阶自动微分。
+    \item \textbf{实验结果：} 1D任务中训练10步→外推20步，相对误差由3.2\%降至0.8\%，显著抑制误差爆炸；复杂3D非结构化几何上，在10\%标签半监督设置下，阻力系数误差降至 \textbf{4.06\%}。
+    \item \textbf{工程优化：} 避免高阶梯度计算，3D训练显存占用降低至\textbf{1/6}，训练过程稳定收敛，无梯度震荡。
+    \item \textbf{泛化能力：} 支持非结构化网格输入与跨几何测试，在多结构场景下保持稳定预测性能。
 \end{itemize}
 
 % ================================================================
