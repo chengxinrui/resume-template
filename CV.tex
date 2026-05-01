@@ -170,16 +170,14 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
 \faBriefcase}\ 项目经历}
 
-\textbf{工业级3D数据Pipeline与数字孪生仿真系统} 
-\textit{(AI算法与系统集成负责人)} 
+\textbf{工业3D数据处理与数字孪生建模系统开发} 
+\textit{\textbf{AI算法与系统集成负责人}}
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}
 \begin{itemize}
-    \item \textbf{问题：} 工业现场3D数据存在严重质量问题（非流形破损、孔洞、坐标错配、多源异构），无法直接用于AI模型训练。
-    \item \textbf{方法：} 从零构建自动化3D数据处理Pipeline，涵盖拓扑修复（PyVista/Meshlab）、体网格生成（TetGen）及多源数据融合（基于KD-Tree的IDW映射）。
-    \item \textbf{结果：} 实现多源几何与物理场数据的高精度对齐与结构化重建，支持复杂3D场景下的稳定建模与训练。
-    \item \textbf{工程：} 封装为标准化软件系统，打通“数据处理→模型训练→仿真预测”全流程，支持跨场景快速迁移。
-    \item \textbf{能力迁移：} 该Pipeline适用于点云/网格数据处理与多源融合任务，可迁移至\textbf{自动驾驶3D感知、BEV构建及仿真数据生成}等场景。
+    \item \textbf{3D数据自动化处理：} 针对工业现场3D模型存在破损、孔洞、坐标不统一、多源数据格式不一致等问题，构建清洗与重建流程，实现拓扑修复、坐标对齐与多源数据融合，使原始模型可直接用于AI训练。
+    \item \textbf{算法建模：} 将处理后的非结构化网格数据接入Transolver模型进行物理场预测，实现复杂结构场景下的稳定建模与推理。
+    \item \textbf{系统开发：} 使用Python开发后端模型管理系统，构建可视化2000+部件的模型库（电机、螺丝等典型工业部件），支持图片和3D模型查询、调用与结果展示，打通“数据处理 → 模型预测 → 结果展示”完整流程。
 \end{itemize}
 
 
