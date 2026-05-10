@@ -109,7 +109,7 @@
         女 $\vert$ 24岁 \quad
         \faPhone\ 150-4336-5908 \quad 
         \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
-        \faGithubSquare\ \href{https://github.com/anonymou98/UNOP}{github.com/anonymou98/UNOP}
+        \faGithubSquare\ \href{https://github.com/chengxinrui/UNOP}{github.com/chengxinrui/UNOP}
     }
 \end{minipage}
 
@@ -128,6 +128,23 @@
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
 
+% ================================================================
+% 科研成果概览 (Research Summary)
+% ================================================================
+\section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ 科研成果概览} 
+
+\textbf{研究聚焦：} 长期深耕 \textbf{AI4Science} 领域，专注于 \textbf{神经算子 (Neural Operators)}、偏微分方程 (PDE) 求解及长时序物理场预测。
+
+\begin{itemize}[leftmargin=1.5em, labelsep=0.5em]
+    \item \textbf{学术产出：} 累计发表/在投 \textbf{CCF-A 类论文 4 篇}。其中以\textbf{第一作者}身份在人工智能顶会 \textbf{IJCAI} (CCF-A) 发表论文 1 篇，\textbf{NeurIPS} (CCF-A) 在投 1 篇；另有 TPDS (CCF-A) 学生一作在投 1 篇。
+    \item \textbf{科研深度：} 深度参与 \textbf{“十四五”国家重点研发计划} 项目 1 项；独立提出“积分一致性物理约束”方法，将 3D 物理场预测显存占用优化至 \textbf{1/6}。
+    \item \textbf{学术创新与荣誉：} 申请/授权发明专利 \textbf{4 项}，获软件著作权 \textbf{2 项}；荣获第十五届中兴捧月全球精英挑战赛区域优胜奖。
+    \item \textbf{工程能力：} 具备从底层物理算子推导到大规模工业级 3D 数据处理（20GB+ 规模）的全栈科研建模与工程落地能力。
+\end{itemize}
+
+\vspace{0.2em} % 调整与下一段的间距
+
+
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -136,7 +153,17 @@
 \textbf{AI4Science / 神经算子方向（第一作者）}
 \begin{itemize}
     \item \textbf {Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)}
+    \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
+        \item \textbf{研究痛点：} 针对无监督算子学习在长时序自回归演化中易出现的数值不稳定与预测发散难题。
+        \item \textbf{核心创新：} 提出\textbf{潜空间积分物理嵌入 (LIPE)}，利用积分一致性替代传统微分约束，规避了高阶自动微分的数值震荡；设计 \textbf{GALA 适配器} 实现非结构化网格向统一潜空间的映射。
+        \item \textbf{实验指标：} 在 1D/2D/3D 基准测试中，将 20 步长时序预测的误差累积显著 \textbf{降低了 60\%}，实现无标签设定下的 SOTA 精度。
+    \end{itemize}
     \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurlPS CCF-A, 在投)}
+    \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
+        \item \textbf{研究痛点：} 针对传统谱算子难以在不同物理机制（\textbf{椭圆/抛物/双曲型 PDE}）间进行跨类别泛化的问题。
+        \item \textbf{核心创新：} 提出\textbf{基函数通用神经算子}，通过基函数通用交互对齐机制实现了频谱幅相矩阵与权重的解耦；引入\textbf{随机积分演化}机制，动态适配物理场的瞬态与稳态变化。
+        \item \textbf{实验验证：} 在统一架构下实现三类主流 PDE 的高精度求解与跨机制泛化，显著提升了模型在复杂场景下的稳健性。
+    \end{itemize}
 \end{itemize}
 
 \textbf{其他相关论文}
