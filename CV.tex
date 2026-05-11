@@ -152,7 +152,7 @@
     \item \textbf {Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
         \item \textbf{研究痛点：} 现有无监督神经算子依赖微分残差进行物理约束，高阶空间导数在非结构化几何与长时自回归演化中易引发数值不稳定与误差累积。
-        \item \textbf{核心创新：} 提出积分一致性物理嵌入（LIPE），将 PDE 约束由微分残差重构为\textbf{积分演化形式}，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂几何场景下的长时稳定预测。
+        \item \textbf{核心创新：} 提出\textbf{积分一致性物理嵌入（LIPE）}，将 PDE 约束由微分残差重构为积分演化形式，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂几何场景下的长时稳定预测。
         \item \textbf{实验指标：} 1D 高对流场景中 20-step 误差降至 \textbf{0.09\%}，并在 $T=50$ 外推中保持稳定；2D Navier–Stokes 任务中 20-step 误差为 \textbf{3.02\%}；3D 半监督几何任务中阻力系数误差为 \textbf{4.06\%}，显著优于基线方法。
     \end{itemize}
     \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurIPS CCF-A, 在投)}
@@ -162,7 +162,8 @@
         \item \textbf{实验验证：} 在跨 PDE 类验证中，1D 对流扩散任务中 20-step 误差保持在 \textbf{0.09\%} 量级；在 2D Navier–Stokes 强迫场景下 20-step 误差为 \textbf{1.90\%}；在 3D 半监督几何任务中 $C_d$ 误差降至 \textbf{3.95\%}，显著优于谱基与积分基线方法。
     \end{itemize}
 \end{itemize}
-\vspace{0.5em} % 调整与下一段的间距
+\vspace{1.0em} % 调整与下一段的间距
+
 \textbf{共同作者成果}
 \begin{itemize}
     \item \textbf {Serving Mixture of Experts in Distributed GPU with Route and Graph Execution Selection on Resource-Constrained Systems (\textbf{学生一作}，TPDS CCF-A, 在投)}
