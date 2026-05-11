@@ -159,9 +159,9 @@
     \end{itemize}
     \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurIPS CCF-A, 在投)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
-        \item \textbf{研究痛点：} 针对传统谱算子难以在不同物理机制（\textbf{椭圆/抛物/双曲型 PDE}）间进行跨类别泛化的问题。
-        \item \textbf{核心创新：} 提出\textbf{基函数通用神经算子}，通过基函数通用交互对齐机制实现了频谱幅相矩阵与权重的解耦；引入\textbf{随机积分演化}机制，动态适配物理场的瞬态与稳态变化。
-        \item \textbf{实验验证：} 在统一架构下实现三类主流 PDE 的高精度求解与跨机制泛化，显著提升了模型在复杂场景下的稳健性。
+        \item \textbf{研究痛点：} 传统谱神经算子将交互权重绑定于固定 Fourier 频率结构，导致模型在不同 PDE 类别（椭圆/抛物/双曲）之间难以共享动力学表示，并在长时自回归预测中产生误差漂移。
+        \item \textbf{核心创新：} 提出\textbf{基表示–交互解耦的 Basis-Universal 演化框架}，将谱基表示与交互权重矩阵分离，构建与频率索引无关的统一复数潜空间交互机制，实现跨 PDE 类别的共享动力学建模。在此基础上引入几何感知潜空间调制与积分一致性约束，增强复杂几何条件下的泛化能力与长时稳定性。
+        \item \textbf{实验验证：} 在 1D 对流扩散任务中 20-step 误差保持在 \textbf{0.09\%} 量级；在 2D Navier–Stokes 强迫场景下 20-step 误差为 \textbf{1.90\%}；在 3D 半监督几何任务中 $C_d$ 误差降至 \textbf{3.95\%}，显著优于谱基与积分基线方法。
     \end{itemize}
 \end{itemize}
 
