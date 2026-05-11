@@ -153,9 +153,9 @@
 \begin{itemize}
     \item \textbf {Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
-        \item \textbf{研究痛点：} 针对无监督算子学习在长时序自回归演化中易出现的数值不稳定与预测发散难题。
-        \item \textbf{核心创新：} 提出\textbf{潜空间积分物理嵌入 (LIPE)}，利用积分一致性替代传统微分约束，规避了高阶自动微分的数值震荡；设计 \textbf{GALA 适配器} 实现非结构化网格向统一潜空间的映射。
-        \item \textbf{实验指标：} 在 1D/2D/3D 基准测试中，将 20 步长时序预测的误差累积显著 \textbf{降低了 60\%}，实现无标签设定下的 SOTA 精度。
+        \item \textbf{研究痛点：} 现有无监督神经算子依赖微分残差进行物理约束，高阶空间导数在非结构化几何与长时自回归演化中易引发数值不稳定与误差累积。
+        \item \textbf{核心创新：} 提出积分一致性物理嵌入（LIPE），将 PDE 约束由微分残差重构为\textbf{积分演化形式}，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂几何场景下的长时稳定预测。
+        \item \textbf{实验指标：} 1D 高对流场景中 20-step 误差降至 \textbf{0.09\%}，并在 $T=50$ 外推中保持稳定；2D Navier–Stokes 任务中 20-step 误差为 \textbf{3.02\%}；3D 半监督几何任务中阻力系数误差为 \textbf{4.06\%}，显著优于基线方法。
     \end{itemize}
     \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurIPS CCF-A, 在投)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
