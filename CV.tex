@@ -138,13 +138,13 @@
 \textit{\textbf{独立完成}}
 \hfill 2026.05
 
-\textbf{背景：} 长上下文与长期记忆是 Agent 实现复杂决策的核心瓶颈。从系统演化视角看，将原始文本压缩为隐空间总结向量，使记忆从“外部被动检索”转变为“内部状态参与注意力计算”，是抑制长程语义漂移、实现记忆主动内化的关键技术路径。\\
+\textbf{背景：} 长上下文与长期记忆是 Agent 实现复杂决策的核心瓶颈。将原始文本压缩为隐空间总结向量，使记忆从“外部被动检索”转变为“内部状态参与注意力计算”，是抑制长程语义漂移、实现记忆主动内化的关键技术路径。\\
 \textbf{个人职责：}完成模块化重构，实现 \texttt{AutoCompressorForCausalLM}，并完成端到端推理与压缩效果验证。\\
 \textbf{核心成果：}
 \begin{itemize}[leftmargin=1.6em]
     \item 将 \textbf{660 tokens} 背景上下文压缩为 \textbf{50 个 summary vectors}（压缩比约 \textbf{13$\times$}），实现了记忆在隐空间的稠密表征；
     \item 设计对照实验验证压缩有效性：加载压缩向量后模型可正确回答事实型问题（"拜登"），无上下文时则错误回答为"特朗普"，证明压缩向量保留关键语义；
-    \item 打通\textbf{"原始上下文 $\rightarrow$ 潜在空间压缩 $\rightarrow$ 软提示注入 $\rightarrow$ 解码生成"}完整工程链路，增强对 Agent 长期记忆压缩范式的理解。
+    \item 打通\textbf{原始上下文 $\rightarrow$ 潜在空间压缩 $\rightarrow$ 软提示注入 $\rightarrow$ 解码生成}完整工程链路，增强对 Agent 长期记忆压缩的理解。
 \end{itemize}
 
 
