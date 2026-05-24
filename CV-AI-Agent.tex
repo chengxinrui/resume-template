@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%%  主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸， 上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+     
+    {\large \textbf{AI4Science / 神经算子 / 长时序预测}}\\[0.5em]
+    
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/chengxinrui/UNOP}{github.com/chengxinrui/UNOP}
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+% ================================================================
+% 教育背景 ★差异：研究方向描述不同
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金
+
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
+
+% ================================================================
+% 科研经历
+% ================================================================
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+科研经历}
+% ================================================================
+\textbf{物理约束神经算子的长时序稳定预测模型} 
+\textcolor{CVBlue}{\textbf{一作，IJCAI CCF-A}}
+\hfill 2025.9 -- 2026.4
+
+\textbf{背景：} 现有无监督 Neural Operator 难以同时满足无监督训练、非规则几何泛化与长时间稳定 rollout。在 3D 场景下易出现误差快速累积、梯度不稳定及显存占用过高问题。\\
+\textbf{个人职责：} 主导模型架构设计，提出积分一致性物理约束，完成理论推导、算法实现及 3D 非结构化几何验证。\\
+\textbf{相关技术：} Python, PyTorch, PyG (PyTorch Geometric), Linux。\\
+\textbf{核心难点：}
+    \begin{itemize}[leftmargin=1.6em]
+        \item 微分残差依赖高阶空间导数计算，在非结构网格与长时间 rollout 中数值不稳定且显存开销大  
+        \item FNO 等频域算子依赖规则网格，难以直接处理真实 CAD / 点云等非规则几何  
+        \item 自回归预测误差随时间指数级累积，20 步后出现明显发散
+    \end{itemize}
+\textbf{核心突破：} 提出积分一致性物理约束（LIPE），将物理约束由微分残差形式改为积分演化一致性形式，避免显式计算高阶空间导数，显著提升训练稳定性与长时间预测稳定性。\\
+\textbf{效果：} 在 \textbf{50-step} 长时间预测下保持稳定，误差曲线无指数爆炸；1D 对流扩散方程中相对 $L_2$ 误差由 \textbf{3.2\%} 降至 \textbf{0.8\%}；3D 非结构化几何任务中显存占用降低至 PINN 类方法的 \textbf{1/6}；10\% 标签半监督下阻力系数误差降至 \textbf{4.06\%}。
+
+\projectsep
+
+% ================================================================
+\textbf{支持跨 PDE 泛化与长时稳定演化的神经算子框架} 
+\textcolor{CVBlue}{\textbf{一作，NeurIPS (CCF-A)，在投}}
+\hfill 2026.03 -- 至今
+
+\textbf{背景：} 在解决物理约束稳定性问题后，进一步关注谱表示对跨 PDE 泛化能力的影响。当物理机制改变（如扩散转为湍流）或谱分布发生漂移时，现有模型泛化能力下降，长时演化易失稳。\\
+\textbf{个人职责：} 独立负责模型表示解耦设计与动力学交互核参数化实现，主导跨 PDE 类通用性验证与分析。 \\
+\textbf{相关技术：} PyTorch, Complex-valued NNs, FFT, NumPy/SciPy。\\
+\textbf{核心难点：}
+    \begin{itemize}[leftmargin=1.6em]
+        \item \textbf{频率索引绑定：} 权重依赖固定频率位置，导致模型难以在不同 PDE 谱结构间共享动力学模式
+        \item \textbf{表示与动力学耦合：} 谱表示与演化机制难以解耦，限制算子在不同几何与物理场景下的泛化能力
+        \item \textbf{频谱能量漂移：} 固定权重参数化易放大或抑制特定频率，导致长时自回归预测失稳
+    \end{itemize}
+\textbf{核心突破：} 设计 BUNO 架构，解耦谱基表示与动力学交互核，在统一复数潜空间中共享动力学参数，消除权重对频率索引的依赖，显著提升跨 PDE 迁移能力与长时预测稳定性。\\
+\textbf{效果：} 在强迫力 2D Navier–Stokes 任务中，相对误差由 \textbf{27.6\%} 降低至 \textbf{1.90\%}（实现 \textbf{14倍} 精度提升）；在跨 PDE 类验证中展现出在长时演化中频谱能量的分布稳定性。
+
+
+% ================================================================
+% 项目经历
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 项目经历}
+
+\textbf{工业3D数据处理与数字孪生建模系统开发} 
+\textit{\textbf{AI算法与系统集成负责人}}
+\hfill 2024.9 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}\\
+\textbf{项目背景：} 面向工业复杂装备的数字孪生建模需求，原始3D模型存在破损、孔洞、坐标不统一及多源格式不一致等问题，难以直接用于AI训练与物理场预测。\\
+\textbf{个人职责：} 负责数据处理流程设计、几何感知模型构建与系统集成部署，打通“数据清洗 → 模型训练 → 推理部署 → 可视化展示”完整闭环。\\
+\textbf{相关技术：} PyTorch, Transformer, 非结构化网格处理\\
+\textbf{核心技术与实现：}
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{3D数据自动化处理：} 构建非结构化网格清洗与重建流程，实现拓扑修复、坐标对齐及多源数据融合，使工业级3D模型可直接用于AI训练。
+    \item \textbf{几何感知注意力建模：} 设计几何门控注意力机制（GeoGatedAttention），融合曲率、法向量与边结构信息，对注意力权重进行动态调制，增强复杂几何区域的局部表达能力。
+    \item \textbf{规模化训练与部署：} 构建端到端几何特征提取与训练框架，支持约20GB规模（889辆汽车）非结构化网格的自动化批处理训练；完整训练周期约10小时，单样本推理时间约20ms。
+    \item \textbf{系统开发与集成：} 基于Python开发模型管理与可视化系统，构建包含2000+工业部件的3D模型库，支持模型查询、预测调用与结果展示。
+\end{itemize}
+\textbf{项目效果：} 在3D物理场预测任务中将相对误差降低至 \textbf{2.69\%}，预测结果与真实值相关系数达 \textbf{0.97}，实现复杂工业结构场景下的稳定建模与快速推理。
+
+% ========================================================
+\section{
+    \makebox[\widthof{\faTrophy}][c]
+    {\color{CVBlue}\faTrophy}\ 成果与获奖
+}
+
+\textbf{代表论文：}
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries} \textcolor{CVBlue}{\textbf{一作，IJCAI (CCF-A)}}
+    \item \textbf{Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes} \textcolor{CVBlue}{\textbf{一作，NeurIPS (CCF-A)，在投}}
+    \item \textbf{Serving Mixture of Experts in Distributed GPU with Route and Graph Execution Selection} \textcolor{CVBlue}{\textbf{学生一作，TPDS (CCF-A)，在投}}
+\end{itemize}
+\textbf{其他论文：} 另有 TSC (CCF-A)、ICSOC (CCF-B)、CCF-ICSS-2025 等论文若干。\\
+\textbf{专利与软著：}
+\begin{itemize}[leftmargin=1.6em]
+    \item 一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法（专利实审中）
+    \item 基于几何门控注意力机制的结构感知图神经网络物理场预测方法（专利实审中）
+    \item 一种基于应力驱动转速响应的水轮机风扇智能运维方法（专利已公开）
+    \item 多传感融合的部门数字孪生协同运维平台(软著登记号:2026SR0202932)
+    \item 设计-仿真部门数字孪生协同运维平台(软著登记号:2026SR0202550)
+\end{itemize}
+
+\textbf{竞赛：} 第十五届中兴捧月全球精英挑战赛\textbf{区域优胜奖（2025）}
+
+  
+% ================================================================
+% 自我评价
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 自我评价}
+专注神经算子与物理约束建模研究，具备从理论设计到工程落地的完整算法开发能力。
+在长时稳定预测与跨 PDE 泛化方向具有深入理解与实践经验，
+兼具模型创新、规模化训练与系统集成能力。
+
+\end{document}
