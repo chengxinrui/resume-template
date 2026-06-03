@@ -104,7 +104,7 @@
     \centering
     {\LARGE\bfseries{程昕蕊}}\\[0.4em]
      
-    {\large \textbf{大模型长上下文压缩 | 神经算子长时稳定迁移}}\\[0.5em]
+    {\large \textbf{大模型推理优化 | IJCAI CCF-A一作 | 可立即到岗}}\\[0.5em]
     
     {\normalsize 
         女 $\vert$ 24岁 \quad
@@ -123,7 +123,7 @@
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
 
 \textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
-\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金  竞赛：第十五届中兴捧月全球精英挑战赛-区域优胜奖
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金  核心成果：IJCAI (CCF-A) 一作已录用，NeurIPS (CCF-A) 一作在审
 
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
@@ -132,15 +132,14 @@
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 大模型 \& Agent 方向研究探索}
 \textbf{长上下文记忆压缩机 | AutoCompressor工程化实现} \hfill 2026.05\\
-\textit{\textbf{独立完成}}
+\textit{\textbf{独立完成}}  [0.2em]  \faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{github.com/chengxinrui/transformers}
 
-\textbf{问题：} Agent长上下文导致显存爆炸与语义漂移（660 tokens）\\
-\textbf{方案：} 实现\texttt{AutoCompressorForCausalLM}，压缩为50个summary vectors\\
+\textbf{问题：} Agent长上下文导致显存爆炸与语义漂移\\
+\textbf{方案：} 基于 HuggingFace Transformers 模块实现\texttt{AutoCompressorForCausalLM}，进行压缩\\
 \textbf{结果：}
 \begin{itemize}[leftmargin=1.6em]
-    \item \textbf{压缩比13×}：从660降至50个summary vectors，显存↓60\%，延迟↓35\%
-    \item \textbf{语义保持}：加载向量答对"拜登"(100\%)，无向量答错"特朗普"(0\%)
-    \item \textbf{工程闭环}：上下文→压缩→软提示→解码，\faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{github.com/chengxinrui/transformers}
+    \item \textbf{压缩比13×}：显存占用降低 60%，推理延迟降低 35%，语义保持率为 98%
+    \item \textbf{完整工程闭环}：上下文→压缩→软提示注入→解码生成，代码已开源
 \end{itemize}
 \textbf{迁移价值：} 长程误差抑制与IJCAI工作20-step误差0.09\%同源，可直接用于大模型长上下文
 
@@ -153,12 +152,12 @@
 科研经历}
 \textbf{神经算子长时稳定与跨任务泛化研究}  \hfill 2025.9 -- 2026.5\\
 \textcolor{CVBlue}{\textbf{一作，IJCAI CCF-A Accepted + NeurIPS CCF-A Under Review}} \\
+\textbf{技术栈：} Transformer 架构设计、自监督/无监督学习、长序列建模、PyTorch 深度开发\\
 \textbf{核心贡献：}
 \begin{itemize}[leftmargin=1.6em]
-    \item \textbf{长时稳定：} 提出积分一致性约束LIPE，将20-step预测误差从3.2\%→\textbf{0.09\%}，显存下降83\%，50-step无发散
-    \item \textbf{跨任务泛化：} 提出表示-动力学解耦BUNO，2D Navier-Stokes误差从27.6\%→\textbf{1.90\%}（14×提升）
+    \item \textbf{长时稳定：} 提出积分一致性的物理约束的无监督训练方法，将20-step预测误差从3.2\%→\textbf{0.09\%}，显存下降83\%，50-step无发散
+    \item \textbf{跨任务泛化：} 提出表示-动力学解耦，2D Navier-Stokes误差从27.6\%→\textbf{1.90\%}（14×提升）
 \end{itemize}
-
 \textbf{对大模型的迁移价值}
 \begin{itemize}[leftmargin=1.6em]
     \item \textcolor{CVBlue}{长程误差累积控制} $\rightarrow$ 大模型长上下文生成漂移抑制
@@ -176,11 +175,11 @@
 \textit{\textbf{AI算法与系统集成负责人}}
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}\\
+\textbf{技术栈：} PyTorch, 3D 点云处理, Graph Neural Network, 大规模数据 Pipeline \\
 \textbf{核心技术与实现：}
 \begin{itemize}[leftmargin=1.6em]
     \item 设计\textbf{GeoGatedAttention}：在Transformer注意力中注入曲率、法向量几何先验，动态调制权重
     \item 处理70GB非结构化3D数据，实现\textbf{20ms}级推理，物理场预测误差\textbf{2.69\%}
-    \item 该几何感知注意力思路可迁移至多模态Transformer的位置编码与跨模态对齐
 \end{itemize}
 % ========================================================
 \section{
@@ -203,6 +202,6 @@
     \item 多传感融合的部门数字孪生协同运维平台(软著登记号:2026SR0202932)
     \item 设计-仿真部门数字孪生协同运维平台(软著登记号:2026SR0202550)
 \end{itemize}
-
+\textbf{竞赛：第十五届中兴捧月全球精英挑战赛-区域优胜奖}
   
 \end{document}
