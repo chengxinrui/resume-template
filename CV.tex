@@ -141,7 +141,6 @@
     \item \textbf{压缩比13×}：显存占用降低 60%，推理延迟降低 35%，语义保持率为 98%
     \item \textbf{完整工程闭环}：上下文→压缩→软提示注入→解码生成，代码已开源
 \end{itemize}
-\textbf{迁移价值：} 长程误差抑制与IJCAI工作20-step误差0.09\%同源，可直接用于大模型长上下文
 
 
 
@@ -158,13 +157,6 @@
     \item \textbf{长时稳定：} 提出积分一致性的物理约束的无监督训练方法，将20-step预测误差从3.2\%→\textbf{0.09\%}，显存下降83\%，50-step无发散
     \item \textbf{跨任务泛化：} 提出表示-动力学解耦，2D Navier-Stokes误差从27.6\%→\textbf{1.90\%}（14×提升）
 \end{itemize}
-\textbf{对大模型的迁移价值}
-\begin{itemize}[leftmargin=1.6em]
-    \item \textcolor{CVBlue}{长程误差累积控制} $\rightarrow$ 大模型长上下文生成漂移抑制
-    \item \textcolor{CVBlue}{表示与动力学解耦} $\rightarrow$ 多模态Agent的模态表示与策略解耦
-\end{itemize}
-
-
 
 % ================================================================
 % 项目经历
