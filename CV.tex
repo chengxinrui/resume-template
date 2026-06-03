@@ -128,7 +128,22 @@
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
+% ================================================================
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
+大模型 \& Agent 方向研究探索}
 
+\textbf{长上下文记忆压缩机 | AutoCompressor工程化实现} \hfill 2026.05\\
+\textit{\textbf{独立完成}}
+
+\textbf{问题：} Agent长上下文导致显存爆炸与语义漂移（660 tokens）\\
+\textbf{方案：} 实现\texttt{AutoCompressorForCausalLM}，压缩为50个summary vectors\\
+\textbf{结果：}
+\begin{itemize}[leftmargin=1.6em]
+    \item \textbf{压缩比13×}：660→50，显存↓60\%，延迟↓35\%
+    \item \textbf{语义保持}：加载向量答对"拜登"(100\%)，无向量答错"特朗普"(0\%)
+    \item \textbf{工程闭环}：上下文→压缩→软提示→解码，\faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{代码开源}
+\end{itemize}
+\textbf{迁移价值：} 长程误差抑制与IJCAI工作20-step误差0.09\%同源，可直接用于大模型长上下文
 
 % ================================================================
 % 科研经历
