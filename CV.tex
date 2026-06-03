@@ -128,26 +128,6 @@
 \textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金共\textbf{6次}
 
-% ================================================================
-% ★ 灵魂模块：大模型 & Agent 方向研究探索
-% ================================================================
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
-大模型 \& Agent 方向研究探索}
-
-\textbf{长上下文记忆压缩机 | AutoCompressor工程化实现}
-\textit{\textbf{独立完成}}
-\hfill 2026.05
-
-\textbf{问题：} Agent长上下文导致显存爆炸与语义漂移（660 tokens上下文）\\
-\textbf{方案：} 实现\texttt{AutoCompressorForCausalLM}，将上下文压缩为50个summary vectors\\
-\textbf{结果：}
-\begin{itemize}[leftmargin=1.6em]
-    \item \textbf{压缩比13×}：660 tokens → 50 vectors，显存↓60\%，推理延迟↓35\%
-    \item \textbf{语义保持验证}：加载向量答对"拜登"（100\%），无向量答错"特朗普"（0\%）
-    \item \textbf{工程闭环}：打通\textcolor{CVBlue}{上下文→压缩→软提示→解码}，代码已开源
-    \small \faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{https://github.com/chengxinrui/transformers/tree/cxr_main} 
-\end{itemize}
-\textbf{可迁移价值：} 该长程误差抑制方法与IJCAI工作中\textbf{20-step误差0.09\%}的稳定性控制同源，可直接用于大模型长上下文生成与Agent记忆管理。
 
 
 % ================================================================
