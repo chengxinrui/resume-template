@@ -133,11 +133,11 @@
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 
 大模型相关研究}
 \textbf{Agent长上下文记忆压缩（AutoCompressor工程化实现）} \hfill 2026.05\\
-\textit{\textbf{独立完成}}  \faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{github.com/chengxinrui/transformers}
+\textit{\textbf{独立完成}}  \faGithub\ \href{https://github.com/chengxinrui/transformers/tree/cxr_main}{github.com/chengxinrui/transformers}\\
 \textbf{技术栈：} Transformers、PyTorch、LLM Memory、Prompt Compression\\
 \textbf{问题：} Agent执行复杂任务时历史上下文持续增长，导致显存占用增加、推理延迟上升及长期记忆退化。\\
 \textbf{方案：} 基于HuggingFace Transformers实现AutoCompressorForCausalLM，构建“上下文压缩→软提示注入→生成解码”完整记忆压缩链路。\\
-\textbf{结果：} 上下文压缩比13×，推理显存下降60%，推理延迟下降35%，语义保持率98%，完成工程化实现并开源。
+\textbf{结果：} 上下文压缩比13×，推理显存下降60\%，推理延迟下降35\%，语义保持率98\%，完成工程化实现并开源。
 
 % ================================================================
 % 科研经历
@@ -148,7 +148,7 @@
 \textcolor{CVBlue}{\textbf{一作，IJCAI CCF-A Accepted + NeurIPS CCF-A Under Review}} \\
 \textbf{技术栈：} Transformer 架构设计、自监督/无监督学习、长序列建模、PyTorch 深度开发\\
 \textbf{研究问题：} 长时序预测中的误差累积问题，跨分布任务迁移与泛化问题，无监督物理约束学习。\\
-\textbf{核心贡献：}
+\textbf{核心贡献与结果：}
 \begin{itemize}[leftmargin=1.6em]
     \item \textbf{长时稳定：} 提出积分一致性的物理约束的无监督训练方法，将20-step预测误差从3.2\%→\textbf{0.09\%}，显存下降83\%，50-step无发散
     \item \textbf{跨任务泛化：} 提出表示-动力学解耦，实现跨任务泛化能力提升，2D Navier-Stokes误差从27.6\%→\textbf{1.90\%}（14×提升）
@@ -164,7 +164,7 @@
 \hfill 2024.9 -- 2025.6\\[0.2em]
 \textcolor{CVBlue}{\textbf{十四五国家重点研发计划``装备制造后市场服务协同平台研发与应用''}}\\
 \textbf{技术栈：} Transformer、Point Cloud、Graph Neural Network、Representation Learning \\
-\textbf{核心贡献：}
+\textbf{核心贡献与结果：}
 \begin{itemize}[leftmargin=1.6em]
     \item 设计\textbf{GeoGatedAttention}：在Transformer注意力中注入曲率、法向量几何先验，动态调制权重。
     \item 处理70GB非结构化3D数据，实现\textbf{20ms}级推理，物理场预测误差\textbf{2.69\%}，提升复杂几何场景下的表示能力与预测精度。
