@@ -1,0 +1,223 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%%  主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸， 上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\end{tikzpicture}%
+%%%% 利用tikz来定位学校Logo
+\begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
+\end{tikzpicture}%
+
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
+\vspace*{-0.5em} 
+\noindent
+\begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
+    \centering
+    {\LARGE\bfseries{程昕蕊}}\\[0.4em]
+     
+    {\large \textbf{AI4Science / 神经算子 / 长时序预测}}\\[0.5em]
+    
+    {\normalsize 
+        女 $\vert$ 24岁 \quad
+        \faPhone\ 150-4336-5908 \quad 
+        \faEnvelopeO\ \href{mailto:cxrxin0530@163.com}{cxrxin0530@163.com} \quad
+        \faGithubSquare\ \href{https://github.com/chengxinrui/UNOP}{github.com/chengxinrui/UNOP}
+    }
+\end{minipage}
+
+% --- 在这里使用负间距将下方的正文往上拉 ---
+\vspace{-0.4cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
+    
+% ================================================================
+% 教育背景 ★差异：研究方向描述不同
+% ================================================================
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景} 
+
+\textbf{哈尔滨工业大学} \quad 软件工程（电子信息） \quad 硕士研究生 \hfill 2024.9 -- 至今\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前20\%}} \quad \textbf{荣誉：}获得校级一等、二等学业奖学金；第十五届中兴捧月全球精英挑战赛\textbf{区域优胜奖}
+
+\textbf{长春工业大学} \quad 软件工程 \quad 本科 \hfill 2019.9 -- 2023.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{排名：前5\%}} \quad \textbf{荣誉：}在校期间获校级学业二等、三等奖学金以及单科状元奖学金共\textbf{6次}
+
+
+% ================================================================
+% 科研成果概览 (Research Summary)
+% ================================================================
+\section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ 科研成果概览} 
+
+\textbf{研究聚焦：} 围绕神经算子在复杂几何与跨类别 PDE 场景下的稳定性与表示泛化问题开展研究，重点关注物理一致性与谱表示解耦机制。
+
+\begin{itemize}[leftmargin=1.5em]
+    \item 以\textbf{第一作者}在 \textbf{IJCAI (CCF-A)} 发表 1 篇，在 \textbf{NeurIPS (CCF-A)} 在投 1 篇；累计 CCF-A 论文 4 篇。
+    \item 深度参与 \textbf{“十四五”国家重点研发计划}，承担复杂工业三维几何场景下的物理场建模研究。
+    \item 具备 70GB 级工业数据处理与神经算子规模化部署能力，实现物理场预测推理时间优化至 \textbf{20ms}。
+\end{itemize}
+
+
+% ========================================================
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 学术论文%
+}
+\textbf{核心研究成果（第一作者）}
+\begin{itemize}
+    \item \textbf {Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)}
+    \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
+        \item \textbf{研究痛点：} 现有无监督神经算子依赖微分残差进行物理约束，高阶空间导数在非结构化几何与长时自回归演化中易引发数值不稳定与误差累积。
+        \item \textbf{核心创新：} 提出\textbf{积分一致性物理嵌入（LIPE）}，将 PDE 约束由微分残差重构为积分演化形式，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂几何场景下的长时稳定预测。
+        \item \textbf{实验指标：} 1D 高对流场景中 20-step 误差降至 \textbf{0.09\%}，并在 $T=50$ 外推中保持稳定；2D Navier–Stokes 任务中 20-step 误差为 \textbf{3.02\%}；3D 半监督几何任务中阻力系数误差为 \textbf{4.06\%}，显著优于基线方法。
+    \end{itemize}
+    \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurIPS CCF-A, 在投)}
+    \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
+        \item \textbf{研究痛点：} 传统谱神经算子将交互权重绑定于固定 Fourier 频率结构，导致模型在不同 PDE 类别（椭圆/抛物/双曲）之间难以共享动力学表示，并在长时自回归预测中产生误差漂移。
+        \item \textbf{核心创新：} 提出\textbf{基表示–交互解耦的 Basis-Universal 演化框架}，将谱基表示与交互权重矩阵分离，构建与频率索引无关的统一复数潜空间交互机制，实现跨 PDE 类别的共享动力学建模。在此基础上引入几何感知潜空间调制与积分一致性约束，增强复杂几何条件下的泛化能力与长时稳定性。
+        \item \textbf{实验验证：} 在跨 PDE 类验证中，1D 对流扩散任务中 20-step 误差保持在 \textbf{0.09\%} 量级；在 2D Navier–Stokes 强迫场景下 20-step 误差为 \textbf{1.90\%}；在 3D 半监督几何任务中 $C_d$ 误差降至 \textbf{3.95\%}，显著优于谱基与积分基线方法。
+    \end{itemize}
+\end{itemize}
+\vspace{0.5em} % 调整与下一段的间距
+
+\textbf{共同作者成果}
+\begin{itemize}
+    \item \textbf {Serving Mixture of Experts in Distributed GPU with Route and Graph Execution Selection on Resource-Constrained Systems (\textbf{学生一作}，TPDS CCF-A, 在投)}
+    \\ \small{--- 负责分布式环境下 MoE 模型的推理路径优化策略。}
+    \item \textbf {SeGO: Sensitivity-Aware Golden Optimization for Large-Scale VLM Quantization (\textbf{学生二作}，IJCAI CCF-A)}
+    \\ \small{--- 负责视觉语言大模型量化过程中的金点搜索算法实现。}
+    \item \textbf{其他成果：} 另有 3 篇关于 VLA 机械臂轨迹生成及边缘计算的 CCF-A/B 类论文（五作/三作/四作），分别负责其中的物理一致性验证与系统协作逻辑。
+    \item \textbf {Joint Optimization of Fine-grained Representation and Workflow Orchestration in Metaverse Articulated Manipulation Auto-generation by VLA Method (\textbf{五作}，TSC CCF-A)}
+    \item \textbf {MPG-VLA: Efficient Trajectory Generation for Articulated Objects (\textbf{三作}，ICSOC CCF-B)}
+    \item \textbf {FD-MABCVO:A Decentralized, Reliable. Low-Latency Multi-base Station Value Chain Collaboration via Human-UAV Crowdsourcing with Bi-level Consensus Offloading (\textbf{四作}，CCF-ICSS-2025)}
+\end{itemize}
+
+
+% ================================================================
+% 项目经历
+% ================================================================
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
+\faBriefcase}\ 国家重点研发项目}
+\textbf{复杂工业三维几何下的物理场建模与数字孪生研究}
+\textit{\textbf{核心成员，AI算法负责人}}
+\hfill 2024.9 -- 2025.6\\[0.2em]
+\textcolor{CVBlue}{\textbf{“十四五”国家重点研发计划——装备制造后市场服务协同平台研发与应用}}
+\begin{itemize}
+    \item \textbf{研究挑战：} 理论神经算子模型在真实工业非结构化三维几何条件下易出现表示失配与稳定性退化，难以直接迁移至复杂装备场景。
+    \item \textbf{算法适配与方法设计：} 针对真实工业非结构化三维几何存在拓扑缺陷与尺度异构的问题，构建统一的几何拓扑修复与潜空间表示框架，并对神经算子结构进行适配改造，在工业数据上验证其在复杂几何条件下的稳定演化与泛化能力。
+    \item \textbf{真实场景验证：} 在 70GB 级工业三维数据上完成模型泛化测试，3D 物理场预测误差降至 \textbf{2.69\%}，阻力系数误差为 \textbf{4.06\%}，实现复杂几何条件下的稳定推理（20ms）。
+    \item \textbf{个人职责：} 负责算法架构设计、数据建模策略制定及核心模块实现。
+\end{itemize}
+
+
+% ========================================================
+\section{%
+    \makebox[\widthof{\faTrophy}][c]%
+    {\color{CVBlue}\faTrophy}\ 其他成果%
+}
+\begin{itemize}
+    \item \textbf{专利：}一种结合几何特征与傅里叶神经算子的涡轮零件弹性数字孪生虚实交互方法 \textit{（实审中）}
+    \item \textbf{专利：}基于几何门控注意力机制的结构感知图神经网络物理场预测方法 \textit{（实审中）}
+    \item \textbf{专利：}一种基于应力驱动转速响应的水轮机风扇智能运维方法 \textit{（已公开）}
+    \item \textbf{软件著作权：}多传感融合的部门数字孪生协同运维平台 (登记号: 2026SR0202932)
+    \item \textbf{软件著作权：}设计-仿真部门数字孪生协同运维平台 (登记号: 2026SR0202550)
+\end{itemize}
+
+  
+% ================================================================
+% 技能、爱好与其他
+% ================================================================
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能、爱好与其他}
+\begin{itemize}
+    \item \textbf{核心工具：}  Python、PyTorch/PyG、Linux、Docker、Git等；
+    \item \textbf{英语能力：} CET-4、CET-6，具备英文论文写作与国际会议投稿经验；
+    \item \textbf{个人爱好：} 排球、羽毛球、游泳、书法等；
+    \item \textbf{自我评价：} 具备独立科研思考与复杂问题抽象能力，能够从物理约束与表示结构层面分析模型局限，在理论创新与真实场景验证之间形成了相互支撑的系统性研究路径。
+    
+\end{itemize}
+
+\end{document}
