@@ -127,16 +127,15 @@
 
 
 % ================================================================
-% 科研成果概览 (Research Summary)
+% 研究兴趣与成果概览
 % ================================================================
-\section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ 科研成果概览} 
-
-\textbf{研究聚焦：} 围绕神经算子在复杂几何与跨类别 PDE 场景下的稳定性与表示泛化问题开展研究，重点关注物理一致性与谱表示解耦机制。
-
+\section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ 研究兴趣与成果概览} 
+\textbf{研究兴趣：} 具身智能中的物理约束世界模型、三维场景表示与VLA策略学习。
+\textbf{研究基础：} 围绕物理一致性约束与三维几何表示的泛化问题开展研究，已在复杂几何长时演化、跨物理场迁移及工业数字孪生仿真中积累系统性经验，并初步探索了VLA机械臂操作与VLM大模型优化。
 \begin{itemize}[leftmargin=1.5em]
-    \item 以\textbf{第一作者}在 \textbf{IJCAI (CCF-A)} 发表 1 篇，在 \textbf{NeurIPS (CCF-A)} 在投 1 篇；累计 CCF-A 论文 4 篇。
-    \item 深度参与 \textbf{“十四五”国家重点研发计划}，承担复杂工业三维几何场景下的物理场建模研究。
-    \item 具备 70GB 级工业数据处理与神经算子规模化部署能力，实现物理场预测推理时间优化至 \textbf{20ms}。
+    \item 以\textbf{第一作者}发表 \textbf{IJCAI (CCF-A)} 1 篇，在投 \textbf{NeurIPS (CCF-A)} 1 篇；累计参与 CCF-A 论文 4 篇（含VLA具身操作方向）。
+    \item 深度参与 \textbf{"十四五"国家重点研发计划}，负责复杂工业三维几何场景下的物理场建模与数字孪生仿真。
+    \item 具备 70GB 级三维数据处理、神经算子规模化部署及大模型微调（LoRA/全参）全链路工程能力。
 \end{itemize}
 
 
@@ -149,15 +148,16 @@
 \begin{itemize}
     \item \textbf {Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries (\textbf{一作}，IJCAI CCF-A)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
-        \item \textbf{研究痛点：} 现有无监督神经算子依赖微分残差进行物理约束，高阶空间导数在非结构化几何与长时自回归演化中易引发数值不稳定与误差累积。
-        \item \textbf{核心创新：} 提出\textbf{积分一致性物理嵌入（LIPE）}，将 PDE 约束由微分残差重构为积分演化形式，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂几何场景下的长时稳定预测。
-        \item \textbf{实验指标：} 1D 高对流场景中 20-step 误差降至 \textbf{0.09\%}，并在 $T=50$ 外推中保持稳定；2D Navier–Stokes 任务中 20-step 误差为 \textbf{3.02\%}；3D 半监督几何任务中阻力系数误差为 \textbf{4.06\%}，显著优于基线方法。
+        \item \textbf{研究痛点：} 现有无监督神经算子依赖微分残差进行物理约束，高阶空间导数在非结构化三维几何与长时自回归演化中易引发数值不稳定与误差累积，限制了模型在复杂物理场景中的长时预测能力。
+        \item \textbf{核心创新：} 提出\textbf{积分一致性物理嵌入（LIPE）}，将 PDE 约束由微分残差重构为积分演化形式，在无标签条件下显著提升训练稳定性并降低显存开销。在此基础上，通过几何无关潜空间适配（GALA）统一非结构化三维几何表示，并构建门控谱演化算子（GSEO）以保持高频结构，实现复杂三维几何场景下的长时稳定物理状态预测。
+        \item \textbf{实验指标：} 3D 半监督几何任务中阻力系数误差为 \textbf{4.06\%}；2D Navier--Stokes 任务中 20-step 误差为 \textbf{3.02\%}；1D 高对流场景中 20-step 误差降至 \textbf{0.09\%}，并在 $T=50$ 外推中保持稳定，显著优于基线方法。
     \end{itemize}
+    
     \item \textbf {Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes (\textbf{一作}，NeurIPS CCF-A, 在投)}
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
         \item \textbf{研究痛点：} 传统谱神经算子将交互权重绑定于固定 Fourier 频率结构，导致模型在不同 PDE 类别（椭圆/抛物/双曲）之间难以共享动力学表示，并在长时自回归预测中产生误差漂移。
-        \item \textbf{核心创新：} 提出\textbf{基表示–交互解耦的 Basis-Universal 演化框架}，将谱基表示与交互权重矩阵分离，构建与频率索引无关的统一复数潜空间交互机制，实现跨 PDE 类别的共享动力学建模。在此基础上引入几何感知潜空间调制与积分一致性约束，增强复杂几何条件下的泛化能力与长时稳定性。
-        \item \textbf{实验验证：} 在跨 PDE 类验证中，1D 对流扩散任务中 20-step 误差保持在 \textbf{0.09\%} 量级；在 2D Navier–Stokes 强迫场景下 20-step 误差为 \textbf{1.90\%}；在 3D 半监督几何任务中 $C_d$ 误差降至 \textbf{3.95\%}，显著优于谱基与积分基线方法。
+        \item \textbf{核心创新：} 提出\textbf{基表示--交互解耦的 Basis-Universal 演化框架}，将谱基表示与交互权重矩阵分离，构建与频率索引无关的统一复数潜空间交互机制，实现跨 PDE 类别的共享动力学建模。在此基础上引入几何感知潜空间调制与积分一致性约束，增强复杂三维几何条件下的泛化能力与长时稳定性。
+        \item \textbf{实验验证：} 在 3D 半监督几何任务中 $C_d$ 误差降至 \textbf{3.95\%}；2D Navier--Stokes 强迫场景下 20-step 误差为 \textbf{1.90\%}；1D 对流扩散任务中 20-step 误差保持在 \textbf{0.09\%} 量级，显著优于谱基与积分基线方法。
     \end{itemize}
 \end{itemize}
 \vspace{0.5em} % 调整与下一段的间距
@@ -176,36 +176,30 @@
 
 
 % ================================================================
-% 项目经历
+% 科研与项目经历
 % ================================================================
-\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}%
-\faBriefcase}\ 国家重点研发项目}
+\section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ 科研与项目经历}
+
 \textbf{复杂工业三维几何下的物理场建模与数字孪生研究}
 \textit{\textbf{核心成员，AI算法负责人}}
 \hfill 2024.9 -- 2025.6\\[0.2em]
-\textcolor{CVBlue}{\textbf{“十四五”国家重点研发计划——装备制造后市场服务协同平台研发与应用}}
+\textcolor{CVBlue}{\textbf{"十四五"国家重点研发计划——装备制造后市场服务协同平台研发与应用}}
 \begin{itemize}
-    \item \textbf{研究挑战：} 理论神经算子模型在真实工业非结构化三维几何条件下易出现表示失配与稳定性退化，难以直接迁移至复杂装备场景。
+    \item \textbf{研究挑战：} 理论神经算子模型在真实工业非结构化三维几何条件下易出现表示失配与稳定性退化，难以直接迁移至真实物理场景。
     \item \textbf{算法适配与方法设计：} 针对真实工业非结构化三维几何存在拓扑缺陷与尺度异构的问题，构建统一的几何拓扑修复与潜空间表示框架，并对神经算子结构进行适配改造，在工业数据上验证其在复杂几何条件下的稳定演化与泛化能力。
     \item \textbf{真实场景验证：} 在 70GB 级工业三维数据上完成模型泛化测试，3D 物理场预测误差降至 \textbf{2.69\%}，阻力系数误差为 \textbf{4.06\%}，实现复杂几何条件下的稳定推理（20ms）。
     \item \textbf{个人职责：} 负责算法架构设计、数据建模策略制定及核心模块实现。
 \end{itemize}
-
-% ================================================================
-% 实习经历
-% ================================================================
-\section{\makebox[\widthof{\faBuilding}][c]{\color{CVBlue}\faBuilding}\ 实习经历}
+\vspace{0.6em} % 两个项目之间的间距
 \textbf{国科众安科技有限公司} \quad 大模型算法实习生 \hfill 2026.06 -- 2026.09\\[0.2em]
 \textcolor{CVBlue}{\textbf{工作方向：大模型幻觉抑制、文本纠错微调、RAG知识库检索重排序（Reranker）优化}}
 \begin{itemize}
     \item \textbf{轻量级文本纠错微调（小模型超越大模型）：}
     针对企业智能校对与事实幻觉治理需求，主导基于 \textbf{LoRA} 的 4B 模型微调。设计动态样本混合策略与多任务 Prompt 架构；微调后模型在评测集上 \textbf{$F_{0.5}$ 达到 0.9808（超越原生 8B 模型的 0.9766）}，在显著降低推理显存与部署成本的同时，实现纠错精度反超大模型。
-
     \item \textbf{RAG 检索重排序（Reranker）优化：}
-    基于 \textbf{MS-SWIFT} 框架微调 Qwen3-Reranker (0.6B) 轻量级模型，经实验评估确定 LoRA 方案效果优于全参微调；引入难负例挖掘与“简单/中等/困难”分层均衡采样策略；微调后模型在目标测试集上全面超越原生 8B 模型：\textbf{MAP (0.9485 $\to$ 0.9710)}、\textbf{MRR (0.9675 $\to$ 0.9835)}、\textbf{NDCG (0.9667 $\to$ 0.9815)}，大幅降低知识库召回噪声。
-
+    基于 \textbf{MS-SWIFT} 框架微调 Qwen3-Reranker (0.6B) 轻量级模型，经实验评估确定 LoRA 方案效果优于全参微调；引入难负例挖掘与"简单/中等/困难"分层均衡采样策略；微调后模型在目标测试集上全面超越原生 8B 模型：\textbf{MAP (0.9485 $\to$ 0.9710)}、\textbf{MRR (0.9675 $\to$ 0.9835)}、\textbf{NDCG (0.9667 $\to$ 0.9815)}，大幅降低知识库召回噪声。
     \item \textbf{端到端高质量垂直数据工程：}
-    搭建“自动过滤-人工标注-抽样质检-数据增强”全流程流水线；累计治理并构建 \textbf{4万+} 条高质量纠错微调数据及 \textbf{75万+} Query-Document 排序样本对。
+    搭建"自动过滤-人工标注-抽样质检-数据增强"全流程流水线；累计治理并构建 \textbf{4万+} 条高质量纠错微调数据及 \textbf{75万+} Query-Document 排序样本对。
 \end{itemize}
 
 % ========================================================
