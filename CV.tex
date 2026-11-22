@@ -12,20 +12,26 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{fontspec}
-\usepackage{enumitem}
-
-%% Main Font Settings
+\usepackage{xeCJK}
+\enumitemset{}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+%%  主文档字体设置
 \setmainfont[
     Path = fonts/Main/,
     Extension = .otf,
-    BoldFont = texgyretermes-bold.otf,
-]{texgyretermes-regular.otf}
-
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
 \usepackage{relsize}
 \usepackage{xspace}
+% 使用 fontawesome（部分图标）
 \usepackage{fontawesome} 
-
-% A4 paper, margins
+% A4纸， 上下左右边距
 \usepackage[
     a4paper,
     left=1.2cm,
@@ -34,50 +40,47 @@
     bottom=1cm,
     nohead
 ]{geometry}
-\renewcommand{\baselinestretch}{1.3} % Line spacing
-
+\renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
 \usepackage{titlesec}
-\setlist{noitemsep} 
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
 \setlist[itemize]{topsep=0.25em, leftmargin=*}
 \setlist[enumerate]{topsep=0.25em, leftmargin=*}
-
-% --- Vertical spacing control between projects ---
+% --- 用于控制【不同项目之间】的垂直距离 ---
 \newlength{\interProjectSpacing}
-\setlength{\interProjectSpacing}{0.9em}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
 \newcommand{\projectsep}{\vspace{\interProjectSpacing}}
-
-% --- Spacing control between project title and description ---
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
 \newlength{\intraProjectTitleSep}
-\setlength{\intraProjectTitleSep}{0.4em}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
 \newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
-
-% --- Section format ---
-\titleformat{\section}
-{\large\bfseries\raggedright}
-{}{0em}
-{}
-[{\color{CVBlue}\titlerule}]
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+% =======================================================================
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
 \titlespacing*{\section}{0cm}{*1.6}{*1.2}
-
 \begin{document}
 \pagenumbering{gobble}
-
-%%%% TikZ positioning for Avatar
+%%%% 利用tikz来定位照片
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
 \end{tikzpicture}%
-
-%%%% TikZ positioning for School Logo
+%%%% 利用tikz来定位学校Logo
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
 \end{tikzpicture}%
-
-% Name & Contact Info
+% 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
 \vspace*{-0.5em} 
 \noindent
 \begin{minipage}[c][3cm][c]{\textwidth - 3.5cm}
     \centering
-    {\LARGE\bfseries{Xinrui Cheng}}\\[0.3em]
+    {\LARGE\bfseries{Xinrui Cheng}}\\[0.1em]
     
     {\normalsize 
         Female $\vert$ 24 Years Old \quad
@@ -86,32 +89,32 @@
         \faGithubSquare\ \href{https://github.com/chengxinrui/UNOP}{github.com/chengxinrui/UNOP}
     }
 \end{minipage}
-
+% --- 在这里使用负间距将下方的正文往上拉 ---
 \vspace{-1.0cm}
     
 % ================================================================
-% EDUCATION
+% Education
 % ================================================================
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education} 
-\textbf{Harbin Institute of Technology (HIT)} \quad M.S. in Software Engineering \hfill Sep. 2024 -- Present\\[0.2em]
-\textcolor{CVBlue}{\textbf{Overall Rank: Top 10\%}} \quad \textbf{Honors:} National Scholarship, Academic Scholarships (First, Second, \& \textbf{Special} Class); ZTE Elite Challenge \textbf{Regional Winner}.\\
-\textbf{Changchun University of Technology} \quad B.S. in Software Engineering \hfill Sep. 2019 -- Jun. 2023\\[0.2em]
-\textcolor{CVBlue}{\textbf{Overall Rank: Top 5\%}} \quad \textbf{Honors:} Awarded University Academic Scholarships & Single-Subject Top Scholar Awards \textbf{6 times}.
+\textbf{Harbin Institute of Technology} \quad Software Engineering (Electronic Info) \quad M.S. \hfill Sep. 2024 -- Present\\[0.2em]
+\textcolor{CVBlue}{\textbf{Overall Rank: Top 10\%}} \quad \textbf{Honors:} National Scholarship, Academic Scholarships (First, Second, \& \textbf{Special} Class); ZTE Elite Challenge \textbf{Regional Winner}
+\textbf{Changchun University of Technology} \quad Software Engineering \quad B.S. \hfill Sep. 2019 -- Jun. 2023\\[0.2em]
+\textcolor{CVBlue}{\textbf{Overall Rank: Top 5\%}} \quad \textbf{Honors:} Awarded University Academic Scholarships & Single-Subject Top Scholar Awards \textbf{6 times}
 
 % ================================================================
-% RESEARCH INTERESTS & SUMMARY
+% Research Interests & Summary
 % ================================================================
 \section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ Research Interests \& Summary} 
 \textbf{Research Interests:} Physics-constrained world models in Embodied AI, 3D scene representations, and VLA policy learning.\\
 \textbf{Research Background:} Focused on physics-consistency constraints and 3D geometric generalization. Experienced in complex geometric long-horizon evolution, cross-physics field transfer, and industrial digital twin simulation, with preliminary exploration in VLA robotic manipulation and VLM optimization.
 \begin{itemize}[leftmargin=1.5em]
-    \item Published \textbf{1 IJCAI paper (CCF-A)} as \textbf{First Author}, submitted \textbf{1 NeurIPS paper (CCF-A)} as \textbf{First Author}; co-authored a total of \textbf{5 CCF-A/B papers} (including VLA embodied manipulation).
-    \item Deeply involved in the \textbf{"14th Five-Year" National Key R\&D Program}, leading physics field modeling and digital twin simulation under complex 3D industrial geometries.
-    \item Full-stack engineering capabilities in handling 70GB+ 3D data, large-scale deployment of neural operators, and LLM fine-tuning (LoRA / Full-parameter).
+    \item Published \textbf{1 IJCAI paper (CCF-A)} as \textbf{First Author}, submitted \textbf{1 NeurIPS paper (CCF-A)} as \textbf{First Author}; co-authored a total of 5 CCF-A papers (including VLA embodied manipulation).
+    \item Deeply involved in the \textbf{"14th Five-Year" National Key R\&D Program}, responsible for physics field modeling and digital twin simulation under complex 3D industrial geometries.
+    \item Possess full-stack engineering capabilities in handling 70GB+ 3D data, large-scale deployment of neural operators, and LLM fine-tuning (LoRA / Full-parameter).
 \end{itemize}
 
 % ========================================================
-% PUBLICATIONS
+% Publications
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -121,56 +124,56 @@
 \begin{itemize}
     \item \textbf{Physics-Constrained Unsupervised Neural Operator for Long-Horizon PDE Learning on Generalized Geometries} (\textcolor{red}{\textbf{First Author}}, IJCAI CCF-A, 2026.05, \textcolor{red}{\textbf{Accepted}})
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
-        \item \textbf{Research Bottleneck:} Existing unsupervised neural operators rely on differential residuals for physical constraints. High-order spatial derivatives often cause numerical instability and error accumulation on unstructured 3D geometries during long-horizon autoregressive evolution.
-        \item \textbf{Core Innovations:} Proposed \textbf{Local Integral Physics Embedding (LIPE)}, which reformulates PDE constraints into an integral evolution form, boosting training stability and reducing VRAM usage without labels. Developed Geometry-Agnostic Latent Adaptation (GALA) to unify unstructured 3D geometry representations, and constructed Gated Spectral Evolution Operator (GSEO) to preserve high-frequency structures.
+        \item \textbf{Research Challenge:} Existing unsupervised neural operators rely on differential residuals for physical constraints. High-order spatial derivatives tend to induce numerical instability and error accumulation on unstructured 3D geometries during long-horizon autoregressive evolution.
+        \item \textbf{Core Innovations:} Proposed \textbf{Local Integral Physics Embedding (LIPE)}, reformulating PDE constraints into an integral evolution form to boost training stability and lower VRAM overhead without labels. Built Geometry-Agnostic Latent Adaptation (GALA) to unify unstructured 3D geometry representations, and introduced Gated Spectral Evolution Operator (GSEO) to preserve high-frequency structures.
         \item \textbf{Experimental Metrics:} Reduced drag coefficient error to \textbf{4.06\%} in 3D semi-supervised geometry tasks; achieved \textbf{3.02\%} 20-step error in 2D Navier--Stokes; dropped 20-step error to \textbf{0.09\%} in 1D high-convection scenarios while maintaining stability during $T=50$ extrapolation.
     \end{itemize}
     
-    \item \textbf{Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes} (\textcolor{red}{\textbf{First Author}}, NeurIPS 2026 CCF-A, \textcolor{blue}{\textbf{Scores: 5/5/4, Rejected}})
+    \item \textbf{Integral-Consistent Basis-Universal Neural Operators for Diverse PDE Classes} (\textcolor{red}{\textbf{First Author}}, NeurIPS 2026 CCF-A, \textcolor{blue}{\textbf{(Scores: 5/5/4, Rejected)}})
     \begin{itemize}[label=\tiny$\bullet$, leftmargin=1em]
-        \item \textbf{Research Bottleneck:} Traditional spectral neural operators bind interaction weights to fixed Fourier frequency structures, making it difficult to share dynamic representations across distinct PDE classes (elliptic/parabolic/hyperbolic) and leading to error drift in long-horizon forecasting.
+        \item \textbf{Research Challenge:} Traditional spectral neural operators bind interaction weights to fixed Fourier frequency structures, making dynamic representations hard to share across distinct PDE classes (elliptic/parabolic/hyperbolic) and leading to error drift in long-horizon forecasting.
         \item \textbf{Core Innovations:} Proposed a \textbf{Basis-Universal framework} decoupling basis representation from interaction weights, establishing a frequency-index-free complex latent interaction mechanism for unified dynamics modeling. Integrated geometry-aware latent modulation and integral-consistency constraints to enhance cross-geometry generalization.
-        \item \textbf{Experimental Metrics:} Reduced $C_d$ error to \textbf{3.95\%} in 3D semi-supervised geometry tasks; achieved \textbf{1.90\%} 20-step error under forced 2D Navier--Stokes; kept 20-step error at the \textbf{0.09\%} scale in 1D convection-diffusion tasks.
+        \item \textbf{Experimental Results:} Reduced $C_d$ error to \textbf{3.95\%} in 3D semi-supervised geometry tasks; achieved \textbf{1.90\%} 20-step error under forced 2D Navier--Stokes; kept 20-step error at the \textbf{0.09\%} scale in 1D convection-diffusion tasks.
     \end{itemize}
 \end{itemize}
-\vspace{0.3em}
+\vspace{0.5em}
 \textbf{Co-Authored Publications}
 \begin{itemize}
     \item \textbf{SeGO: Sensitivity-Aware Golden Optimization for Large-Scale VLM Quantization} ({\small\textbf{Co-Second Author}, IJCAI CCF-A, 2026.05, \textcolor{red}{\textbf{Accepted}}}) {\small --- Responsible for golden section search algorithm implementation in VLM quantization.}
     \item \textbf{AEGIS: Adaptive Efficient Generative Inference Scheduling for Structured Latent Models} ({\small\textbf{Co-Second Author}, NeurIPS CCF-A, 2026.09, \textcolor{red}{\textbf{Accepted}}}) {\small --- Responsible for algorithm design and validation of generative inference scheduling.}
-    \item \textbf{Joint Optimization of Fine-grained Representation and Workflow Orchestration in Metaverse Articulated Manipulation Auto-generation by VLA Method} ({\small\textbf{5th Author}}, IEEE TSC CCF-A, 2025.10, \textcolor{red}{\textbf{Accepted}})
-    \item \textbf{MPG-VLA: Efficient Trajectory Generation for Articulated Objects} ({\small\textbf{3rd Author}}, ICSOC CCF-B, 2025.12, \textcolor{red}{\textbf{Accepted}})
-    \item \textbf{FD-MABCVO: A Decentralized, Reliable, Low-Latency Multi-base Station Value Chain Collaboration via Human-UAV Crowdsourcing with Bi-level Consensus Offloading} ({\small\textbf{4th Author}}, CCF-ICSS, 2025, \textcolor{red}{\textbf{Accepted}})
+    \item \textbf{Other Works:} Co-authored 3 CCF-A/B papers on VLA robotic arm trajectory generation and edge computing (5th/3rd/4th author), responsible for physics-consistency verification and system logic.
+    \item \textbf{Joint Optimization of Fine-grained Representation and Workflow Orchestration in Metaverse Articulated Manipulation Auto-generation by VLA Method (\textbf{5th Author}, IEEE TSC CCF-A, 2025.10, Accepted)}
+    \item \textbf{MPG-VLA: Efficient Trajectory Generation for Articulated Objects (\textbf{3rd Author}, ICSOC CCF-B, 2025.12, Accepted)}
+    \item \textbf{FD-MABCVO: A Decentralized, Reliable, Low-Latency Multi-base Station Value Chain Collaboration via Human-UAV Crowdsourcing with Bi-level Consensus Offloading (\textbf{4th Author}, CCF-ICSS, 2025, Accepted)}
 \end{itemize}
 
 % ================================================================
-% RESEARCH & PROJECT EXPERIENCE
+% Research & Project Experience
 % ================================================================
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ Research \& Project Experience}
-\textbf{Physical Field Modeling \& Digital Twins under Complex 3D Industrial Geometries}
-\hfill Sep. 2024 -- Jun. 2025\\
-\textit{\textbf{Core Member, AI Algorithm Lead}} \hfill \textcolor{CVBlue}{\textbf{"14th Five-Year" National Key R\&D Program}}
+\textbf{Physical Field Modeling \& Digital Twin Research under Complex 3D Industrial Geometries}
+\textit{\textbf{Core Member, AI Algorithm Lead}}
+\hfill Sep. 2024 -- Jun. 2025\\[0.2em]
+\textcolor{CVBlue}{\textbf{"14th Five-Year" National Key R\&D Program -- Equipment Manufacturing Aftermarket Service Platform}}
 \begin{itemize}
-    \item \textbf{Challenge \& Responsibility:} Theoretical neural operator models suffer from representation mismatch and stability degradation on real unstructured 3D industrial geometries. Led the algorithm architecture design, data modeling strategies, and core module implementation.
+    \item \textbf{Challenge \& Responsibility:} Theoretical neural operator models suffer from representation mismatch and stability degradation on real unstructured 3D industrial geometries. Led algorithm architecture design, data modeling strategies, and core module implementation.
     \item \textbf{Algorithm Design:} Addressed topological defects and scale heterogeneity in industrial 3D geometries by building a unified topology repair and latent space representation framework. Modified neural operator architectures to achieve stable long-horizon evolution.
     \item \textbf{Real-World Validation:} Evaluated generalization on 70GB+ industrial 3D datasets; reduced 3D physical field prediction error to \textbf{2.69\%} and drag coefficient error to \textbf{4.06\%}, enabling stable real-time inference (\textbf{20ms}).
 \end{itemize}
-
-\vspace{0.5em}
-\textbf{Institute of Scientific and Technical Information of China (ISTIC) -- Sino-Security}
-\hfill Jun. 2026 -- Sep. 2026\\
-\textit{\textbf{LLM Algorithm Intern}} \hfill \textcolor{CVBlue}{\textbf{Focus: Hallucination Suppression, Text Correction, & RAG Reranker Optimization}}
+\vspace{0.6em}
+\textbf{Institute of Scientific and Technical Information of China (ISTIC) -- Sino-Security} \textit{\textbf{LLM Algorithm Intern}} \hfill Jun. 2026 -- Sep. 2026\\[0.2em]
+\textcolor{CVBlue}{\textbf{Focus: LLM Hallucination Mitigation, Text Correction Fine-Tuning, RAG Reranker Optimization}}
 \begin{itemize}
     \item \textbf{Lightweight Text Correction (Small Model Outperforming Large Model):}
-    To address enterprise proofreading and factual hallucination control, led \textbf{LoRA}-based fine-tuning on a 4B model. Designed dynamic sample mixing and multi-task prompt structures. The fine-tuned 4B model achieved \textbf{$F_{0.5} = 0.9808$ (outperforming the native 8B model's 0.9766)} on the benchmark, significantly reducing VRAM footprint and deployment costs.
+    To address enterprise proofreading and factual hallucination control, led \textbf{LoRA}-based fine-tuning on a 4B model. Designed dynamic sample mixing and multi-task prompt structures. The fine-tuned model achieved \textbf{$F_{0.5} = 0.9808$ (outperforming the native 8B model's 0.9766)} on the benchmark, significantly reducing VRAM footprint while outperforming the larger model.
     \item \textbf{RAG Reranker Optimization:}
-    Fine-tuned Qwen3-Reranker (0.6B) using the \textbf{MS-SWIFT} framework. Applied hard negative mining and easy/medium/hard stratified sampling. The fine-tuned 0.6B model outperformed the native 8B model on target test sets: \textbf{MAP (0.9485 $\to$ 0.9710)}, \textbf{MRR (0.9675 $\to$ 0.9835)}, and \textbf{NDCG (0.9667 $\to$ 0.9815)}, significantly mitigating retrieval noise.
+    Fine-tuned Qwen3-Reranker (0.6B) using the \textbf{MS-SWIFT} framework. Applied hard negative mining and easy/medium/hard stratified sampling. The fine-tuned model outperformed the native 8B model on target test sets: \textbf{MAP (0.9485 $\to$ 0.9710)}, \textbf{MRR (0.9675 $\to$ 0.9835)}, and \textbf{NDCG (0.9667 $\to$ 0.9815)}, significantly mitigating retrieval noise.
     \item \textbf{End-to-End High-Quality Vertical Data Engineering:}
-    Established an automated filtering, human annotation, quality check, and data augmentation pipeline. Processed and curated \textbf{40,000+} high-quality text correction samples and \textbf{750,000+} Query-Document ranking pairs.
+    Established an automated filtering, human annotation, quality check, and data augmentation pipeline. Curated \textbf{40,000+} high-quality text correction samples and \textbf{750,000+} Query-Document ranking pairs.
 \end{itemize}
 
 % ========================================================
-% PATENTS & SOFTWARE COPYRIGHTS
+% Patents & Software Copyrights
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -178,7 +181,7 @@
 }
 \begin{itemize}
     \item \textbf{Patent:} A Virtual-Real Interactive Digital Twin Method for Turbine Components Combining Geometric Features and Fourier Neural Operators \textit{(Granted)}
-    \item \textbf{Patent:} Physical Field Prediction Method based on Geometry-Gated Attention Graph Neural Networks \textit{(Substantive Examination)}
+    \item \textbf{Patent:} Physical Field Prediction Method based on Geometry-Gated Attention Graph Neural Networks \textit{(Under Examination)}
     \item \textbf{Patent:} Intelligent O\&M Method for Hydro-turbine Fans Based on Stress-Driven Speed Response \textit{(Published)}
     \item \textbf{Software Copyright:} Multi-Sensor Fusion Department Digital Twin Collaborative O\&M Platform (Reg No: 2026SR0202932)
     \item \textbf{Software Copyright:} Design-Simulation Department Digital Twin Collaborative O\&M Platform (Reg No: 2026SR0202550)
