@@ -1,4 +1,6 @@
 \documentclass[11pt]{article}
+
+
 \setlength{\parindent}{0pt}
 \usepackage{xltxtra}
 \usepackage{hyperref}
@@ -13,24 +15,31 @@
 \usetikzlibrary{calc}
 \usepackage{fontspec}
 \usepackage{xeCJK}
-\enumitemset{}
+\usepackage{enumitem}
 \CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
 %%  主文档字体设置
 \setmainfont[
     Path = fonts/Main/,
     Extension = .otf,
     BoldFont = texgyretermes-bold.otf, % 加粗字体
 ]{texgyretermes-regular.otf} % 正文字体
+
 % 中文字体设置
 \setCJKmainfont[
     Path = fonts/hansans/,
     Extension = .ttf,
     BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
 ]{NotoSansSC-Regular.otf} % 正文字体
+
+
 \usepackage{relsize}
 \usepackage{xspace}
+
 % 使用 fontawesome（部分图标）
 \usepackage{fontawesome} 
+
 % A4纸， 上下左右边距
 \usepackage[
     a4paper,
@@ -40,33 +49,44 @@
     bottom=1cm,
     nohead
 ]{geometry}
+
 \renewcommand{\baselinestretch}{1.4} % 行间距设为1.5
+
 \usepackage{titlesec}
 \usepackage{enumitem}
 \setlist{noitemsep} % 取消列表项间的额外间距
 %\setlist{nosep} % 取消所有垂直间距
 \setlist[itemize]{topsep=0.25em, leftmargin=*}
 \setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
 % --- 用于控制【不同项目之间】的垂直距离 ---
 \newlength{\interProjectSpacing}
 \setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
 \newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
 % --- 用于控制【项目标题】与下方【项目描述】的距离 ---
 \newlength{\intraProjectTitleSep}
 \setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
 \newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
 % --- 用于控制【项目描述】与下方【要点列表】的距离 ---
 \newlength{\intraProjectListTopSep}
 \setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
 % =======================================================================
+
+
 \titleformat{\section}         % 定制 \section 命令 
 {\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
 {}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
 {}                           % 可用于在标题前插入代码
 [{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
 \titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
 \begin{document}
 \pagenumbering{gobble}
+
 %%%% 利用tikz来定位照片
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
@@ -75,6 +95,7 @@
 \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north west] at ($(current page.north west)+(1.2cm,-1.2cm)$) {\includegraphics[height=1.2cm]{hit.jpg}};
 \end{tikzpicture}%
+
 % 姓名与联系方式（带定高盒子，完美避开照片并垂直居中）
 \vspace*{-0.5em} 
 \noindent
@@ -89,20 +110,22 @@
         \faGithubSquare\ \href{https://github.com/chengxinrui/UNOP}{github.com/chengxinrui/UNOP}
     }
 \end{minipage}
+
 % --- 在这里使用负间距将下方的正文往上拉 ---
-\vspace{-1.0cm}
+\vspace{-1.0cm} % <--- 修改这个数值！如果你觉得还是宽，可以改成 -1cm 或 -1.2cm
     
 % ================================================================
-% Education
+% 教育背景 ★差异：研究方向描述不同
 % ================================================================
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education} 
 \textbf{Harbin Institute of Technology} \quad Software Engineering (Electronic Info) \quad M.S. \hfill Sep. 2024 -- Present\\[0.2em]
 \textcolor{CVBlue}{\textbf{Overall Rank: Top 10\%}} \quad \textbf{Honors:} National Scholarship, Academic Scholarships (First, Second, \& \textbf{Special} Class); ZTE Elite Challenge \textbf{Regional Winner}
 \textbf{Changchun University of Technology} \quad Software Engineering \quad B.S. \hfill Sep. 2019 -- Jun. 2023\\[0.2em]
-\textcolor{CVBlue}{\textbf{Overall Rank: Top 5\%}} \quad \textbf{Honors:} Awarded University Academic Scholarships & Single-Subject Top Scholar Awards \textbf{6 times}
+\textcolor{CVBlue}{\textbf{Overall Rank: Top 5\%}} \quad \textbf{Honors:} Awarded University Academic Scholarships \& Single-Subject Top Scholar Awards \textbf{6 times}
+
 
 % ================================================================
-% Research Interests & Summary
+% 研究兴趣与成果概览
 % ================================================================
 \section{\makebox[\widthof{\faBookmark}][c]{\color{CVBlue}\faBookmark}\ Research Interests \& Summary} 
 \textbf{Research Interests:} Physics-constrained world models in Embodied AI, 3D scene representations, and VLA policy learning.\\
@@ -113,8 +136,7 @@
     \item Possess full-stack engineering capabilities in handling 70GB+ 3D data, large-scale deployment of neural operators, and LLM fine-tuning (LoRA / Full-parameter).
 \end{itemize}
 
-% ========================================================
-% Publications
+
 % ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
@@ -136,7 +158,9 @@
         \item \textbf{Experimental Results:} Reduced $C_d$ error to \textbf{3.95\%} in 3D semi-supervised geometry tasks; achieved \textbf{1.90\%} 20-step error under forced 2D Navier--Stokes; kept 20-step error at the \textbf{0.09\%} scale in 1D convection-diffusion tasks.
     \end{itemize}
 \end{itemize}
-\vspace{0.5em}
+\vspace{0.5em} % 调整与下一段的间距
+
+\textbf{共同作者成果}
 \textbf{Co-Authored Publications}
 \begin{itemize}
     \item \textbf{SeGO: Sensitivity-Aware Golden Optimization for Large-Scale VLM Quantization} ({\small\textbf{Co-Second Author}, IJCAI CCF-A, 2026.05, \textcolor{red}{\textbf{Accepted}}}) {\small --- Responsible for golden section search algorithm implementation in VLM quantization.}
@@ -147,8 +171,9 @@
     \item \textbf{FD-MABCVO: A Decentralized, Reliable, Low-Latency Multi-base Station Value Chain Collaboration via Human-UAV Crowdsourcing with Bi-level Consensus Offloading (\textbf{4th Author}, CCF-ICSS, 2025, Accepted)}
 \end{itemize}
 
+
 % ================================================================
-% Research & Project Experience
+% 科研与项目经历
 % ================================================================
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ Research \& Project Experience}
 \textbf{Physical Field Modeling \& Digital Twin Research under Complex 3D Industrial Geometries}
@@ -173,8 +198,6 @@
 \end{itemize}
 
 % ========================================================
-% Patents & Software Copyrights
-% ========================================================
 \section{%
     \makebox[\widthof{\faTrophy}][c]%
     {\color{CVBlue}\faTrophy}\ Patents \& Software Copyrights%
@@ -186,5 +209,18 @@
     \item \textbf{Software Copyright:} Multi-Sensor Fusion Department Digital Twin Collaborative O\&M Platform (Reg No: 2026SR0202932)
     \item \textbf{Software Copyright:} Design-Simulation Department Digital Twin Collaborative O\&M Platform (Reg No: 2026SR0202550)
 \end{itemize}
+
+  
+% ================================================================
+% 技能、爱好与其他
+% ================================================================
+% \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能、爱好与其他}
+% \begin{itemize}
+%     \item \textbf{核心工具：}  Python、PyTorch/PyG、Linux、Docker、Git等；
+%     \item \textbf{英语能力：} CET-4、CET-6，具备英文论文写作与国际会议投稿经验；
+%     \item \textbf{个人爱好：} 排球、羽毛球、游泳、书法等；
+%     \item \textbf{自我评价：} 具备独立科研思考与复杂问题抽象能力，能够从物理约束与表示结构层面分析模型局限，在理论创新与真实场景验证之间形成了相互支撑的系统性研究路径。
+    
+% \end{itemize}
 
 \end{document}
